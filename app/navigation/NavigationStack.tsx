@@ -52,19 +52,9 @@ const MainScreen = () => {
               </TouchableOpacity>
             );
           },
-          headerRight: (): any => {
-            return (
-              <TouchableOpacity onPress={() => handlePresentModalPress()}>
-                <Image
-                  source={{
-                    uri: 'https://icons-for-free.com/iconfiles/png/512/arrow+left+chevron+chevronleft+left+left+icon+icon-1320185731545502691.png',
-                  }}
-                  style={{width: 70, height: 40}}
-                  resizeMode={'contain'}
-                />
-              </TouchableOpacity>
-            );
-          },
+          // headerRight: (): any => {
+          //   return <ShowModal />;
+          // },
         }}
       />
     </Stack.Navigator>

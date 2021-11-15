@@ -1,19 +1,20 @@
-import React, {useCallback, useMemo, useRef} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import React, {useCallback, useMemo, useRef, useLayoutEffect} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-import ModalTick from '@components/ModalComponent/ModalTick';
-import ModalTheme from '@components/ModalComponent/ModalTheme';
-import ModalBrightness from '@components/ModalComponent/ModalBrightness';
-import ModalFontsize from '@components/ModalComponent/ModalFontsize';
+import {
+  ModalTick,
+  ModalBrightness,
+  ModalFontsize,
+  ModalTheme,
+  ModalFontStyle,
+  ModalReport,
+} from '@components/ModalComponent';
+import {useNavigation} from '@react-navigation/native';
 
 const DetailScreen = () => {
-  // ref
+  const navigation = useNavigation();
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-
-  // variables
-  const snapPoints = useMemo(() => ['25%', '50%'], []);
-
-  // callbacks
+  const snapPoints = useMemo(() => ['200', '70%'], []);
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
   }, []);
@@ -21,24 +22,44 @@ const DetailScreen = () => {
     console.log('handleSheetChanges', index);
   }, []);
 
-  // renders
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          style={{marginHorizontal: 10}}
+          onPress={handlePresentModalPress}>
+          <Image
+            source={{
+              uri: 'https://icon-library.com/images/icon-other/icon-other-26.jpg',
+            }}
+            style={{width: 30, height: 20}}
+          />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
+
   return (
     <BottomSheetModalProvider>
       <View style={styles.container}>
-        <Button
-          onPress={handlePresentModalPress}
-          title="Present Modal"
-          color="black"
-        />
         <BottomSheetModal
           ref={bottomSheetModalRef}
           index={1}
           snapPoints={snapPoints}
-          onChange={handleSheetChanges}>
+          onChange={handleSheetChanges}
+          footerComponent={() => {
+            return (
+              <View
+                style={{height: 50, backgroundColor: 'red', marginBottom: 200}}
+              />
+            );
+          }}>
           <ModalTick title={'Đánh dấu trang'} />
           <ModalTheme title={'Theme'} />
           <ModalBrightness title={'Brightness'} />
-          <ModalFontsize title={'Font'} />
+          <ModalFontsize title={'FontSize'} />
+          <ModalFontStyle title={'FontStyles'} />
+          <ModalReport title={'Report'} />
         </BottomSheetModal>
       </View>
     </BottomSheetModalProvider>
