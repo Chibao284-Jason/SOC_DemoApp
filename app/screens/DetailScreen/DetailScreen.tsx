@@ -6,7 +6,7 @@ import {
   ModalBrightness,
   ModalFontsize,
   ModalTheme,
-  ModalFontStyle,
+  ModalFontFamily,
   ModalReport,
 } from '@components/ModalComponent';
 import {styles} from './styles';
@@ -41,13 +41,14 @@ const DetailScreen = () => {
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
-          style={{marginHorizontal: 10}}
+          style={{marginRight: 20}}
           onPress={() => handlePresentModalPress()}>
           <Image
             source={{
               uri: 'https://icon-library.com/images/icon-other/icon-other-26.jpg',
             }}
-            style={{width: 30, height: 20}}
+            style={{width: 20, height: 20}}
+            resizeMode={'stretch'}
           />
         </TouchableOpacity>
       ),
@@ -82,7 +83,7 @@ const DetailScreen = () => {
           <ModalTheme title={'Theme'} />
           <ModalBrightness title={'Độ sáng'} />
           <ModalFontsize title={'Cỡ chữ'} />
-          <ModalFontStyle title={'Phông chữ'} />
+          <ModalFontFamily title={'Phông chữ'} />
           <ModalReport title={'Báo cáo nội dung bài báo'} />
         </BottomSheetModal>
       </View>

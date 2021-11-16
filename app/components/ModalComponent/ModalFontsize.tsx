@@ -26,9 +26,7 @@ const ModalFontsize = (props: ModalFontsizeProps) => {
           source={
             image
               ? image
-              : {
-                  uri: 'https://cdn.iconscout.com/icon/free/png-512/save-3244517-2701888.png',
-                }
+              : require('../../assets/img/images-removebg-preview.png')
           }
           style={styles.imgIcon}
         />

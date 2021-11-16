@@ -1,5 +1,11 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, Image, ImageSourcePropType} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  ImageSourcePropType,
+  TouchableOpacity,
+} from 'react-native';
 
 interface ModalTickProps {
   title?: string;
@@ -25,9 +31,9 @@ const ModalTick = (props: ModalTickProps) => {
           <Text style={styles.titleStyles}>{title ? title : 'Title'}</Text>
         </View>
       </View>
-      <View style={styles.title}>
+      <TouchableOpacity style={styles.title}>
         <Text style={styles.titleStyles}>Chia sẻ</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -11,3 +11,7 @@ export interface IProductResponseState {
   errorMessage: string
 
 }
+export interface IChangeThemeColor {
+  type: string;
+  color: string
+}

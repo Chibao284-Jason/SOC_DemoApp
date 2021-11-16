@@ -1,15 +1,12 @@
-import React, {useCallback, useRef} from 'react';
+import React from 'react';
 import {Image} from 'react-native';
-import {NavigationContainer, Theme} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '@screens/HomeScreen/HomeScreen';
 import DetailScreen from '@screens/DetailScreen/DetailScreen';
 import {screenName} from './screenName';
 import TabBar from '@navigation/TabBar';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
-import {BottomSheetModal} from '@gorhom/bottom-sheet';
-import TestHeader from '@screens/TestHeader';
 
 const Stack = createStackNavigator();
 
@@ -18,8 +15,8 @@ interface NavigationContainerProps {}
 const MainScreen = () => {
   const navigation = useNavigation();
   return (
-    <Stack.Navigator initialRouteName={screenName.DETAIL_SCREEN}>
-      <Stack.Screen name={'TabBar'} component={TabBar} />
+    <Stack.Navigator initialRouteName={'DetailScreen'}>
+      <Stack.Screen name={'Logo'} component={TabBar} />
       <Stack.Screen
         name={screenName.DETAIL_SCREEN}
         component={DetailScreen}

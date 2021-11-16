@@ -1,6 +1,20 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle, ImageStyle, View } from "react-native";
+type Styles = {
+  container: ViewStyle;
+  viewLabel: ViewStyle;
+  imgIcon: ImageStyle;
+  imgArrow: ImageStyle;
+  title: ViewStyle;
+  viewDotColor: (color: string) => ViewStyle;
+  check: (color: string) => ViewStyle;
+  unCheck: ViewStyle;
+  buttonFont: (color: string) => ViewStyle;
+  labelFonts: (font?: string) => TextStyle;
+  titleStyles: TextStyle;
+  containerTheme: ViewStyle;
+};
 
-export const styles = StyleSheet.create({
+export const styles: Styles = {
   container: {
     margin: 10,
     flexDirection: 'row',
@@ -12,24 +26,25 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imgIcon: {
-    width: 15,
+    width: 20,
     height: 20,
   },
   title: {
     marginLeft: 10,
   },
-  viewDotColor: {
-    backgroundColor: 'red',
+  viewDotColor: color => ({
+    backgroundColor: color ? color : 'red',
     width: 15,
     height: 15,
     borderRadius: 10,
-  },
-  check: {
+  }),
+  check: color => ({
     borderRadius: 20,
     borderWidth: 2,
     padding: 2,
     marginLeft: 20,
-  },
+    borderColor: color ? color : 'red'
+  }),
   unCheck: {
     marginLeft: 20,
   },
@@ -37,12 +52,19 @@ export const styles = StyleSheet.create({
     width: 20,
     height: 25,
   },
-  buttonFont: {
-    backgroundColor: '#20A7A0',
+  buttonFont: color => ({
+    backgroundColor: color ? color : '#20A7A0',
     borderRadius: 20,
     marginHorizontal: 5,
-  },
-  labelFont: { color: 'white', margin: 10, fontSize: 18, fontWeight: '300' },
+  }),
+  labelFonts: (font) => ({
+    color: 'white',
+    fontSize: 18,
+    margin: 10,
+    fontWeight: '300',
+    fontFamily: font ? font : 'Arial'
+  }),
+
   containerTheme: {
     margin: 10,
     flexDirection: 'row',
@@ -51,4 +73,4 @@ export const styles = StyleSheet.create({
   titleStyles: {
     fontSize: 18,
   }
-});
+};

@@ -16,6 +16,24 @@ const HomeScreen = (props: HomeScreenProps) => {
         }}
         onPress={() => navigation.navigate(screenName.DETAIL_SCREEN as never)}
       />
+      <CardComponent
+        imgUri={{
+          uri: 'https://tuhoclaptrinh.edu.vn/upload/post/16/36/68/05-trang-web-tu-hoc-lap-trinh-mien-phi-216990.jpg',
+        }}
+        onPress={() => navigation.navigate(screenName.DETAIL_SCREEN as never)}
+      />
+      <CardComponent
+        imgUri={{
+          uri: 'https://tuhoclaptrinh.edu.vn/upload/post/16/36/68/05-trang-web-tu-hoc-lap-trinh-mien-phi-216990.jpg',
+        }}
+        onPress={() => navigation.navigate(screenName.DETAIL_SCREEN as never)}
+      />
+      <CardComponent
+        imgUri={{
+          uri: 'https://tuhoclaptrinh.edu.vn/upload/post/16/36/68/05-trang-web-tu-hoc-lap-trinh-mien-phi-216990.jpg',
+        }}
+        onPress={() => navigation.navigate(screenName.DETAIL_SCREEN as never)}
+      />
     </ScrollView>
   );
 };

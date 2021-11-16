@@ -12,14 +12,9 @@ const ModalTick = (props: ModalTickProps) => {
     <View style={styles.container}>
       <View style={styles.viewLabel}>
         <Image
-          source={
-            image
-              ? image
-              : {
-                  uri: 'https://cdn.iconscout.com/icon/free/png-512/save-3244517-2701888.png',
-                }
-          }
+          source={image ? image : require('../../assets/img/reportIcon.png')}
           style={styles.imgIcon}
+          resizeMode="contain"
         />
         <View style={styles.title}>
           <Text style={styles.titleStyles}>{title ? title : 'Title'}</Text>

@@ -15,7 +15,7 @@ export type Styles = {
 };
 
 export const styles: Styles = {
-  container: {margin: 10},
+  container: {padding: 10},
 
   headingTitle: font => ({
     fontSize: 30,

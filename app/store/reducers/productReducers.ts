@@ -11,7 +11,6 @@ const initialState: IProductState = {
 
 
 export const productReducer = (state = initialState, action: IProductResponseState) => {
-  tron.log('vaoooo: ')
   switch (action.type) {
     case types.GET_PRODUCT_REQUEST:
       return {
