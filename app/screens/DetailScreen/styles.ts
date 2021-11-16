@@ -32,9 +32,6 @@ import { ViewStyle, TextStyle, Dimensions, ImageStyle, StyleSheet } from 'react-
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
-    justifyContent: 'center',
-    backgroundColor: 'grey',
   },
   contentContainer: {
     flex: 1,

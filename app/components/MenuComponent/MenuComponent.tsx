@@ -13,7 +13,7 @@ const ButtonMenu = (props: IButtonMenuProps) => {
   const {onPress, title} = props;
   return (
     <TouchableOpacity style={styles.viewButton} onPress={onPress}>
-      <Text>{title}</Text>
+      <Text style={styles.title}>{title}</Text>
       <View style={styles.line} />
     </TouchableOpacity>
   );
@@ -58,12 +58,15 @@ const MenuComponent = (props: IMenuComponentProps) => {
 export default MenuComponent;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {flex: 1},
   viewButton: {marginHorizontal: 15, marginTop: 20},
   line: {
     width: '100%',
     height: 1,
     backgroundColor: '#808080',
     marginTop: 10,
+  },
+  title: {
+    fontSize: 18,
   },
 });

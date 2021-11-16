@@ -36,7 +36,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -49,25 +49,68 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-  <key>UIAppFonts</key>
-      <array>
-        <string>AntDesign.ttf</string>
-        <string>Entypo.ttf</string>
-        <string>EvilIcons.ttf</string>
-        <string>Feather.ttf</string>
-        <string>FontAwesome.ttf</string>
-        <string>FontAwesome5_Brands.ttf</string>
-        <string>FontAwesome5_Regular.ttf</string>
-        <string>FontAwesome5_Solid.ttf</string>
-        <string>Fontisto.ttf</string>
-        <string>Foundation.ttf</string>
-        <string>Ionicons.ttf</string>
-        <string>MaterialIcons.ttf</string>
-        <string>MaterialCommunityIcons.ttf</string>
-        <string>SimpleLineIcons.ttf</string>
-        <string>Octicons.ttf</string>
-        <string>Zocial.ttf</string>
-      </array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AntDesign.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>FontAwesome5_Brands.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
+		<string>FontAwesome5_Solid.ttf</string>
+		<string>Fontisto.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>Zocial.ttf</string>
+		<string>Arial.ttf</string>
+		<string>Arial Bold Italic.ttf</string>
+		<string>Arial Bold.ttf</string>
+		<string>Arial Italic.ttf</string>
+		<string>Bookerly-Regular.ttf</string>
+		<string>Courier New.ttf</string>
+		<string>Larsseit.ttf</string>
+		<string>LarsseitBold.ttf</string>
+		<string>LarsseitBoldItalic.ttf</string>
+		<string>LarsseitItalic.ttf</string>
+		<string>LarsseitLight.ttf</string>
+		<string>LarsseitMedium.ttf</string>
+		<string>LatoBold.ttf</string>
+		<string>LatoItalic.ttf</string>
+		<string>LatoLight.ttf</string>
+		<string>LatoMedium.ttf</string>
+		<string>LatoRegular.ttf</string>
+		<string>OpenSansBold.ttf</string>
+		<string>OpenSansItalic.ttf</string>
+		<string>OpenSansLight.ttf</string>
+		<string>OpenSansMedium.ttf</string>
+		<string>OpenSansRegular.ttf</string>
+		<string>RubikBold.ttf</string>
+		<string>RubikItalic.ttf</string>
+		<string>RubikLight.ttf</string>
+		<string>RubikMedium.ttf</string>
+		<string>RubikRegular.ttf</string>
+		<string>Times New Roman.ttf</string>
+		<string>UserwayDyslexiaFontBold.ttf</string>
+		<string>UserwayDyslexiaFontItalic.ttf</string>
+		<string>UserwayDyslexiaFontMedium.ttf</string>
+		<string>Bookerly Bold Italic.ttf</string>
+		<string>Bookerly Bold.ttf</string>
+		<string>Bookerly Display Bold Italic.ttf</string>
+		<string>Bookerly Display Bold.ttf</string>
+		<string>Bookerly Display Italic.ttf</string>
+		<string>Bookerly Display.ttf</string>
+		<string>Bookerly Italic.ttf</string>
+		<string>Bookerly LCD Italic.ttf</string>
+		<string>Bookerly LCD Light Italic.ttf</string>
+		<string>Bookerly Light Italic.ttf</string>
+		<string>Bookerly Light.ttf</string>
+		<string>Bookerly.ttf</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

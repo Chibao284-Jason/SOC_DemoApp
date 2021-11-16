@@ -11,6 +11,8 @@ import {
 } from '@components/ModalComponent';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
+import AuthorComponent from '@components/AuthorComponent/AuthorComponent';
+import ContentComponent from '@components/ContentComponent/ContentComponent';
 interface IFooterModalProps {
   onPress: () => void;
 }
@@ -49,6 +51,7 @@ const DetailScreen = () => {
           />
         </TouchableOpacity>
       ),
+      headerTitle: () => <AuthorComponent />,
     });
   }, [navigation]);
 
@@ -66,6 +69,7 @@ const DetailScreen = () => {
   return (
     <BottomSheetModalProvider>
       <View style={styles.container}>
+        <ContentComponent />
         <BottomSheetModal
           ref={bottomSheetModalRef}
           index={1}

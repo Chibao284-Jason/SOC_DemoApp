@@ -11,9 +11,21 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3353200E67E244ACAE8B12C4 /* Bookerly Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 462DAC4423114D2E9C9E14E6 /* Bookerly Bold Italic.ttf */; };
+		36A9A18C6A804E1995B0C042 /* Bookerly Display Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ED2A056FFA74BEE97331450 /* Bookerly Display Italic.ttf */; };
+		3934CD9718DB49879F01356F /* Bookerly Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E188E3696D7C455EA1C10796 /* Bookerly Italic.ttf */; };
+		5E5F6F16C73D48CFAF939EAF /* Bookerly Display.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1A67B4D67B84AB985A8AE8B /* Bookerly Display.ttf */; };
 		6172F2D35A4C3AA820D92908 /* libPods-SOC_DemoApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-SOC_DemoApp.a */; };
+		6D8E29526A044D9D812C0DE2 /* Bookerly Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C08062FCB42E4F1093BF74AE /* Bookerly Light.ttf */; };
+		7D705E8B4B224C548020485D /* Bookerly.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C521E9E2D90341FA98A85CCC /* Bookerly.ttf */; };
 		7EF68E3733C33B6898317E18 /* libPods-SOC_DemoApp-SOC_DemoAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-SOC_DemoApp-SOC_DemoAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8280DEFB93494A759CC8FFF6 /* Bookerly Display Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 677885637C7341D3AB1D53E2 /* Bookerly Display Bold Italic.ttf */; };
+		880ED3350AF14C6A89E0958F /* Bookerly LCD Light Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E9EA97638B4481085D97615 /* Bookerly LCD Light Italic.ttf */; };
+		8B38029A643944F0A293A0D0 /* Bookerly Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE657620332B4306BE12B74C /* Bookerly Bold.ttf */; };
+		9B46AB9ACC2842AEA6ACAAD6 /* Bookerly Display Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5923E190A2D74E4384F21E6A /* Bookerly Display Bold.ttf */; };
+		E8F8055C3558497C9F68AFCD /* Bookerly LCD Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82BD887825CE439E9EA1FA53 /* Bookerly LCD Italic.ttf */; };
+		FFE7EEDEFB37430F99274B9F /* Bookerly Light Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AC77D1CC6D24C57AA6D8B44 /* Bookerly Light Italic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,20 +42,79 @@
 		00E356EE1AD99517003FC87E /* SOC_DemoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SOC_DemoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* SOC_DemoAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SOC_DemoAppTests.m; sourceTree = "<group>"; };
+		03C31AF848C34C22B2270990 /* RubikLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = RubikLight.ttf; path = ../app/assets/fonts/RubikLight.ttf; sourceTree = "<group>"; };
+		0AC77D1CC6D24C57AA6D8B44 /* Bookerly Light Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Light Italic.ttf"; path = "../app/assets/fonts/Bookerly Light Italic.ttf"; sourceTree = "<group>"; };
+		0C64C1562CC54416921E2C32 /* OpenSansItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OpenSansItalic.ttf; path = ../app/assets/fonts/OpenSansItalic.ttf; sourceTree = "<group>"; };
+		0F205D5AD0C44085BB6B9CDA /* LarsseitBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LarsseitBoldItalic.ttf; path = ../app/assets/fonts/LarsseitBoldItalic.ttf; sourceTree = "<group>"; };
+		0FB71B2F57B74971A5F35A22 /* RubikBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = RubikBold.ttf; path = ../app/assets/fonts/RubikBold.ttf; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* SOC_DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOC_DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SOC_DemoApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SOC_DemoApp/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SOC_DemoApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SOC_DemoApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SOC_DemoApp/main.m; sourceTree = "<group>"; };
+		1A80EE59A0064B9B9440F1A2 /* Bookerly-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly-Regular.ttf"; path = "../app/assets/fonts/Bookerly-Regular.ttf"; sourceTree = "<group>"; };
+		1C7E27CF819B44CD868F1E38 /* Times New Roman.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Times New Roman.ttf"; path = "../app/assets/fonts/Times New Roman.ttf"; sourceTree = "<group>"; };
 		1D0AE47A65C8663E3B452821 /* Pods-SOC_DemoApp-SOC_DemoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOC_DemoApp-SOC_DemoAppTests.release.xcconfig"; path = "Target Support Files/Pods-SOC_DemoApp-SOC_DemoAppTests/Pods-SOC_DemoApp-SOC_DemoAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		1ED2A056FFA74BEE97331450 /* Bookerly Display Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display Italic.ttf"; path = "../app/assets/fonts/Bookerly Display Italic.ttf"; sourceTree = "<group>"; };
+		20ADA17F936743D784DFE925 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		27A63839801D46508AA880B1 /* LatoBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LatoBold.ttf; path = ../app/assets/fonts/LatoBold.ttf; sourceTree = "<group>"; };
+		291092299DFD4270A5DA0F2D /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		2E853BAC1AE44DE6BFEAF111 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		2EC5AF9FC3844361AD0F6DCE /* OpenSansBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OpenSansBold.ttf; path = ../app/assets/fonts/OpenSansBold.ttf; sourceTree = "<group>"; };
+		3546103DE619454B9F01E148 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		3EC129F47F39467AA18B1067 /* LatoItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LatoItalic.ttf; path = ../app/assets/fonts/LatoItalic.ttf; sourceTree = "<group>"; };
+		462DAC4423114D2E9C9E14E6 /* Bookerly Bold Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Bold Italic.ttf"; path = "../app/assets/fonts/Bookerly Bold Italic.ttf"; sourceTree = "<group>"; };
+		472BAB093E694C97A5DC1EA9 /* UserwayDyslexiaFontBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = UserwayDyslexiaFontBold.ttf; path = ../app/assets/fonts/UserwayDyslexiaFontBold.ttf; sourceTree = "<group>"; };
+		4E031A93B26C4BEEAB7F4F44 /* LarsseitLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LarsseitLight.ttf; path = ../app/assets/fonts/LarsseitLight.ttf; sourceTree = "<group>"; };
+		5923E190A2D74E4384F21E6A /* Bookerly Display Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display Bold.ttf"; path = "../app/assets/fonts/Bookerly Display Bold.ttf"; sourceTree = "<group>"; };
+		5AA247E3D301434CBA134E02 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		5DFE621DB9D147A69E44C041 /* Arial Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Arial Bold.ttf"; path = "../app/assets/fonts/Arial Bold.ttf"; sourceTree = "<group>"; };
+		5E9EA97638B4481085D97615 /* Bookerly LCD Light Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly LCD Light Italic.ttf"; path = "../app/assets/fonts/Bookerly LCD Light Italic.ttf"; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-SOC_DemoApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SOC_DemoApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64D6A0D94D334CA29216CC9A /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		677885637C7341D3AB1D53E2 /* Bookerly Display Bold Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display Bold Italic.ttf"; path = "../app/assets/fonts/Bookerly Display Bold Italic.ttf"; sourceTree = "<group>"; };
+		6AF97E8B9B214478AC443234 /* UserwayDyslexiaFontItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = UserwayDyslexiaFontItalic.ttf; path = ../app/assets/fonts/UserwayDyslexiaFontItalic.ttf; sourceTree = "<group>"; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-SOC_DemoApp-SOC_DemoAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOC_DemoApp-SOC_DemoAppTests.debug.xcconfig"; path = "Target Support Files/Pods-SOC_DemoApp-SOC_DemoAppTests/Pods-SOC_DemoApp-SOC_DemoAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6CB5FE462A8D413E923776E1 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		74A66BABF5AF4B63B9ED6D07 /* UserwayDyslexiaFontMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = UserwayDyslexiaFontMedium.ttf; path = ../app/assets/fonts/UserwayDyslexiaFontMedium.ttf; sourceTree = "<group>"; };
+		764480B94BB842F2A9324F17 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		79C2508DEB154B17A1B61327 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		7BFA233EAA0A421B80D6784A /* RubikRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = RubikRegular.ttf; path = ../app/assets/fonts/RubikRegular.ttf; sourceTree = "<group>"; };
+		7F311FC674B240589CB32B20 /* LarsseitItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LarsseitItalic.ttf; path = ../app/assets/fonts/LarsseitItalic.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SOC_DemoApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		82BD887825CE439E9EA1FA53 /* Bookerly LCD Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly LCD Italic.ttf"; path = "../app/assets/fonts/Bookerly LCD Italic.ttf"; sourceTree = "<group>"; };
+		84F11DECF4E04664875BBDFC /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		862543B698E94983A7693092 /* Larsseit.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Larsseit.ttf; path = ../app/assets/fonts/Larsseit.ttf; sourceTree = "<group>"; };
+		8A6BEA38983F46569C0E4CDF /* RubikMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = RubikMedium.ttf; path = ../app/assets/fonts/RubikMedium.ttf; sourceTree = "<group>"; };
+		9644F19BBED6450680FA30DD /* RubikItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = RubikItalic.ttf; path = ../app/assets/fonts/RubikItalic.ttf; sourceTree = "<group>"; };
+		96ED0A30AB494C2191BEB14E /* Courier New.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Courier New.ttf"; path = "../app/assets/fonts/Courier New.ttf"; sourceTree = "<group>"; };
+		97F5B78720B347E19187623A /* LatoRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LatoRegular.ttf; path = ../app/assets/fonts/LatoRegular.ttf; sourceTree = "<group>"; };
+		9F4AF53E24F048E4933A1DE3 /* Arial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Arial.ttf; path = ../app/assets/fonts/Arial.ttf; sourceTree = "<group>"; };
+		AA525CD45AFD4078B305A34A /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-SOC_DemoApp-SOC_DemoAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SOC_DemoApp-SOC_DemoAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B050A95A44CC41D6AFC76817 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		B16F21F950D44D9485E1AEE1 /* Arial Bold Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Arial Bold Italic.ttf"; path = "../app/assets/fonts/Arial Bold Italic.ttf"; sourceTree = "<group>"; };
+		B406A9298D054B559C5044EF /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		B8605B7E6F2C4E6C815FB8DA /* OpenSansRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OpenSansRegular.ttf; path = ../app/assets/fonts/OpenSansRegular.ttf; sourceTree = "<group>"; };
+		BA97A2DB85EC42E6B2CAFA2A /* OpenSansLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OpenSansLight.ttf; path = ../app/assets/fonts/OpenSansLight.ttf; sourceTree = "<group>"; };
+		C08062FCB42E4F1093BF74AE /* Bookerly Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Light.ttf"; path = "../app/assets/fonts/Bookerly Light.ttf"; sourceTree = "<group>"; };
 		C0A881CF5CF3F2B244570E2A /* Pods-SOC_DemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOC_DemoApp.debug.xcconfig"; path = "Target Support Files/Pods-SOC_DemoApp/Pods-SOC_DemoApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C1A67B4D67B84AB985A8AE8B /* Bookerly Display.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display.ttf"; path = "../app/assets/fonts/Bookerly Display.ttf"; sourceTree = "<group>"; };
+		C521E9E2D90341FA98A85CCC /* Bookerly.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Bookerly.ttf; path = ../app/assets/fonts/Bookerly.ttf; sourceTree = "<group>"; };
+		CA7C9FA3F367435AB55FFF79 /* Arial Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Arial Italic.ttf"; path = "../app/assets/fonts/Arial Italic.ttf"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-SOC_DemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOC_DemoApp.release.xcconfig"; path = "Target Support Files/Pods-SOC_DemoApp/Pods-SOC_DemoApp.release.xcconfig"; sourceTree = "<group>"; };
+		D020F501728B404CAD1F0480 /* LarsseitBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LarsseitBold.ttf; path = ../app/assets/fonts/LarsseitBold.ttf; sourceTree = "<group>"; };
+		D9666CB765AA4D28807CFF8A /* LatoLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LatoLight.ttf; path = ../app/assets/fonts/LatoLight.ttf; sourceTree = "<group>"; };
+		E188E3696D7C455EA1C10796 /* Bookerly Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Italic.ttf"; path = "../app/assets/fonts/Bookerly Italic.ttf"; sourceTree = "<group>"; };
+		E6BE66828E0248EE831F110A /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		E826EE618934433E9F34CBC0 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		E89580C7B61B47869CB38FD3 /* LatoMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LatoMedium.ttf; path = ../app/assets/fonts/LatoMedium.ttf; sourceTree = "<group>"; };
+		EC9F5615C48746218C5F5CD5 /* LarsseitMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LarsseitMedium.ttf; path = ../app/assets/fonts/LarsseitMedium.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EE657620332B4306BE12B74C /* Bookerly Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Bold.ttf"; path = "../app/assets/fonts/Bookerly Bold.ttf"; sourceTree = "<group>"; };
+		F443DAB2F65543758B20F6D8 /* OpenSansMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OpenSansMedium.ttf; path = ../app/assets/fonts/OpenSansMedium.ttf; sourceTree = "<group>"; };
+		FAC157DC8A844426AC2F8A74 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +193,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E233CBF5F47BEE60B243DCF8 /* Pods */,
+				9C5F9704BF1140F39F527AAE /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -135,6 +207,72 @@
 				00E356EE1AD99517003FC87E /* SOC_DemoAppTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9C5F9704BF1140F39F527AAE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B16F21F950D44D9485E1AEE1 /* Arial Bold Italic.ttf */,
+				5DFE621DB9D147A69E44C041 /* Arial Bold.ttf */,
+				CA7C9FA3F367435AB55FFF79 /* Arial Italic.ttf */,
+				9F4AF53E24F048E4933A1DE3 /* Arial.ttf */,
+				1A80EE59A0064B9B9440F1A2 /* Bookerly-Regular.ttf */,
+				96ED0A30AB494C2191BEB14E /* Courier New.ttf */,
+				862543B698E94983A7693092 /* Larsseit.ttf */,
+				D020F501728B404CAD1F0480 /* LarsseitBold.ttf */,
+				0F205D5AD0C44085BB6B9CDA /* LarsseitBoldItalic.ttf */,
+				7F311FC674B240589CB32B20 /* LarsseitItalic.ttf */,
+				4E031A93B26C4BEEAB7F4F44 /* LarsseitLight.ttf */,
+				EC9F5615C48746218C5F5CD5 /* LarsseitMedium.ttf */,
+				27A63839801D46508AA880B1 /* LatoBold.ttf */,
+				3EC129F47F39467AA18B1067 /* LatoItalic.ttf */,
+				D9666CB765AA4D28807CFF8A /* LatoLight.ttf */,
+				E89580C7B61B47869CB38FD3 /* LatoMedium.ttf */,
+				97F5B78720B347E19187623A /* LatoRegular.ttf */,
+				2EC5AF9FC3844361AD0F6DCE /* OpenSansBold.ttf */,
+				0C64C1562CC54416921E2C32 /* OpenSansItalic.ttf */,
+				BA97A2DB85EC42E6B2CAFA2A /* OpenSansLight.ttf */,
+				F443DAB2F65543758B20F6D8 /* OpenSansMedium.ttf */,
+				B8605B7E6F2C4E6C815FB8DA /* OpenSansRegular.ttf */,
+				0FB71B2F57B74971A5F35A22 /* RubikBold.ttf */,
+				9644F19BBED6450680FA30DD /* RubikItalic.ttf */,
+				03C31AF848C34C22B2270990 /* RubikLight.ttf */,
+				8A6BEA38983F46569C0E4CDF /* RubikMedium.ttf */,
+				7BFA233EAA0A421B80D6784A /* RubikRegular.ttf */,
+				1C7E27CF819B44CD868F1E38 /* Times New Roman.ttf */,
+				472BAB093E694C97A5DC1EA9 /* UserwayDyslexiaFontBold.ttf */,
+				6AF97E8B9B214478AC443234 /* UserwayDyslexiaFontItalic.ttf */,
+				74A66BABF5AF4B63B9ED6D07 /* UserwayDyslexiaFontMedium.ttf */,
+				84F11DECF4E04664875BBDFC /* AntDesign.ttf */,
+				291092299DFD4270A5DA0F2D /* Entypo.ttf */,
+				6CB5FE462A8D413E923776E1 /* EvilIcons.ttf */,
+				E6BE66828E0248EE831F110A /* Feather.ttf */,
+				64D6A0D94D334CA29216CC9A /* FontAwesome.ttf */,
+				AA525CD45AFD4078B305A34A /* FontAwesome5_Brands.ttf */,
+				FAC157DC8A844426AC2F8A74 /* FontAwesome5_Regular.ttf */,
+				20ADA17F936743D784DFE925 /* FontAwesome5_Solid.ttf */,
+				79C2508DEB154B17A1B61327 /* Fontisto.ttf */,
+				2E853BAC1AE44DE6BFEAF111 /* Foundation.ttf */,
+				E826EE618934433E9F34CBC0 /* Ionicons.ttf */,
+				B406A9298D054B559C5044EF /* MaterialCommunityIcons.ttf */,
+				3546103DE619454B9F01E148 /* MaterialIcons.ttf */,
+				764480B94BB842F2A9324F17 /* Octicons.ttf */,
+				5AA247E3D301434CBA134E02 /* SimpleLineIcons.ttf */,
+				B050A95A44CC41D6AFC76817 /* Zocial.ttf */,
+				462DAC4423114D2E9C9E14E6 /* Bookerly Bold Italic.ttf */,
+				EE657620332B4306BE12B74C /* Bookerly Bold.ttf */,
+				677885637C7341D3AB1D53E2 /* Bookerly Display Bold Italic.ttf */,
+				5923E190A2D74E4384F21E6A /* Bookerly Display Bold.ttf */,
+				1ED2A056FFA74BEE97331450 /* Bookerly Display Italic.ttf */,
+				C1A67B4D67B84AB985A8AE8B /* Bookerly Display.ttf */,
+				E188E3696D7C455EA1C10796 /* Bookerly Italic.ttf */,
+				82BD887825CE439E9EA1FA53 /* Bookerly LCD Italic.ttf */,
+				5E9EA97638B4481085D97615 /* Bookerly LCD Light Italic.ttf */,
+				0AC77D1CC6D24C57AA6D8B44 /* Bookerly Light Italic.ttf */,
+				C08062FCB42E4F1093BF74AE /* Bookerly Light.ttf */,
+				C521E9E2D90341FA98A85CCC /* Bookerly.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		E233CBF5F47BEE60B243DCF8 /* Pods */ = {
@@ -244,6 +382,18 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				3353200E67E244ACAE8B12C4 /* Bookerly Bold Italic.ttf in Resources */,
+				8B38029A643944F0A293A0D0 /* Bookerly Bold.ttf in Resources */,
+				8280DEFB93494A759CC8FFF6 /* Bookerly Display Bold Italic.ttf in Resources */,
+				9B46AB9ACC2842AEA6ACAAD6 /* Bookerly Display Bold.ttf in Resources */,
+				36A9A18C6A804E1995B0C042 /* Bookerly Display Italic.ttf in Resources */,
+				5E5F6F16C73D48CFAF939EAF /* Bookerly Display.ttf in Resources */,
+				3934CD9718DB49879F01356F /* Bookerly Italic.ttf in Resources */,
+				E8F8055C3558497C9F68AFCD /* Bookerly LCD Italic.ttf in Resources */,
+				880ED3350AF14C6A89E0958F /* Bookerly LCD Light Italic.ttf in Resources */,
+				FFE7EEDEFB37430F99274B9F /* Bookerly Light Italic.ttf in Resources */,
+				6D8E29526A044D9D812C0DE2 /* Bookerly Light.ttf in Resources */,
+				7D705E8B4B224C548020485D /* Bookerly.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

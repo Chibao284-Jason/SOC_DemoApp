@@ -18,10 +18,8 @@ interface NavigationContainerProps {}
 const MainScreen = () => {
   const navigation = useNavigation();
   return (
-    <Stack.Navigator initialRouteName={'TabBar'}>
+    <Stack.Navigator initialRouteName={screenName.DETAIL_SCREEN}>
       <Stack.Screen name={'TabBar'} component={TabBar} />
-      {/* <Stack.Screen name={screenName.HOME_SCREEN} component={HomeScreen} /> */}
-
       <Stack.Screen
         name={screenName.DETAIL_SCREEN}
         component={DetailScreen}
