@@ -17,14 +17,15 @@ interface CardComponentProps {
   imgUri: ImageSourcePropType;
   content?: string;
   timeCreated?: string | number;
+  onPress: () => void;
 }
 
 const CardComponent = (props: CardComponentProps) => {
-  const {imgUri, content} = props;
+  const {imgUri, content, onPress} = props;
   // const timeCreate = moment('2021-11').endOf('day').fromNow();
   const timeCreate = moment('2021-10').format('h [phút]');
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <ImageBackground
         source={imgUri}
         style={styles.imgThumbnail}

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, Image, ImageSourcePropType} from 'react-native';
-
+import {Text, View, Image, ImageSourcePropType} from 'react-native';
+import {styles} from './styles';
 interface ModalTickProps {
   title?: string;
   image?: ImageSourcePropType;
@@ -22,7 +22,7 @@ const ModalTick = (props: ModalTickProps) => {
           style={styles.imgIcon}
         />
         <View style={styles.title}>
-          <Text>{title ? title : 'Title'}</Text>
+          <Text style={styles.titleStyles}>{title ? title : 'Title'}</Text>
         </View>
       </View>
     </View>
@@ -30,21 +30,3 @@ const ModalTick = (props: ModalTickProps) => {
 };
 
 export default ModalTick;
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  viewLabel: {
-    flexDirection: 'row',
-  },
-  imgIcon: {
-    width: 15,
-    height: 20,
-  },
-  title: {
-    marginLeft: 10,
-  },
-});

@@ -1,13 +1,6 @@
 import * as React from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  ImageSourcePropType,
-  ScrollView,
-} from 'react-native';
-import {CheckBox} from 'react-native-elements';
+import {Text, View, Image, ImageSourcePropType, ScrollView} from 'react-native';
+import {styles} from './styles';
 interface ModalThemeProps {
   title?: string;
   image?: ImageSourcePropType;
@@ -17,7 +10,7 @@ interface ModalThemeProps {
 const ModalTheme = (props: ModalThemeProps) => {
   const {title, image, selected} = props;
   return (
-    <View style={styles.container}>
+    <View style={styles.containerTheme}>
       <View style={styles.viewLabel}>
         <Image
           source={
@@ -30,7 +23,7 @@ const ModalTheme = (props: ModalThemeProps) => {
           style={styles.imgIcon}
         />
         <View style={styles.title}>
-          <Text>{title ? title : 'Title'}</Text>
+          <Text style={styles.titleStyles}>{title ? title : 'Title'}</Text>
         </View>
       </View>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -72,37 +65,3 @@ const ModalTheme = (props: ModalThemeProps) => {
 };
 
 export default ModalTheme;
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  viewLabel: {
-    flexDirection: 'row',
-  },
-  imgIcon: {
-    width: 15,
-    height: 20,
-  },
-  title: {
-    marginLeft: 10,
-  },
-  viewDotColor: {
-    backgroundColor: 'red',
-    width: 15,
-    height: 15,
-    borderRadius: 10,
-  },
-  check: {
-    borderRadius: 20,
-    borderWidth: 2,
-    padding: 2,
-    marginLeft: 20,
-  },
-  unCheck: {
-    marginLeft: 20,
-  },
-  imgArrow: {width: 20, height: 25},
-});

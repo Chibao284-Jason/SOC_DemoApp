@@ -9,6 +9,7 @@ import TabBar from '@navigation/TabBar';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
+import TestHeader from '@screens/TestHeader';
 
 const Stack = createStackNavigator();
 
@@ -16,14 +17,11 @@ interface NavigationContainerProps {}
 
 const MainScreen = () => {
   const navigation = useNavigation();
-  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-  const handlePresentModalPress = useCallback(() => {
-    bottomSheetModalRef.current?.present();
-  }, []);
   return (
-    <Stack.Navigator initialRouteName={screenName.DETAIL_SCREEN}>
-      {/* <Stack.Screen name={'TabBar'} component={TabBar} /> */}
-      <Stack.Screen name={screenName.HOME_SCREEN} component={HomeScreen} />
+    <Stack.Navigator initialRouteName={'TabBar'}>
+      <Stack.Screen name={'TabBar'} component={TabBar} />
+      {/* <Stack.Screen name={screenName.HOME_SCREEN} component={HomeScreen} /> */}
+
       <Stack.Screen
         name={screenName.DETAIL_SCREEN}
         component={DetailScreen}
@@ -52,9 +50,6 @@ const MainScreen = () => {
               </TouchableOpacity>
             );
           },
-          // headerRight: (): any => {
-          //   return <ShowModal />;
-          // },
         }}
       />
     </Stack.Navigator>

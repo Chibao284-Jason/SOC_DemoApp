@@ -6311,6 +6311,11 @@ react-native-codegen@^0.0.7:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-date-picker@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-date-picker/-/react-native-date-picker-4.1.1.tgz#7f41b86e5b625c0c695686eea538677fe84fc4a6"
+  integrity sha512-2KzwFZoPNmGCgDFP8FrrtIBrKMEzTkLG5Zq68CbyUxG7aFPmeP7ik//lSB0gPwfO9TKQyKFVqTod5jTp0PTnbw==
+
 react-native-elements@^3.4.2:
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-3.4.2.tgz#66602be9c5e0e0a2a831913adec80ff6518d1ee2"
@@ -6340,6 +6345,11 @@ react-native-gesture-handler@^1.10.3:
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-linear-gradient@^2.5.6:
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
+  integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
 react-native-pager-view@^5.4.9:
   version "5.4.9"
@@ -6394,6 +6404,13 @@ react-native-size-matters@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.3.1.tgz#24d0cfc335a2c730f6d58bd7b43ea5a41be4b49f"
   integrity sha512-mKOfBLIBFBcs9br1rlZDvxD5+mAl8Gfr5CounwJtxI6Z82rGrMO+Kgl9EIg3RMVf3G855a85YVqHJL2f5EDRlw==
+
+react-native-sticky-parallax-header@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-sticky-parallax-header/-/react-native-sticky-parallax-header-0.4.1.tgz#c7c75544ab07e614dae4e437a370350d3527c480"
+  integrity sha512-0uUdMScV42o0uOV0krKXK3juG/ckjOA8kOrQxbcl1q6jit64hPjGBmdo2F2qwFDc3ukQKxeYOXYXsVZGoY/WSg==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-native-tab-view@^3.1.1:
   version "3.1.1"

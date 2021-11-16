@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, Image, ImageSourcePropType} from 'react-native';
 import Slider from '@react-native-community/slider';
 import ScreenBrightness from 'react-native-screen-brightness';
+import {styles} from './styles';
 
 interface ModalBrightnessProps {
   title?: string;
@@ -29,7 +30,7 @@ const ModalBrightness = (props: ModalBrightnessProps) => {
           style={styles.imgIcon}
         />
         <View style={styles.title}>
-          <Text>{title ? title : 'Title'}</Text>
+          <Text style={styles.titleStyles}>{title ? title : 'Title'}</Text>
         </View>
       </View>
       <View style={{justifyContent: 'center'}}>
@@ -48,39 +49,3 @@ const ModalBrightness = (props: ModalBrightnessProps) => {
 };
 
 export default ModalBrightness;
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  viewLabel: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  imgIcon: {
-    width: 15,
-    height: 20,
-  },
-  title: {
-    marginLeft: 10,
-  },
-  viewDotColor: {
-    backgroundColor: 'red',
-    width: 15,
-    height: 15,
-    borderRadius: 10,
-  },
-  check: {
-    borderRadius: 20,
-    borderWidth: 2,
-    padding: 2,
-    marginLeft: 20,
-  },
-  unCheck: {
-    marginLeft: 20,
-  },
-  imgArrow: {width: 20, height: 25},
-});
