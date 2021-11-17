@@ -10,8 +10,9 @@ type Styles = {
   unCheck: ViewStyle;
   buttonFont: (color: string) => ViewStyle;
   labelFonts: (font?: string) => TextStyle;
-  titleStyles: TextStyle;
+  titleStyles: (font?: string, fontSize?: number) => TextStyle;
   containerTheme: ViewStyle;
+  viewButtonFont: ViewStyle;
 };
 
 export const styles: Styles = {
@@ -70,7 +71,12 @@ export const styles: Styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  titleStyles: {
-    fontSize: 18,
+  titleStyles: (font, fontSize) => ({
+    fontFamily: font ? font : 'Arial',
+    fontSize: fontSize ? fontSize : 18
+  }),
+  viewButtonFont: {
+    justifyContent: 'center',
+    flexDirection: 'row',
   }
 };

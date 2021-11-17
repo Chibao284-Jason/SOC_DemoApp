@@ -8,12 +8,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {styles} from './styles';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import * as actions from '@store/actions/actions';
-interface ModalThemeProps {
+interface IModalThemeProps {
   title?: string;
   image?: ImageSourcePropType;
   selected?: boolean;
+  font?: string;
+  fontSize: number;
 }
 interface IDataColorTheme {
   id: number;
@@ -25,7 +27,7 @@ const dataColorTheme: IDataColorTheme[] = [
   {
     id: 0,
     color: '#5EBEBC',
-    isSelect: true,
+    isSelect: false,
   },
   {
     id: 1,
@@ -43,14 +45,14 @@ const dataColorTheme: IDataColorTheme[] = [
     isSelect: false,
   },
 ];
-const ModalTheme = (props: ModalThemeProps) => {
+const ModalTheme = (props: IModalThemeProps) => {
+  const {title, image, font, fontSize} = props;
+  const [dataColors, setDataColors] = useState(dataColorTheme);
   const dispatch = useDispatch();
 
   const onThemeColor = (color: string) =>
     dispatch(actions.changeThemeColor(color));
 
-  const {title, image, selected} = props;
-  const [dataColors, setDataColors] = useState(dataColorTheme);
   const onSelectColor = (itemChoose: {
     isSelect: boolean;
     id: number;
@@ -63,6 +65,7 @@ const ModalTheme = (props: ModalThemeProps) => {
     });
     setDataColors(dataColorTemp);
   };
+
   return (
     <View style={styles.containerTheme}>
       <View style={styles.viewLabel}>
@@ -77,7 +80,9 @@ const ModalTheme = (props: ModalThemeProps) => {
           style={styles.imgIcon}
         />
         <View style={styles.title}>
-          <Text style={styles.titleStyles}>{title ? title : 'Title'}</Text>
+          <Text style={styles.titleStyles(font, fontSize)}>
+            {title ? title : 'Title'}
+          </Text>
         </View>
       </View>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>

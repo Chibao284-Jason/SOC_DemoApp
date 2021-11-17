@@ -6,3 +6,16 @@ export const changeThemeColor = (color: string) => {
     color
   }
 }
+
+export const changeThemeFontFamily = (font: string) => {
+  return {
+    type: types.CHANGE_THEME_FONT_FAMILY,
+    font
+  }
+}
+export const changeThemeFontSize = (fontSize: number) => {
+  return {
+    type: types.CHANGE_THEME_FONT_SIZE,
+    fontSize
+  }
+}

@@ -1,38 +1,22 @@
 
 import { ViewStyle, TextStyle, Dimensions, ImageStyle, StyleSheet } from 'react-native';
-// const width = Dimensions.get('window').width / 2 - 30;
-// export type Styles = {
-//   container: ViewStyle;
-//   viewLike: (plantIsLike: boolean) => ViewStyle;
+export type Styles = {
+  container: (bottomShow?: number) => ViewStyle; // 1 is show, -1 is hide
+  contentContainer: ViewStyle;
+  line: ViewStyle;
+  viewFooter: ViewStyle;
+  buttonClose: ViewStyle;
+  labelClose: TextStyle;
 
-// };
-
-// export const styles: Styles = {
-//   container: {
-//     flex: 1,
-//     paddingHorizontal: 20,
-//     backgroundColor: 'gray'
-//   },
-//   viewLike: plantIsLike => ({
-//     width: 30,
-//     height: 30,
-//     borderRadius: 20,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: plantIsLike
-//       ? 'rgba(245, 42, 42,0.2)'
-//       : '#FFFFFFAA',
-//   }),
-
-// };
+};
 
 
 
-
-export const styles = StyleSheet.create({
-  container: {
+export const styles: Styles = {
+  container: (bottomShow) => ({
     flex: 1,
-  },
+    backgroundColor: bottomShow === 1 ? '#808080' : '#fff'
+  }),
   contentContainer: {
     flex: 1,
     alignItems: 'center',
@@ -49,4 +33,4 @@ export const styles = StyleSheet.create({
   },
   buttonClose: {},
   labelClose: { color: 'gray', fontSize: 18 },
-});
+}

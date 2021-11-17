@@ -1,7 +1,7 @@
-import * as productReducer from './productReducers'
 import * as changeThemeReducers from './changeThemeReducers'
+import * as changeFontReducers from './ChangeFontReducer'
 
 export default Object.assign(
-  productReducer,
-  changeThemeReducers
+  changeThemeReducers,
+  changeFontReducers
 );

@@ -4,10 +4,13 @@ import {styles} from './styles';
 interface ModalTickProps {
   title?: string;
   image?: ImageSourcePropType;
+  font?: string;
+  fontSize?: number;
 }
 
 const ModalTick = (props: ModalTickProps) => {
-  const {title, image} = props;
+  const {title, image, font, fontSize} = props;
+
   return (
     <View style={styles.container}>
       <View style={styles.viewLabel}>
@@ -17,7 +20,9 @@ const ModalTick = (props: ModalTickProps) => {
           resizeMode="contain"
         />
         <View style={styles.title}>
-          <Text style={styles.titleStyles}>{title ? title : 'Title'}</Text>
+          <Text style={styles.titleStyles(font, fontSize)}>
+            {title ? title : 'Title'}
+          </Text>
         </View>
       </View>
     </View>

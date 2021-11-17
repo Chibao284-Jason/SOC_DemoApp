@@ -1,24 +1,30 @@
 import React, {useState} from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  ImageSourcePropType,
-  ScrollView,
-} from 'react-native';
+import {Text, View, Image, ImageSourcePropType} from 'react-native';
 import Slider from '@react-native-community/slider';
 import {styles} from './styles';
-
+import {useDispatch, useSelector} from 'react-redux';
+import * as actions from '@store/actions/actions';
+import {IChangeThemeFontSizeReducer} from '@models/reducers/changeTheme';
 interface ModalFontsizeProps {
   title?: string;
   image?: ImageSourcePropType;
-  value?: boolean;
+  font?: string;
 }
-
+interface IChangeFontReducer {
+  ChangeFontReducer: IChangeThemeFontSizeReducer;
+}
 const ModalFontsize = (props: ModalFontsizeProps) => {
-  const {title, image, value} = props;
-  const [sliderValue, setSliderValue] = useState(0);
+  const fontSize = useSelector(
+    (state: IChangeFontReducer) => state.ChangeFontReducer.fontSize,
+  );
+  const {title, image, font} = props;
+  const [sliderValue, setSliderValue] = useState(fontSize);
+
+  const dispatch = useDispatch();
+  const onChangeFontSize = (fontSizes: number) => {
+    dispatch(actions.changeThemeFontSize(fontSizes));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.viewLabel}>
@@ -31,19 +37,23 @@ const ModalFontsize = (props: ModalFontsizeProps) => {
           style={styles.imgIcon}
         />
         <View style={styles.title}>
-          <Text style={styles.titleStyles}>{title ? title : 'Title'}</Text>
+          <Text style={styles.titleStyles(font, fontSize)}>
+            {title ? title : 'Title'}
+          </Text>
         </View>
       </View>
       <View style={{justifyContent: 'center'}}>
         <Slider
           style={{width: 200, height: 40}}
-          step={0.25}
-          minimumValue={0}
-          maximumValue={1}
+          step={1}
+          minimumValue={14}
+          maximumValue={30}
           minimumTrackTintColor="#22A6A0"
           maximumTrackTintColor="gray"
           value={sliderValue}
-          onValueChange={value => setSliderValue(value)}
+          onValueChange={value => {
+            onChangeFontSize(value);
+          }}
         />
       </View>
     </View>

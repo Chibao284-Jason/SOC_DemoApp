@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, StyleSheet, Image, ImageSourcePropType} from 'react-native';
+import {Text, View, Image, ImageSourcePropType} from 'react-native';
 import Slider from '@react-native-community/slider';
 import ScreenBrightness from 'react-native-screen-brightness';
 import {styles} from './styles';
@@ -7,13 +7,15 @@ import {styles} from './styles';
 interface ModalBrightnessProps {
   title?: string;
   image?: ImageSourcePropType;
-  value?: boolean;
+  font?: string;
+  fontSize?: number;
 }
+
 const handleBrightness = async (value: number) => {
   ScreenBrightness.setBrightness(value);
 };
 const ModalBrightness = (props: ModalBrightnessProps) => {
-  const {title, image, value} = props;
+  const {title, image, font, fontSize} = props;
   const [sliderValue, setSliderValue] = useState(0);
 
   return (
@@ -30,7 +32,9 @@ const ModalBrightness = (props: ModalBrightnessProps) => {
           style={styles.imgIcon}
         />
         <View style={styles.title}>
-          <Text style={styles.titleStyles}>{title ? title : 'Title'}</Text>
+          <Text style={styles.titleStyles(font, fontSize)}>
+            {title ? title : 'Title'}
+          </Text>
         </View>
       </View>
       <View style={{justifyContent: 'center'}}>

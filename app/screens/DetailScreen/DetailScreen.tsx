@@ -1,5 +1,11 @@
-import React, {useCallback, useMemo, useRef, useLayoutEffect} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import React, {
+  useCallback,
+  useMemo,
+  useRef,
+  useLayoutEffect,
+  useState,
+} from 'react';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {
   ModalTick,
@@ -13,12 +19,31 @@ import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import AuthorComponent from '@components/AuthorComponent/AuthorComponent';
 import ContentComponent from '@components/ContentComponent/ContentComponent';
+import {
+  IChangeThemeFontFamilyReducer,
+  IChangeThemeFontSizeReducer,
+} from '@models/reducers/changeTheme';
+import {useSelector} from 'react-redux';
 interface IFooterModalProps {
   onPress: () => void;
 }
 
+interface IChangeFontReducer {
+  ChangeFontReducer: IChangeThemeFontFamilyReducer &
+    IChangeThemeFontSizeReducer;
+}
+
 const DetailScreen = () => {
   const navigation = useNavigation();
+  const [showModal, setShowModal] = useState(0);
+
+  const font = useSelector(
+    (state: IChangeFontReducer) => state.ChangeFontReducer.font,
+  );
+
+  const fontSize = useSelector(
+    (state: IChangeFontReducer) => state.ChangeFontReducer.fontSize,
+  );
 
   //ref bottom sheet
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
@@ -30,6 +55,7 @@ const DetailScreen = () => {
   //handle when bottom sheet changes
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
+    setShowModal(index);
   }, []);
 
   //Close bottom sheet
@@ -69,7 +95,8 @@ const DetailScreen = () => {
   };
   return (
     <BottomSheetModalProvider>
-      <View style={styles.container}>
+      <View style={styles.container(showModal)}>
+        {/* CONTENT COMPONENT */}
         <ContentComponent />
         <BottomSheetModal
           ref={bottomSheetModalRef}
@@ -79,12 +106,20 @@ const DetailScreen = () => {
           footerComponent={() => {
             return <FooterModal onPress={() => handleClosePress()} />;
           }}>
-          <ModalTick title={'Đánh dấu trang'} />
-          <ModalTheme title={'Theme'} />
-          <ModalBrightness title={'Độ sáng'} />
-          <ModalFontsize title={'Cỡ chữ'} />
-          <ModalFontFamily title={'Phông chữ'} />
-          <ModalReport title={'Báo cáo nội dung bài báo'} />
+          <ModalTick title={'Đánh dấu trang'} font={font} fontSize={fontSize} />
+          <ModalTheme title={'Theme'} font={font} fontSize={fontSize} />
+          <ModalBrightness title={'Độ sáng'} font={font} fontSize={fontSize} />
+          <ModalFontsize title={'Cỡ chữ'} font={font} />
+          <ModalFontFamily
+            title={'Phông chữ'}
+            font={font}
+            fontSize={fontSize}
+          />
+          <ModalReport
+            title={'Báo cáo nội dung bài báo'}
+            font={font}
+            fontSize={fontSize}
+          />
         </BottomSheetModal>
       </View>
     </BottomSheetModalProvider>

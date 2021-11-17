@@ -1,30 +1,52 @@
-import {IThemeState} from '@models/reducers/changeTheme';
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Text,
   View,
   Image,
   ImageSourcePropType,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {styles} from './styles';
+import {IChangeThemeColorReducer} from '@models/reducers/changeTheme';
+import * as actions from '@store/actions/actions';
 interface IModalFontFamilyProps {
   title?: string;
   image?: ImageSourcePropType;
   value?: boolean;
+  font?: string;
+  fontSize: number;
 }
+
 interface IStateReducer {
-  ChangeThemeColorReducer: IThemeState;
+  ChangeThemeColorReducer: IChangeThemeColorReducer;
+}
+interface IDataFont {
+  id: number;
+  font: string;
 }
 const ModalFontFamily = (props: IModalFontFamilyProps) => {
-  const {title, image, value} = props;
-  const [sliderValue, setSliderValue] = useState(0);
-
+  const {title, image, font, fontSize} = props;
+  const dispatch = useDispatch();
+  const onPressChangeFont = (font: string) => {
+    dispatch(actions.changeThemeFontFamily(font));
+  };
   const colorString = useSelector(
     (state: IStateReducer) => state.ChangeThemeColorReducer.color,
   );
-  console.log('colorString', colorString);
+
+  useDispatch;
+  const dataFont: IDataFont[] = [
+    {
+      id: 0,
+      font: 'Bookerly',
+    },
+    {
+      id: 1,
+      font: 'Arial',
+    },
+  ];
 
   return (
     <View style={styles.container}>
@@ -40,17 +62,27 @@ const ModalFontFamily = (props: IModalFontFamilyProps) => {
           style={styles.imgIcon}
         />
         <View style={styles.title}>
-          <Text style={styles.titleStyles}>{title ? title : 'Title'}</Text>
+          <Text style={styles.titleStyles(font, fontSize)}>
+            {title ? title : 'Title'}
+          </Text>
         </View>
       </View>
-      <View style={{justifyContent: 'center', flexDirection: 'row'}}>
-        <TouchableOpacity style={styles.buttonFont(colorString)}>
-          <Text style={styles.labelFonts('Bookerly')}>Bookerly</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonFont(colorString)}>
-          <Text style={styles.labelFonts('Arial')}>Arial</Text>
-        </TouchableOpacity>
-      </View>
+      <FlatList
+        contentContainerStyle={styles.viewButtonFont}
+        data={dataFont}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({item}) => {
+          return (
+            <TouchableOpacity
+              style={styles.buttonFont(colorString)}
+              onPress={() => {
+                onPressChangeFont(item.font);
+              }}>
+              <Text style={styles.labelFonts(item.font)}>{item.font}</Text>
+            </TouchableOpacity>
+          );
+        }}
+      />
     </View>
   );
 };

@@ -10,10 +10,13 @@ import {
 interface ModalTickProps {
   title?: string;
   image?: ImageSourcePropType;
+  font?: string;
+  fontSize: number;
 }
 import {styles} from './styles';
+
 const ModalTick = (props: ModalTickProps) => {
-  const {title, image} = props;
+  const {title, image, font, fontSize} = props;
   return (
     <View style={styles.container}>
       <View style={styles.viewLabel}>
@@ -28,11 +31,13 @@ const ModalTick = (props: ModalTickProps) => {
           style={styles.imgIcon}
         />
         <View style={styles.title}>
-          <Text style={styles.titleStyles}>{title ? title : 'Title'}</Text>
+          <Text style={styles.titleStyles(font, fontSize)}>
+            {title ? title : 'Title'}
+          </Text>
         </View>
       </View>
       <TouchableOpacity style={styles.title}>
-        <Text style={styles.titleStyles}>Chia sẻ</Text>
+        <Text style={styles.titleStyles(font, fontSize)}>Chia sẻ</Text>
       </TouchableOpacity>
     </View>
   );
