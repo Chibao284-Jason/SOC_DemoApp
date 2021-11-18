@@ -5,7 +5,7 @@ import {screenName} from '@navigation/screenName';
 import {FlatList} from 'react-native-gesture-handler';
 interface IMenuComponentProps {}
 interface IButtonMenuProps {
-  onPress: () => void;
+  onPress?: () => void;
   title: string;
 }
 
@@ -40,17 +40,26 @@ const MenuComponent = (props: IMenuComponentProps) => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <FlatList
+      {/* <FlatList
+        scrollEnabled={false}
         data={data}
         renderItem={({item}) => {
           return (
             <ButtonMenu
               title={item.name}
-              onPress={() => navigation.navigate(item.name)}
+              // onPress={() => navigation.navigate(item.name)}
             />
           );
         }}
-      />
+      /> */}
+      {data.map(item => {
+        return (
+          <ButtonMenu
+            title={item.name}
+            // onPress={() => navigation.navigate(item.name)}
+          />
+        );
+      })}
     </View>
   );
 };
@@ -58,7 +67,7 @@ const MenuComponent = (props: IMenuComponentProps) => {
 export default MenuComponent;
 
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  container: {},
   viewButton: {marginHorizontal: 15, marginTop: 20},
   line: {
     width: '100%',

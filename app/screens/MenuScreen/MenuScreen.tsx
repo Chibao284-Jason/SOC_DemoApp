@@ -16,5 +16,5 @@ const MenuScreen = (props: IMenuScreenProps) => {
 export default MenuScreen;
 
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  container: {},
 });

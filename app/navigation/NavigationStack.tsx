@@ -7,7 +7,8 @@ import {screenName} from './screenName';
 import TabBar from '@navigation/TabBar';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
-
+import HeaderComponent from '@components/HeaderComponent/HeaderComponent';
+import {Header} from '@components/HeaderComponent/Header';
 const Stack = createStackNavigator();
 
 interface NavigationContainerProps {}
@@ -15,23 +16,30 @@ interface NavigationContainerProps {}
 const MainScreen = () => {
   const navigation = useNavigation();
   return (
-    <Stack.Navigator initialRouteName={'DetailScreen'}>
-      <Stack.Screen name={'Logo'} component={TabBar} />
+    <Stack.Navigator initialRouteName={'Test'}>
+      <Stack.Screen
+        name={'Logo'}
+        component={TabBar}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={'Test'}
+        component={HeaderComponent}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* <Stack.Screen
+        name={'Test'}
+        component={Header}
+        options={{
+          headerShown: false,
+        }}
+      /> */}
       <Stack.Screen
         name={screenName.DETAIL_SCREEN}
         component={DetailScreen}
         options={{
-          headerTitle: (): any => {
-            return (
-              <Image
-                source={{
-                  uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Ng%C6%B0%E1%BB%9Di_lao_%C4%91%E1%BB%99ng_logo.svg/1280px-Ng%C6%B0%E1%BB%9Di_lao_%C4%91%E1%BB%99ng_logo.svg.png',
-                }}
-                style={{width: 70, height: 20}}
-                resizeMode={'contain'}
-              />
-            );
-          },
           headerLeft: (): any => {
             return (
               <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -39,12 +47,13 @@ const MainScreen = () => {
                   source={{
                     uri: 'https://icons-for-free.com/iconfiles/png/512/arrow+left+chevron+chevronleft+left+left+icon+icon-1320185731545502691.png',
                   }}
-                  style={{width: 70, height: 40}}
+                  style={{width: 35, height: 40}}
                   resizeMode={'contain'}
                 />
               </TouchableOpacity>
             );
           },
+          headerStyle: {height: 70},
         }}
       />
     </Stack.Navigator>

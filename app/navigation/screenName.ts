@@ -5,4 +5,6 @@ export const screenName = {
   HOT_SCREEN: "Nóng",
   NEW_SCREEN: "Mới",
   SOCCER_SCREEN: "Bóng đá VN",
+  MENU_SCREEN: "Menu",
+  SEARCH_SCREEN: "Search",
 }

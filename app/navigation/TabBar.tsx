@@ -33,21 +33,6 @@ const IconMenu = (props: IIconMenuProps) => {
   );
 };
 
-const Example1 = () => {
-  const navigation = useNavigation();
-
-  return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: 'red',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <Text>Menu</Text>
-    </View>
-  );
-};
 const Example2 = () => {
   return (
     <View>
@@ -84,7 +69,7 @@ function TabBar() {
         flex: 1,
       }}>
       <Tab.Navigator
-        initialRouteName="Search"
+        initialRouteName={screenName.HOME_SCREEN}
         style={{}}
         screenOptions={{
           tabBarActiveTintColor: '#fff',
