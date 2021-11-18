@@ -2,15 +2,13 @@ import React, {useState} from 'react';
 import {
   Text,
   View,
-  StyleSheet,
   FlatList,
   TouchableOpacity,
-  ScrollView,
   StatusBar,
   Image,
   ImageSourcePropType,
   ImageBackground,
-  SafeAreaView,
+  Animated,
 } from 'react-native';
 import SearchScreen from '@screens/SearchScreen/SearchScreen';
 import {screenName} from '@navigation/screenName';
@@ -18,12 +16,13 @@ import HomeScreen from '@screens/HomeScreen/HomeScreen';
 import MenuScreen from '@screens/MenuScreen/MenuScreen';
 import {Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-import {dataTab} from '@constants/dataExample';
-import {getStatusBarHeight, hasNotch} from '@freakycoder/react-native-helpers';
+import {dataTab, IDataTab} from '@constants/dataExample';
+import {styles} from './styles';
+
+//interface
 interface IHeaderComponentProps {
   onPress: () => void;
 }
-const height = 80;
 interface ITabBar {
   id?: number;
   name: string;
@@ -46,12 +45,24 @@ const IconMenu = (props: IIconMenuProps) => {
   );
 };
 
+// Size height
+const HEADER_MAX_HEIGHT = 70;
+const HEADER_MIN_HEIGHT = 0;
+const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
+
 const HeaderComponent = (props: IHeaderComponentProps) => {
   const [nameTab, setNameTab] = useState('Theo dõi');
-  const [showBanner, setShownBanner] = useState(true);
   const [dataTabName, setDataTabName] = useState(dataTab);
   const [menuFocus, setMenuFocus] = useState(false);
   const [searchFocus, setSearchFocus] = useState(false);
+  const [scrollY, setScrollY] = useState(new Animated.Value(0));
+
+  const headerHeight = scrollY.interpolate({
+    inputRange: [0, HEADER_SCROLL_DISTANCE],
+    outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
+
+    extrapolate: 'clamp',
+  });
   const TabBar = (props: ITabBar) => {
     const {name, onPress, isFocus} = props;
     return (
@@ -63,11 +74,7 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
     );
   };
 
-  const onSelectTab = (itemChoose: {
-    isFocus?: boolean;
-    id: number;
-    name?: string;
-  }) => {
+  const onSelectTab = (itemChoose: IDataTab) => {
     let dataTabTemp = dataTab.map((item: {id: number}) => {
       if (item.id === itemChoose.id) {
         return {...item, isFocus: true};
@@ -98,31 +105,25 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
   };
 
   return (
-    <View style={{backgroundColor: '#fff', flex: 1}}>
-      <View
-        style={{
-          paddingTop: hasNotch() ? getStatusBarHeight() - 15 : undefined,
-        }}>
-        {showBanner && (
-          <View style={styles.viewBanner}>
-            <ImageBackground
-              style={styles.imgBanner}
-              source={{
-                uri: 'https://baotintuc.xembao.vn/images/btt/tintuc.png',
-              }}
-              resizeMode="contain">
-              {/* <Text>BÁO MỚI</Text> */}
-            </ImageBackground>
-          </View>
-        )}
+    <View style={styles.container}>
+      <StatusBar hidden={true} />
+      <View style={styles.viewHeader}>
+        <Animated.View style={[styles.viewBanner, {height: headerHeight}]}>
+          <ImageBackground
+            style={styles.imgBanner}
+            source={{
+              uri: 'https://baotintuc.xembao.vn/images/btt/tintuc.png',
+            }}
+            resizeMode="contain">
+            {/* <Text>BÁO MỚI</Text> */}
+          </ImageBackground>
+        </Animated.View>
         <View>
           <LinearGradient
             colors={['#069699', '#006F9C', '#045D99']}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
-            style={styles.header}>
-            <StatusBar hidden={true} />
-
+            style={styles.tabBar}>
             <TouchableOpacity
               style={[styles.tabItem, menuFocus && styles.focusItemTab]}
               onPress={() => {
@@ -173,9 +174,9 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
           </LinearGradient>
         </View>
       </View>
-      <ScrollView
-        horizontal={false}
-        style={styles.container}
+      <Animated.ScrollView
+        style={styles.containerBody}
+        showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
         scrollEnabled={
           nameTab === screenName.MENU_SCREEN ||
@@ -183,52 +184,14 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
             ? false
             : true
         }
-        onScroll={event => {
-          if (event.nativeEvent.contentOffset.y > 10) {
-            setShownBanner(false);
-          } else {
-            setShownBanner(true);
-          }
-        }}>
-        <View>{renderScreen(nameTab)}</View>
-      </ScrollView>
+        onScroll={Animated.event(
+          [{nativeEvent: {contentOffset: {y: scrollY}}}],
+          {useNativeDriver: false},
+        )}>
+        {renderScreen(nameTab)}
+      </Animated.ScrollView>
     </View>
   );
 };
 
 export default HeaderComponent;
-
-const styles = StyleSheet.create({
-  container: {flex: 1},
-  header: {
-    flexDirection: 'row',
-  },
-  tabItem: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 60,
-  },
-  imgBanner: {
-    width: 100,
-    height: 70,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  viewBanner: {
-    width: '100%',
-    height: 70,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  labelTabBar: {
-    textAlign: 'center',
-    color: 'white',
-    fontWeight: '500',
-  },
-  focusItemTab: {
-    borderBottomColor: 'aqua',
-    borderBottomWidth: 3,
-  },
-});

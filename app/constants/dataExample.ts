@@ -1,8 +1,8 @@
 import { screenName } from "@navigation/screenName";
-interface IDataTab {
+export interface IDataTab {
   id: number;
-  name: string;
-  isFocus: boolean;
+  name?: string;
+  isFocus?: boolean;
 }
 
 

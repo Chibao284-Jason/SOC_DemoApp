@@ -14,7 +14,7 @@ interface ISearchScreenProps {}
 
 const SearchScreen = (props: ISearchScreenProps) => {
   return (
-    <ScrollView scrollEnabled={true} style={styles.container}>
+    <View style={styles.container}>
       <View>
         <SearchInput label="Thể loại" placeholder="vd: Bóng đá" />
         <SearchInput label="Tiêu đề" placeholder="vd: Đội tuyển Việt Nam" />
@@ -26,7 +26,7 @@ const SearchScreen = (props: ISearchScreenProps) => {
           <Text style={styles.textSearch}>Tìm kiếm</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

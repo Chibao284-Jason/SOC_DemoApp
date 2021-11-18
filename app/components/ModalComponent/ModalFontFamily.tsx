@@ -68,7 +68,7 @@ const ModalFontFamily = (props: IModalFontFamilyProps) => {
         </View>
       </View>
       <FlatList
-        horizontal={true}
+        // horizontal={true}
         contentContainerStyle={styles.viewButtonFont}
         data={dataFont}
         keyExtractor={item => item.id.toString()}
