@@ -3,16 +3,18 @@ import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {screenName} from '@navigation/screenName';
 import {FlatList} from 'react-native-gesture-handler';
-interface IMenuComponentProps {}
+interface IMenuComponentProps {
+  onPress: (i: string) => void;
+}
 interface IButtonMenuProps {
-  onPress?: () => void;
+  onPress: (i: string) => void;
   title: string;
 }
 
 const ButtonMenu = (props: IButtonMenuProps) => {
   const {onPress, title} = props;
   return (
-    <TouchableOpacity style={styles.viewButton} onPress={onPress}>
+    <TouchableOpacity style={styles.viewButton} onPress={() => onPress(title)}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.line} />
     </TouchableOpacity>
@@ -38,27 +40,11 @@ const data = [
 ];
 const MenuComponent = (props: IMenuComponentProps) => {
   const navigation = useNavigation();
+  const {onPress} = props;
   return (
     <View style={styles.container}>
-      {/* <FlatList
-        scrollEnabled={false}
-        data={data}
-        renderItem={({item}) => {
-          return (
-            <ButtonMenu
-              title={item.name}
-              // onPress={() => navigation.navigate(item.name)}
-            />
-          );
-        }}
-      /> */}
       {data.map(item => {
-        return (
-          <ButtonMenu
-            title={item.name}
-            // onPress={() => navigation.navigate(item.name)}
-          />
-        );
+        return <ButtonMenu title={item.name} onPress={i => onPress(i)} />;
       })}
     </View>
   );

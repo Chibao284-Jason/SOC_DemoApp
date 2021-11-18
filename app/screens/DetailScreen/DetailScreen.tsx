@@ -20,6 +20,7 @@ import {useNavigation} from '@react-navigation/native';
 import AuthorComponent from '@components/AuthorComponent/AuthorComponent';
 import ContentComponent from '@components/ContentComponent/ContentComponent';
 import {
+  IChangeThemeColorReducer,
   IChangeThemeFontFamilyReducer,
   IChangeThemeFontSizeReducer,
 } from '@models/reducers/changeTheme';
@@ -32,10 +33,13 @@ interface IChangeFontReducer {
   ChangeFontReducer: IChangeThemeFontFamilyReducer &
     IChangeThemeFontSizeReducer;
 }
+interface IColorThemeReducer {
+  ChangeThemeColorReducer: IChangeThemeColorReducer;
+}
 
 const DetailScreen = () => {
   const navigation = useNavigation();
-  const [showModal, setShowModal] = useState(0);
+  const [showModal, setShowModal] = useState(-1);
 
   const font = useSelector(
     (state: IChangeFontReducer) => state.ChangeFontReducer.font,
@@ -43,6 +47,10 @@ const DetailScreen = () => {
 
   const fontSize = useSelector(
     (state: IChangeFontReducer) => state.ChangeFontReducer.fontSize,
+  );
+
+  const colorTheme = useSelector(
+    (state: IColorThemeReducer) => state.ChangeThemeColorReducer.color,
   );
 
   //ref bottom sheet
@@ -54,7 +62,6 @@ const DetailScreen = () => {
 
   //handle when bottom sheet changes
   const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
     setShowModal(index);
   }, []);
 
@@ -102,14 +109,28 @@ const DetailScreen = () => {
           ref={bottomSheetModalRef}
           index={1}
           snapPoints={snapPoints}
-          onChange={handleSheetChanges}
+          onChange={i => {
+            if (i == 0) {
+              i = 1;
+            }
+            handleSheetChanges(i);
+          }}
           footerComponent={() => {
             return <FooterModal onPress={() => handleClosePress()} />;
           }}>
           <ModalTick title={'Đánh dấu trang'} font={font} fontSize={fontSize} />
           <ModalTheme title={'Theme'} font={font} fontSize={fontSize} />
-          <ModalBrightness title={'Độ sáng'} font={font} fontSize={fontSize} />
-          <ModalFontsize title={'Cỡ chữ'} font={font} />
+          <ModalBrightness
+            title={'Độ sáng'}
+            font={font}
+            fontSize={fontSize}
+            colorSlider={colorTheme}
+          />
+          <ModalFontsize
+            title={'Cỡ chữ'}
+            font={font}
+            colorSlider={colorTheme}
+          />
           <ModalFontFamily
             title={'Phông chữ'}
             font={font}

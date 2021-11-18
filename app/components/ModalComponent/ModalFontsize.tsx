@@ -9,6 +9,7 @@ interface ModalFontsizeProps {
   title?: string;
   image?: ImageSourcePropType;
   font?: string;
+  colorSlider?: string;
 }
 interface IChangeFontReducer {
   ChangeFontReducer: IChangeThemeFontSizeReducer;
@@ -17,7 +18,7 @@ const ModalFontsize = (props: ModalFontsizeProps) => {
   const fontSize = useSelector(
     (state: IChangeFontReducer) => state.ChangeFontReducer.fontSize,
   );
-  const {title, image, font} = props;
+  const {title, image, font, colorSlider} = props;
   const [sliderValue, setSliderValue] = useState(fontSize);
 
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const ModalFontsize = (props: ModalFontsizeProps) => {
           step={1}
           minimumValue={14}
           maximumValue={30}
-          minimumTrackTintColor="#22A6A0"
+          minimumTrackTintColor={colorSlider ? colorSlider : '#22A6A0'}
           maximumTrackTintColor="gray"
           value={sliderValue}
           onValueChange={value => {

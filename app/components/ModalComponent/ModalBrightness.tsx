@@ -9,13 +9,14 @@ interface ModalBrightnessProps {
   image?: ImageSourcePropType;
   font?: string;
   fontSize?: number;
+  colorSlider?: string;
 }
 
 const handleBrightness = async (value: number) => {
   ScreenBrightness.setBrightness(value);
 };
 const ModalBrightness = (props: ModalBrightnessProps) => {
-  const {title, image, font, fontSize} = props;
+  const {title, image, font, fontSize, colorSlider} = props;
   const [sliderValue, setSliderValue] = useState(0);
 
   return (
@@ -42,7 +43,7 @@ const ModalBrightness = (props: ModalBrightnessProps) => {
           style={{width: 200, height: 40}}
           minimumValue={0}
           maximumValue={1}
-          minimumTrackTintColor="#22A6A0"
+          minimumTrackTintColor={colorSlider ? colorSlider : '#22A6A0'}
           maximumTrackTintColor="gray"
           value={sliderValue}
           onValueChange={value => handleBrightness(value)}

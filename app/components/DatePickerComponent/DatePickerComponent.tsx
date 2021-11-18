@@ -31,11 +31,12 @@ const DatePickerComponent = (props: IDatePickerComponentProps) => {
         style={styles.searchContainer}
         onPress={() => setOpen(true)}>
         <View>
-          <Text style={styles.label}>{moment(date).format('L')}</Text>
+          <Text style={styles.label}>{moment(date).format('LL')}</Text>
         </View>
       </TouchableOpacity>
       <DatePicker
         modal
+        mode={'date'}
         open={open}
         date={date}
         maximumDate={new Date()}

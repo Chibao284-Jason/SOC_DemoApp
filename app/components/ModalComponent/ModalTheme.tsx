@@ -10,6 +10,7 @@ import {
 import {styles} from './styles';
 import {useDispatch} from 'react-redux';
 import * as actions from '@store/actions/actions';
+import {dataColorTheme} from '@constants/dataExample';
 interface IModalThemeProps {
   title?: string;
   image?: ImageSourcePropType;
@@ -17,34 +18,6 @@ interface IModalThemeProps {
   font?: string;
   fontSize: number;
 }
-interface IDataColorTheme {
-  id: number;
-  color: string;
-  isSelect: boolean;
-}
-
-const dataColorTheme: IDataColorTheme[] = [
-  {
-    id: 0,
-    color: '#5EBEBC',
-    isSelect: false,
-  },
-  {
-    id: 1,
-    color: '#262626',
-    isSelect: false,
-  },
-  {
-    id: 2,
-    color: '#FCBC99',
-    isSelect: false,
-  },
-  {
-    id: 3,
-    color: '#F58A92',
-    isSelect: false,
-  },
-];
 const ModalTheme = (props: IModalThemeProps) => {
   const {title, image, font, fontSize} = props;
   const [dataColors, setDataColors] = useState(dataColorTheme);
@@ -58,7 +31,7 @@ const ModalTheme = (props: IModalThemeProps) => {
     id: number;
     color: string;
   }) => {
-    let dataColorTemp = dataColorTheme.map(item => {
+    let dataColorTemp = dataColorTheme.map((item: {id: number}) => {
       if (item.id === itemChoose.id) {
         return {...item, isSelect: true};
       } else return {...item, isSelect: false};

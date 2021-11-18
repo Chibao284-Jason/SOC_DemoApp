@@ -21,6 +21,7 @@ module.exports = {
           '@store': './app/store/',
           '@navigation': './app/navigation/',
           '@models': './app/models/',
+          '@constants': './app/constants/',
         },
       },
     ],

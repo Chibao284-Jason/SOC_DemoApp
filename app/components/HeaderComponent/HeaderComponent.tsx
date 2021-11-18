@@ -3,15 +3,12 @@ import {
   Text,
   View,
   StyleSheet,
-  SafeAreaView,
   FlatList,
   TouchableOpacity,
   ScrollView,
   StatusBar,
   Image,
   ImageSourcePropType,
-  Dimensions,
-  Animated,
   ImageBackground,
 } from 'react-native';
 import SearchScreen from '@screens/SearchScreen/SearchScreen';
@@ -20,29 +17,11 @@ import HomeScreen from '@screens/HomeScreen/HomeScreen';
 import MenuScreen from '@screens/MenuScreen/MenuScreen';
 import {Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-
+import {dataTab} from '@constants/dataExample';
 interface IHeaderComponentProps {
   onPress: () => void;
 }
 const height = 80;
-const dataTab = [
-  {
-    id: 0,
-    name: screenName.FOLLOW_SCREEN,
-  },
-  {
-    id: 1,
-    name: screenName.HOT_SCREEN,
-  },
-  {
-    id: 2,
-    name: screenName.NEW_SCREEN,
-  },
-  {
-    id: 3,
-    name: screenName.SOCCER_SCREEN,
-  },
-];
 interface ITabBar {
   id?: number;
   name: string;
@@ -76,25 +55,19 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
     const {name, onPress} = props;
     return (
       <TouchableOpacity style={styles.tabItem} onPress={onPress}>
-        <Text style={{textAlign: 'center', color: 'white', fontWeight: '500'}}>
-          {name}
-        </Text>
+        <Text style={styles.labelTabBar}>{name}</Text>
       </TouchableOpacity>
     );
   };
-  const {width} = Dimensions.get('window');
-  const LAYOUT_WIDTH = width - 64;
-  const SCROLL_DISTANCE = width - 48;
-  const renderScreen = (name: string) => {
-    console.log(name);
 
+  const renderScreen = (name: string) => {
     switch (name) {
       case screenName.FOLLOW_SCREEN:
         return <HomeScreen />;
       case screenName.HOT_SCREEN:
         return <HomeScreen />;
       case screenName.MENU_SCREEN:
-        return <MenuScreen />;
+        return <MenuScreen onPress={i => setNameTab(i)} />;
       case screenName.NEW_SCREEN:
         return <HomeScreen />;
       case screenName.SOCCER_SCREEN:
@@ -111,24 +84,9 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
   return (
     <>
       {showBanner && (
-        <View
-          style={{
-            width: '100%',
-            height: 70,
-            backgroundColor: '#fff',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          {/* <Text>BÁO MỚI</Text>
-        </View> */}
+        <View style={styles.viewBanner}>
           <ImageBackground
-            style={{
-              width: 100,
-              height: 70,
-              backgroundColor: '#fff',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
+            style={styles.imgBanner}
             source={{uri: 'https://baotintuc.xembao.vn/images/btt/tintuc.png'}}
             resizeMode="contain">
             {/* <Text>BÁO MỚI</Text> */}
@@ -141,7 +99,6 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           style={styles.header}>
-          {/* <View style={styles.header}> */}
           <StatusBar hidden={true} />
 
           <TouchableOpacity
@@ -153,21 +110,6 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
               }}
             />
           </TouchableOpacity>
-          {/* {headerShown && <HeaderTitle />}
-      <ScrollView
-        nestedScrollEnabled={true}
-        onScroll={event => {
-          const scrolling = event.nativeEvent.contentOffset.y;
-
-          if (scrolling > 100) {
-            setHeaderShown(false);
-          } else {
-            setHeaderShown(true);
-          }
-        }}
-        // onScroll will be fired every 16ms
-        scrollEventThrottle={16}
-        style={{flex: 1}}> */}
           <FlatList
             horizontal={true}
             scrollEnabled={true}
@@ -185,15 +127,12 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
               );
             }}
           />
-          {/* <View style={{flex: 1, height: 1000, marginTop: height}} /> */}
-          {/* </ScrollView> */}
           <TouchableOpacity
             style={styles.tabItem}
             onPress={() => setNameTab(screenName.SEARCH_SCREEN)}>
             <Icon
               name="search"
               size={30}
-              // style={{marginLeft: 20}}
               color={'white'}
               tvParallaxProperties={undefined}
             />
@@ -204,17 +143,14 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
         horizontal={false}
         style={styles.container}
         scrollEventThrottle={16}
+        scrollEnabled={nameTab == screenName.MENU_SCREEN ? false : true}
         onScroll={event => {
-          if (event.nativeEvent.contentOffset.y > 3) {
+          if (event.nativeEvent.contentOffset.y > 10) {
             setShownBanner(false);
           } else {
             setShownBanner(true);
           }
-          {
-          }
         }}>
-        {/* </View> */}
-        {/* <ScrollView>{<SearchScreen />}</ScrollView> */}
         {renderScreen(nameTab)}
       </ScrollView>
     </>
@@ -228,13 +164,29 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     backgroundColor: 'aqua',
-    // height: 70,
   },
   tabItem: {
-    // position: 'absolute',
-
     justifyContent: 'center',
     alignItems: 'center',
     width: 60,
+  },
+  imgBanner: {
+    width: 100,
+    height: 70,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  viewBanner: {
+    width: '100%',
+    height: 70,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  labelTabBar: {
+    textAlign: 'center',
+    color: 'white',
+    fontWeight: '500',
   },
 });
