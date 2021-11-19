@@ -1,3 +1,4 @@
+import {colorGlobal} from '@config/colorGlobal';
 import * as React from 'react';
 import {
   Text,
@@ -32,14 +33,14 @@ const styles = StyleSheet.create({
   container: {},
   searchContainer: {
     height: 50,
-    backgroundColor: '#E9EBF2',
+    backgroundColor: colorGlobal.backgroundGlobal,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
     marginHorizontal: 10,
     marginVertical: 10,
-    borderColor: '#99A0B0',
+    borderColor: colorGlobal.textInputBorder,
     padding: 5,
   },
   input: {

@@ -36,8 +36,14 @@ const ModalTick = (props: ModalTickProps) => {
           </Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.title}>
-        <Text style={styles.titleStyles(font, fontSize)}>Chia sẻ</Text>
+      <TouchableOpacity style={styles.viewLabel}>
+        <Image
+          source={require('../../assets/img/iconShare.png')}
+          style={styles.imgIcon}
+        />
+        <View style={styles.title}>
+          <Text style={styles.titleStyles(font, fontSize)}>Chia sẻ</Text>
+        </View>
       </TouchableOpacity>
     </View>
   );

@@ -1,14 +1,8 @@
 import DatePickerComponent from '@components/DatePickerComponent/DatePickerComponent';
 import SearchInput from '@components/SearchComponent/SearchInput';
+import {colorGlobal} from '@config/colorGlobal';
 import * as React from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 
 interface ISearchScreenProps {}
 
@@ -39,7 +33,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   buttonSearch: {
-    backgroundColor: '#03889A',
+    backgroundColor: colorGlobal.buttonSearch,
     width: '50%',
     alignItems: 'center',
     borderRadius: 20,
@@ -48,6 +42,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 5,
     paddingVertical: 10,
-    color: 'white',
+    color: colorGlobal.labelTab,
   },
 });

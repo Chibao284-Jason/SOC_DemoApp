@@ -56,7 +56,8 @@
       "@store/*": ["./app/store/*"],
       // "@utils/*": ["./app/utils/*"],
       // "@config/*": ["./app/config/*"],
-      "@constants": ["./app/constant/*"],
+      "@constants/*": ["./app/constants/*"],
+      "@config/*": ["./app/config/*"],
       // "@Product/*": ["./app/Product/*"],
     },
 

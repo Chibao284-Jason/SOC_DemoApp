@@ -5,6 +5,7 @@ import {styles} from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import * as actions from '@store/actions/actions';
 import {IChangeThemeFontSizeReducer} from '@models/reducers/changeTheme';
+import {colorGlobal} from '@config/colorGlobal';
 interface ModalFontsizeProps {
   title?: string;
   image?: ImageSourcePropType;
@@ -48,8 +49,10 @@ const ModalFontsize = (props: ModalFontsizeProps) => {
           style={{width: 200, height: 40}}
           step={1}
           minimumValue={14}
-          maximumValue={30}
-          minimumTrackTintColor={colorSlider ? colorSlider : '#22A6A0'}
+          maximumValue={27}
+          minimumTrackTintColor={
+            colorSlider ? colorSlider : colorGlobal.sliderDefault
+          }
           maximumTrackTintColor="gray"
           value={sliderValue}
           onValueChange={value => {

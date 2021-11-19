@@ -3,6 +3,7 @@ import {Text, View, Image, ImageSourcePropType} from 'react-native';
 import Slider from '@react-native-community/slider';
 import ScreenBrightness from 'react-native-screen-brightness';
 import {styles} from './styles';
+import {colorGlobal} from '@config/colorGlobal';
 
 interface ModalBrightnessProps {
   title?: string;
@@ -40,10 +41,12 @@ const ModalBrightness = (props: ModalBrightnessProps) => {
       </View>
       <View style={{justifyContent: 'center'}}>
         <Slider
-          style={{width: 200, height: 40}}
+          style={{width: 200}}
           minimumValue={0}
           maximumValue={1}
-          minimumTrackTintColor={colorSlider ? colorSlider : '#22A6A0'}
+          minimumTrackTintColor={
+            colorSlider ? colorSlider : colorGlobal.sliderDefault
+          }
           maximumTrackTintColor="gray"
           value={sliderValue}
           onValueChange={value => handleBrightness(value)}

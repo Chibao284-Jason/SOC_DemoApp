@@ -1,4 +1,5 @@
-import { StyleSheet, TextStyle, ViewStyle, ImageStyle, View } from "react-native";
+import { colorGlobal } from "@config/colorGlobal";
+import { TextStyle, ViewStyle, ImageStyle } from "react-native";
 type Styles = {
   container: ViewStyle;
   viewLabel: ViewStyle;
@@ -17,7 +18,7 @@ type Styles = {
 
 export const styles: Styles = {
   container: {
-    margin: 10,
+    // margin: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -54,12 +55,12 @@ export const styles: Styles = {
     height: 25,
   },
   buttonFont: color => ({
-    backgroundColor: color ? color : '#20A7A0',
+    backgroundColor: color ? color : colorGlobal.buttonSearch,
     borderRadius: 20,
     marginHorizontal: 5,
   }),
   labelFonts: (font) => ({
-    color: 'white',
+    color: colorGlobal.textWhite,
     fontSize: 18,
     margin: 10,
     fontWeight: '300',
@@ -67,7 +68,6 @@ export const styles: Styles = {
   }),
 
   containerTheme: {
-    margin: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

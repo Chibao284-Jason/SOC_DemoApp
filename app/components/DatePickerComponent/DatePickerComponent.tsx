@@ -12,6 +12,7 @@ import DatePicker from 'react-native-date-picker';
 interface IDatePickerComponentProps {}
 import moment from 'moment';
 import 'moment/locale/vi';
+import {colorGlobal} from '@config/colorGlobal';
 moment.locale('vi');
 const DatePickerComponent = (props: IDatePickerComponentProps) => {
   // const [date, setDate] = useState(new Date());
@@ -58,12 +59,12 @@ const styles = StyleSheet.create({
   container: {marginTop: 20},
   searchContainer: {
     height: 50,
-    backgroundColor: '#E9EBF2',
+    backgroundColor: colorGlobal.textInputBg,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#99A0B0',
+    borderColor: colorGlobal.textInputBorder,
     padding: 5,
   },
   viewLabel: {

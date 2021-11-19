@@ -1,5 +1,6 @@
-import React, {useRef} from 'react';
+import React, {useCallback, useMemo, useRef, useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
+import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {
   ModalTick,
   ModalBrightness,
@@ -19,7 +20,6 @@ import {
 import {useSelector} from 'react-redux';
 import HeaderDetail from '@components/HeaderComponent/HeaderDetail/HeaderDetail';
 import BottomSheet from 'react-native-gesture-bottom-sheet';
-import ViewLineComponent from '@components/ViewLineComponent/ViewLineComponent';
 interface IFooterModalProps {
   onPress: () => void;
 }
@@ -34,6 +34,7 @@ interface IColorThemeReducer {
 
 const DetailScreen = () => {
   const navigation = useNavigation();
+  const [showModal, setShowModal] = useState(-1);
 
   const font = useSelector(
     (state: IChangeFontReducer) => state.ChangeFontReducer.font,
@@ -47,12 +48,26 @@ const DetailScreen = () => {
     (state: IColorThemeReducer) => state.ChangeThemeColorReducer.color,
   );
 
+  //ref bottom sheet
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  const snapPoints = useMemo(() => ['200', '60%'], []);
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+
+  //handle when bottom sheet changes
+  const handleSheetChanges = useCallback((index: number) => {}, []);
+
+  //Close bottom sheet
+  const handleClosePress = () => {
+    bottomSheetModalRef.current?.close();
+  };
   const bottomSheet = useRef();
   const FooterModal = (props: IFooterModalProps) => {
     const {onPress} = props;
     return (
       <View style={styles.viewFooter}>
-        <ViewLineComponent />
+        <View style={styles.line} />
         <TouchableOpacity style={styles.buttonClose} onPress={onPress}>
           <Text style={styles.labelClose}>Đóng</Text>
         </TouchableOpacity>
@@ -76,36 +91,24 @@ const DetailScreen = () => {
       {/* CONTENT COMPONENT */}
       <ContentComponent />
       <BottomSheet hasDraggableIcon ref={bottomSheet} height={500}>
-        <View style={styles.viewModal}>
-          <ModalTick title={'Đánh dấu trang'} font={font} fontSize={fontSize} />
-          <ModalTheme title={'Theme'} font={font} fontSize={fontSize} />
-          <ModalBrightness
-            title={'Độ sáng'}
-            font={font}
-            fontSize={fontSize}
-            colorSlider={colorTheme}
-          />
-          <ModalFontsize
-            title={'Cỡ chữ'}
-            font={font}
-            colorSlider={colorTheme}
-          />
-          <ModalFontFamily
-            title={'Phông chữ'}
-            font={font}
-            fontSize={fontSize}
-          />
-          <ModalReport
-            title={'Báo cáo nội dung bài báo'}
-            font={font}
-            fontSize={fontSize}
-          />
-        </View>
+        <ModalTick title={'Đánh dấu trang'} font={font} fontSize={fontSize} />
+        <ModalTheme title={'Theme'} font={font} fontSize={fontSize} />
+        <ModalBrightness
+          title={'Độ sáng'}
+          font={font}
+          fontSize={fontSize}
+          colorSlider={colorTheme}
+        />
+        <ModalFontsize title={'Cỡ chữ'} font={font} colorSlider={colorTheme} />
+        <ModalFontFamily title={'Phông chữ'} font={font} fontSize={fontSize} />
+        <ModalReport
+          title={'Báo cáo nội dung bài báo'}
+          font={font}
+          fontSize={fontSize}
+        />
         <View style={styles.viewFooter}>
-          <ViewLineComponent />
-          <TouchableOpacity
-            style={styles.buttonClose}
-            onPress={() => bottomSheet.current?.close()}>
+          <View style={styles.line} />
+          <TouchableOpacity style={styles.buttonClose} onPress={onPress}>
             <Text style={styles.labelClose}>Đóng</Text>
           </TouchableOpacity>
         </View>

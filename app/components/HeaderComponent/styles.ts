@@ -1,6 +1,8 @@
 import { getStatusBarHeight, hasNotch } from '@freakycoder/react-native-helpers';
 import { ViewStyle, TextStyle, ImageStyle } from 'react-native'
-const HEADER_SIZE = 70;
+import { colorGlobal } from "@config/colorGlobal";
+import { colors } from 'react-native-elements';
+const HEADER_SIZE = 55;
 type Styles = {
   container: ViewStyle
   containerBody: ViewStyle
@@ -11,10 +13,12 @@ type Styles = {
   viewHeader: ViewStyle
   labelTabBar: TextStyle
   focusItemTab: ViewStyle
+  viewTabBar: ViewStyle,
+  iconMenu: ImageStyle
 }
 export const styles: Styles = {
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: colorGlobal.backgroundGlobal,
     flex: 1
   },
   containerBody: {
@@ -22,23 +26,24 @@ export const styles: Styles = {
   },
   tabBar: {
     flexDirection: 'row',
+
   },
   tabItem: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 60,
+    paddingHorizontal: 5
   },
   imgBanner: {
     width: 100,
     height: HEADER_SIZE,
-    backgroundColor: '#fff',
+    backgroundColor: colorGlobal.backgroundGlobal,
     justifyContent: 'center',
     alignItems: 'center',
   },
   viewBanner: {
     width: '100%',
     height: HEADER_SIZE,
-    backgroundColor: '#fff',
+    backgroundColor: colorGlobal.backgroundGlobal,
     justifyContent: 'center',
     alignItems: 'center',
     top: 0,
@@ -48,11 +53,21 @@ export const styles: Styles = {
   },
   labelTabBar: {
     textAlign: 'center',
-    color: 'white',
+    color: colorGlobal.labelTab,
     fontWeight: '500',
   },
   focusItemTab: {
     borderBottomColor: 'aqua',
     borderBottomWidth: 3,
   },
+  viewTabBar: {
+    height: HEADER_SIZE,
+    justifyContent: 'space-around',
+    flex: 1
+  },
+  iconMenu: {
+    width: 30,
+    height: 30,
+    resizeMode: 'cover'
+  }
 };

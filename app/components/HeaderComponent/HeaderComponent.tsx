@@ -18,14 +18,14 @@ import {Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import {dataTab, IDataTab} from '@constants/dataExample';
 import {styles} from './styles';
-
+import {colorGlobal, colorTabBar} from '@config/colorGlobal';
 //interface
 interface IHeaderComponentProps {
   onPress: () => void;
 }
 interface ITabBar {
   id?: number;
-  name: string;
+  name?: string;
   isFocus?: boolean;
   onPress?: () => void;
 }
@@ -36,11 +36,7 @@ const IconMenu = (props: IIconMenuProps) => {
   const {img} = props;
   return (
     <View style={{}}>
-      <Image
-        source={img}
-        style={{width: 30, height: 30}}
-        resizeMode={'cover'}
-      />
+      <Image source={img} style={styles.iconMenu} />
     </View>
   );
 };
@@ -51,7 +47,7 @@ const HEADER_MIN_HEIGHT = 0;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
 const HeaderComponent = (props: IHeaderComponentProps) => {
-  const [nameTab, setNameTab] = useState('Theo dõi');
+  const [nameTab, setNameTab] = useState<string | undefined>('Theo dõi');
   const [dataTabName, setDataTabName] = useState(dataTab);
   const [menuFocus, setMenuFocus] = useState(false);
   const [searchFocus, setSearchFocus] = useState(false);
@@ -60,7 +56,6 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
   const headerHeight = scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE],
     outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
-
     extrapolate: 'clamp',
   });
   const TabBar = (props: ITabBar) => {
@@ -84,7 +79,7 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
     setMenuFocus(false), setSearchFocus(false);
   };
 
-  const renderScreen = (name: string) => {
+  const renderScreen = (name: string | undefined) => {
     switch (name) {
       case screenName.FOLLOW_SCREEN:
         return <HomeScreen />;
@@ -120,14 +115,18 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
         </Animated.View>
         <View>
           <LinearGradient
-            colors={['#069699', '#006F9C', '#045D99']}
+            colors={colorTabBar}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
             style={styles.tabBar}>
             <TouchableOpacity
               style={[styles.tabItem, menuFocus && styles.focusItemTab]}
               onPress={() => {
-                onSelectTab({id: 4});
+                onSelectTab({
+                  id: 4,
+                  name: screenName.MENU_SCREEN,
+                  isFocus: true,
+                });
                 setMenuFocus(true);
                 setNameTab(screenName.MENU_SCREEN);
               }}>
@@ -142,7 +141,7 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
               scrollEnabled={true}
               data={dataTabName}
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{height: 80}}
+              contentContainerStyle={styles.viewTabBar}
               keyExtractor={item => item.id.toString()}
               renderItem={({item}) => {
                 return (
@@ -160,14 +159,18 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
             <TouchableOpacity
               style={[styles.tabItem, searchFocus && styles.focusItemTab]}
               onPress={() => {
-                onSelectTab({id: 5});
+                onSelectTab({
+                  id: 5,
+                  name: screenName.SEARCH_SCREEN,
+                  isFocus: true,
+                });
                 setSearchFocus(true);
                 setNameTab(screenName.SEARCH_SCREEN);
               }}>
               <Icon
                 name="search"
                 size={30}
-                color={'white'}
+                color={colorGlobal.iconSearchColor}
                 tvParallaxProperties={undefined}
               />
             </TouchableOpacity>

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {screenName} from '@navigation/screenName';
-import {FlatList} from 'react-native-gesture-handler';
+import ViewLineComponent from '@components/ViewLineComponent/ViewLineComponent';
+import {styles} from './styles';
 interface IMenuComponentProps {
   onPress: (i: string) => void;
 }
@@ -16,7 +17,7 @@ const ButtonMenu = (props: IButtonMenuProps) => {
   return (
     <TouchableOpacity style={styles.viewButton} onPress={() => onPress(title)}>
       <Text style={styles.title}>{title}</Text>
-      <View style={styles.line} />
+      <ViewLineComponent />
     </TouchableOpacity>
   );
 };
@@ -52,16 +53,16 @@ const MenuComponent = (props: IMenuComponentProps) => {
 
 export default MenuComponent;
 
-const styles = StyleSheet.create({
-  container: {},
-  viewButton: {marginHorizontal: 15, marginTop: 20},
-  line: {
-    width: '100%',
-    height: 1,
-    backgroundColor: '#808080',
-    marginTop: 10,
-  },
-  title: {
-    fontSize: 18,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {},
+//   viewButton: {marginHorizontal: 15, marginTop: 20},
+//   line: {
+//     width: '100%',
+//     height: 1,
+//     backgroundColor: colorGlobal.lineColor,
+//     marginTop: 10,
+//   },
+//   title: {
+//     fontSize: 18,
+//   },
+// });

@@ -9,6 +9,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import CardComponent from '@components/CardComponent/CardComponent';
 import {screenName} from '@navigation/screenName';
+import {colorGlobal} from '@config/colorGlobal';
 
 interface HomeScreenProps {}
 
@@ -74,7 +75,7 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFF',
+    backgroundColor: colorGlobal.backgroundGlobal,
     paddingHorizontal: 10,
   },
 });

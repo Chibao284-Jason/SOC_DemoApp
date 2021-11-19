@@ -1,11 +1,14 @@
 
-import { ViewStyle, TextStyle, Dimensions, ImageStyle, StyleSheet } from 'react-native';
+import { ViewStyle, TextStyle } from 'react-native';
+import { hasNotch, getStatusBarHeight } from '@freakycoder/react-native-helpers'
+import { colorGlobal } from '@config/colorGlobal';
 export type Styles = {
-  container: (bottomShow?: number) => ViewStyle; // 1 is show, -1 is hide
+  container: ViewStyle;
   contentContainer: ViewStyle;
   line: ViewStyle;
   viewFooter: ViewStyle;
   buttonClose: ViewStyle;
+  viewModal: ViewStyle;
   labelClose: TextStyle;
 
 };
@@ -13,24 +16,28 @@ export type Styles = {
 
 
 export const styles: Styles = {
-  container: (bottomShow) => ({
+  container: {
     flex: 1,
-    backgroundColor: bottomShow === 1 ? '#808080' : '#fff'
-  }),
+    backgroundColor: colorGlobal.backgroundGlobal
+  },
   contentContainer: {
     flex: 1,
     alignItems: 'center',
   },
-  line: {
-    width: '100%',
-    height: 0.5,
-    backgroundColor: '#808080',
-    marginVertical: 20,
-  },
+
   viewFooter: {
     marginHorizontal: 20,
     alignItems: 'center',
   },
-  buttonClose: {},
-  labelClose: { color: 'gray', fontSize: 18 },
+  buttonClose: {
+    marginBottom: hasNotch() ? getStatusBarHeight() : undefined
+  },
+  labelClose: {
+    color: 'gray', fontSize: 18
+  },
+  viewModal: {
+    justifyContent: 'space-around',
+    flex: 1,
+    marginHorizontal: 10,
+  }
 }

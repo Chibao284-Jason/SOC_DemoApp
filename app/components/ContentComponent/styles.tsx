@@ -1,3 +1,4 @@
+import {colorGlobal} from '@config/colorGlobal';
 import {ViewStyle, TextStyle, Dimensions} from 'react-native';
 const width = Dimensions.get('window').width / 2 - 30;
 export type Styles = {
@@ -22,7 +23,7 @@ export const styles: Styles = {
     fontFamily: font ? font : 'Arial',
   }),
   textCreate: (font, fontSize) => ({
-    color: '#8D8D8D',
+    color: colorGlobal.timeCreateColor,
     fontWeight: 'bold',
     fontFamily: font ? font : 'Arial',
     marginVertical: 10,
