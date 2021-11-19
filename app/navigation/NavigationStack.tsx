@@ -1,14 +1,11 @@
 import React from 'react';
-import {Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import DetailScreen from '@screens/DetailScreen/DetailScreen';
 import {screenName} from './screenName';
 import TabBar from '@navigation/TabBar';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
 import HeaderComponent from '@components/HeaderComponent/HeaderComponent';
-import DetailTemp from '@screens/DetailScreen/DetailTemp';
 const Stack = createStackNavigator();
 
 interface NavigationContainerProps {}
@@ -34,20 +31,6 @@ const MainScreen = () => {
         name={screenName.DETAIL_SCREEN}
         component={DetailScreen}
         options={{
-          // headerLeft: (): any => {
-          //   return (
-          //     <TouchableOpacity onPress={() => navigation.goBack()}>
-          //       <Image
-          //         source={{
-          // uri: 'https://icons-for-free.com/iconfiles/png/512/arrow+left+chevron+chevronleft+left+left+icon+icon-1320185731545502691.png',
-          //         }}
-          //         style={{width: 35, height: 40}}
-          //         resizeMode={'contain'}
-          //       />
-          //     </TouchableOpacity>
-          //   );
-          // },
-          // headerStyle: {height: 70},
           headerShown: false,
         }}
       />
