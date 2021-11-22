@@ -6,7 +6,7 @@ type Styles = {
 }
 export const styles: Styles = {
   container: {},
-  viewButton: { marginHorizontal: 15, marginTop: 20 },
+  viewButton: { marginTop: 20 },
   title: {
     fontSize: 18,
   },

@@ -30,7 +30,7 @@ export const styles: Styles = {
   tabItem: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 5
+    paddingHorizontal: 10
   },
   imgBanner: {
     width: 100,
@@ -62,7 +62,6 @@ export const styles: Styles = {
   viewTabBar: {
     height: HEADER_SIZE,
     justifyContent: 'space-around',
-    flex: 1
   },
   iconMenu: {
     width: 30,

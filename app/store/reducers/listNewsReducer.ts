@@ -1,9 +1,13 @@
 import * as types from "@store/actions/types";
 
-
-const initialState = {
+export interface IListTabReducer {
+  isLoading: boolean,
+  data: any,
+  error: string
+}
+const initialState: IListTabReducer = {
   isLoading: false,
-  data: [{}],
+  data: {},
   error: ''
 }
 

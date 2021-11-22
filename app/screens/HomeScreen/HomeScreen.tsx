@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   View,
@@ -7,8 +7,8 @@ import {
   StatusBar,
   Image,
   ImageSourcePropType,
-  ImageBackground,
   Animated,
+  ActivityIndicator,
 } from 'react-native';
 import SearchScreen from '@screens/SearchScreen/SearchScreen';
 import {screenName} from '@navigation/screenName';
@@ -20,6 +20,10 @@ import {dataTab, IDataTab} from '@constants/dataExample';
 import {styles} from './styles';
 import {colorGlobal, colorTabBar} from '@config/colorGlobal';
 import HeaderBanner from '@components/HeaderComponent/HeaderBanner/HeaderBanner';
+import {useDispatch, useSelector} from 'react-redux';
+import * as listTabBarActions from '@store/actions/listTabBarActions';
+import {IListTabReducer} from '@store/reducers/listNewsReducer';
+
 //interface
 interface IHeaderComponentProps {
   onPress: () => void;
@@ -33,6 +37,10 @@ interface ITabBar {
 interface IIconMenuProps {
   img: ImageSourcePropType;
 }
+interface IListTabState {
+  listTabReducer: IListTabReducer;
+}
+
 const IconMenu = (props: IIconMenuProps) => {
   const {img} = props;
   return (
@@ -48,8 +56,20 @@ const HEADER_MIN_HEIGHT = 0;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
 const HomeScreen = (props: IHeaderComponentProps) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(listTabBarActions.getListTabRequest());
+  }, []);
+  const dataTabBar = useSelector(
+    (state: IListTabState) => state.listTabReducer,
+  );
+
+  const isLoading = dataTabBar.isLoading;
+
   const [nameTab, setNameTab] = useState<string | undefined>('Theo dõi');
-  const [dataTabName, setDataTabName] = useState(dataTab);
+  const [dataCategories, setDataCategories] = useState(
+    !isLoading ? dataTabBar.data.data : dataTab,
+  );
   const [menuFocus, setMenuFocus] = useState(false);
   const [searchFocus, setSearchFocus] = useState(false);
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
@@ -76,7 +96,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
         return {...item, isFocus: true};
       } else return {...item, isFocus: false};
     });
-    setDataTabName(dataTabTemp);
+    setDataCategories(dataTabTemp);
     setMenuFocus(false), setSearchFocus(false);
   };
 
@@ -94,21 +114,21 @@ const HomeScreen = (props: IHeaderComponentProps) => {
             //   // onSelectTab(i);
             // }}
             onPress={i => {
-              let idFocus;
-              if (i === screenName.FOLLOW_SCREEN) {
-                idFocus = 0;
-              }
-              if (i === screenName.HOT_SCREEN) {
-                idFocus = 1;
-              }
-              if (i === screenName.NEW_SCREEN) {
-                idFocus = 2;
-              }
-              if (i === screenName.SOCCER_SCREEN) {
-                idFocus = 3;
-              }
+              // let idFocus;
+              // if (i === screenName.FOLLOW_SCREEN) {
+              //   idFocus = 0;
+              // }
+              // if (i === screenName.HOT_SCREEN) {
+              //   idFocus = 1;
+              // }
+              // if (i === screenName.NEW_SCREEN) {
+              //   idFocus = 2;
+              // }
+              // if (i === screenName.SOCCER_SCREEN) {
+              //   idFocus = 3;
+              // }
               setNameTab(i);
-              idFocus !== undefined ? onSelectTab({id: idFocus}) : null;
+              // idFocus !== undefined ? onSelectTab({id: idFocus}) : null;
             }}
           />
         );
@@ -125,94 +145,96 @@ const HomeScreen = (props: IHeaderComponentProps) => {
   };
 
   return (
-    <View style={styles.container}>
-      <StatusBar hidden={true} />
-      <View style={styles.viewHeader}>
-        <Animated.View style={[styles.viewBanner, {height: headerHeight}]}>
-          <HeaderBanner />
-        </Animated.View>
-        <View>
-          <LinearGradient
-            colors={colorTabBar}
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 0}}
-            style={styles.tabBar}>
-            <TouchableOpacity
-              style={[styles.tabItem, menuFocus && styles.focusItemTab]}
-              onPress={() => {
-                onSelectTab({
-                  id: 4,
-                  name: screenName.MENU_SCREEN,
-                  isFocus: true,
-                });
-                setMenuFocus(true);
-                setNameTab(screenName.MENU_SCREEN);
-              }}>
-              <IconMenu
-                img={{
-                  uri: 'https://icon-library.com/images/menu-icon-png-3-lines/menu-icon-png-3-lines-5.jpg',
-                }}
-              />
-            </TouchableOpacity>
-            <FlatList
-              horizontal={true}
-              scrollEnabled={true}
-              data={dataTabName}
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.viewTabBar}
-              keyExtractor={item => item.id.toString()}
-              renderItem={({item}) => {
-                return (
-                  <TabBar
-                    name={item.name}
-                    isFocus={item.isFocus}
-                    onPress={() => {
-                      onSelectTab(item);
-                      setNameTab(item.name);
+    <>
+      {!isLoading ? (
+        <View style={styles.container}>
+          <StatusBar hidden={true} />
+          <View style={styles.viewHeader}>
+            <Animated.View style={[styles.viewBanner, {height: headerHeight}]}>
+              <HeaderBanner />
+            </Animated.View>
+            <View>
+              <LinearGradient
+                colors={colorTabBar}
+                start={{x: 0, y: 0}}
+                end={{x: 1, y: 0}}
+                style={styles.tabBar}>
+                <TouchableOpacity
+                  style={[styles.tabItem, menuFocus && styles.focusItemTab]}
+                  onPress={() => {
+                    // onSelectTab({
+                    //   id: 4,
+                    //   name: screenName.MENU_SCREEN,
+                    //   isFocus: true,
+                    // });
+                    // setMenuFocus(true);
+                    setNameTab(screenName.MENU_SCREEN);
+                  }}>
+                  <IconMenu
+                    img={{
+                      uri: 'https://icon-library.com/images/menu-icon-png-3-lines/menu-icon-png-3-lines-5.jpg',
                     }}
                   />
-                );
-              }}
-            />
-            <TouchableOpacity
-              style={[styles.tabItem, searchFocus && styles.focusItemTab]}
-              onPress={() => {
-                onSelectTab({
-                  id: 5,
-                  name: screenName.SEARCH_SCREEN,
-                  isFocus: true,
-                });
-                setSearchFocus(true);
-                setNameTab(screenName.SEARCH_SCREEN);
-              }}>
-              <Icon
-                name="search"
-                size={30}
-                color={colorGlobal.iconSearchColor}
-                tvParallaxProperties={undefined}
-              />
-            </TouchableOpacity>
-          </LinearGradient>
+                </TouchableOpacity>
+                <FlatList
+                  horizontal={true}
+                  scrollEnabled={true}
+                  data={dataCategories}
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={styles.viewTabBar}
+                  keyExtractor={item => item.id.toString()}
+                  renderItem={({item}) => {
+                    return (
+                      <TabBar
+                        name={item.name}
+                        isFocus={item.isFocus}
+                        onPress={() => {
+                          // onSelectTab(item);
+                          // setNameTab(item.name);
+                        }}
+                      />
+                    );
+                  }}
+                />
+                <TouchableOpacity
+                  style={[styles.tabItem, searchFocus && styles.focusItemTab]}
+                  onPress={() => {
+                    onSelectTab({
+                      id: 5,
+                      name: screenName.SEARCH_SCREEN,
+                      isFocus: true,
+                    });
+                    setSearchFocus(true);
+                    setNameTab(screenName.SEARCH_SCREEN);
+                  }}>
+                  <Icon
+                    name="search"
+                    size={30}
+                    color={colorGlobal.iconSearchColor}
+                    tvParallaxProperties={undefined}
+                  />
+                </TouchableOpacity>
+              </LinearGradient>
+            </View>
+          </View>
+          <Animated.ScrollView
+            style={styles.containerBody}
+            showsVerticalScrollIndicator={false}
+            scrollEventThrottle={16}
+            scrollEnabled={nameTab === screenName.SEARCH_SCREEN ? false : true}
+            onScroll={Animated.event(
+              [{nativeEvent: {contentOffset: {y: scrollY}}}],
+              {useNativeDriver: false},
+            )}>
+            {renderScreen(nameTab)}
+          </Animated.ScrollView>
         </View>
-      </View>
-      <Animated.ScrollView
-        style={styles.containerBody}
-        showsVerticalScrollIndicator={false}
-        scrollEventThrottle={16}
-        scrollEnabled={
-          nameTab === screenName.MENU_SCREEN ||
-          nameTab === screenName.SEARCH_SCREEN
-            ? false
-            : true
-        }
-        onScroll={Animated.event(
-          [{nativeEvent: {contentOffset: {y: scrollY}}}],
-          {useNativeDriver: false},
-        )}>
-        {renderScreen(nameTab)}
-      </Animated.ScrollView>
-    </View>
+      ) : (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <ActivityIndicator size="large" />
+        </View>
+      )}
+    </>
   );
 };
-
 export default HomeScreen;
