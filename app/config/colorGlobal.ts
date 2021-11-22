@@ -1,5 +1,5 @@
 
-export const colorTabBar = ['#006F9C', '#006F9C']
+
 // colors={['#b2e8e9', '#006F9C', '#045D99']}
 export const colors = {
   transparent: 'transparent',
@@ -73,14 +73,16 @@ export const colors = {
   thistle: '#d8bfd8',
   palevioletred: '#db7093',
   deepCerulean: '#03889A',
-  easternBlue: '#22A6A0'
+  easternBlue: '#22A6A0',
+  allports: "#006F9C",
+  milanoRed: '#B3110D'
 };
 
 
 export const colorGlobal = {
 
   //BUTTON
-  buttonSearch: colors.easternBlue,
+  buttonSearch: colors.allports,
 
   //TEXT TITLE
   labelTab: colors.white2,
@@ -91,12 +93,14 @@ export const colorGlobal = {
   //BACKGROUND
   backgroundGlobal: colors.light,
   lineColor: colors.gray1,
-  focusLineTab: colors.blue_contract,
+  focusLineTab: colors.light,
   textInputBg: colors.grey7,
   textInputBorder: colors.gray4,
   sliderDefault: colors.easternBlue,
+  tabBarBg: colors.milanoRed,
 
   //ICONS
   iconSearchColor: colors.light
 
 }
+export const colorTabBar = [colorGlobal.tabBarBg, colorGlobal.tabBarBg]

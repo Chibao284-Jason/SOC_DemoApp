@@ -21,8 +21,7 @@ interface CardComponentProps {
 
 const CardComponent = (props: CardComponentProps) => {
   const {imgUri, content, onPress} = props;
-  // const timeCreate = moment('2021-11').endOf('day').fromNow();
-  const timeCreate = moment('2021-10').format('h [phút]');
+  const timeCreate = moment('2021-11-18').toNow(true);
   return (
     <View>
       <TouchableOpacity style={styles.container} onPress={onPress}>

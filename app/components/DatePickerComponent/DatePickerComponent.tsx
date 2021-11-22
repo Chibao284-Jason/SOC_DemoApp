@@ -32,7 +32,7 @@ const DatePickerComponent = (props: IDatePickerComponentProps) => {
         style={styles.searchContainer}
         onPress={() => setOpen(true)}>
         <View>
-          <Text style={styles.label}>{moment(date).format('LL')}</Text>
+          <Text style={styles.label}>{moment(date).format('L')}</Text>
         </View>
       </TouchableOpacity>
       <DatePicker
