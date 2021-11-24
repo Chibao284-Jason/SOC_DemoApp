@@ -10,21 +10,7 @@ export const getListNewsSuccessActions = (data: IDataResponseListNews): IRespons
   type: types.GET_LIST_NEWS_SUCCESS,
   data: data
 })
-export const getListNewsFailureActions = (error: IError): IErrorAction => ({
-  type: types.GET_LIST_NEWS_FAILURE,
-  error: error.message
-})
-
-// GET MORE LIST
-export const getMoreListNewsRequestActions = (params: IListNewsParamsRequest): IListNewsActionsRequest => ({
-  type: types.GET_LIST_NEWS_REQUEST,
-  params: params
-})
-export const getMoreListNewsSuccessActions = (data: IDataResponseListNews): IResponseListTabSuccess => ({
-  type: types.GET_LIST_NEWS_SUCCESS,
-  data: data
-})
-export const getMoreListNewsFailureActions = (error: IError): IErrorAction => ({
+export const getListNewsFailureActions = (error: any): IErrorAction => ({
   type: types.GET_LIST_NEWS_FAILURE,
   error: error.message
 })

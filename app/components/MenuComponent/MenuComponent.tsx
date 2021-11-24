@@ -3,9 +3,12 @@ import {Text, View, TouchableOpacity, Image} from 'react-native';
 import ViewLineComponent from '@components/ViewLineComponent/ViewLineComponent';
 import {styles} from './styles';
 import {useSelector, useDispatch} from 'react-redux';
-import {IListTabReducer} from '@store/reducers/listNewsReducer';
 import {IChildren, IDataCategories} from '@models/interface';
 import {Actions} from '@store/actions';
+import {useNavigation} from '@react-navigation/native';
+import {screenName} from '@navigation/screenName';
+import {IListTabReducer} from '@store/reducers/listTabReducer';
+
 interface IMenuComponentProps {
   onPress: (i: string) => void;
 }
@@ -19,9 +22,10 @@ interface IListCategories {
 const ButtonMenu = (props: IButtonMenuProps) => {
   const [showChildrenCategories, setShowChildrenCategories] = useState(false);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const {onPress, data} = props;
   const {id, name, children} = data;
-  const getData = item => {
+  const getData = (item: IChildren) => {
     let paramsCatsSelectMenu = {
       filters: {News_Cat: item.parent},
       limit: '20',
@@ -35,10 +39,9 @@ const ButtonMenu = (props: IButtonMenuProps) => {
       };
     }
 
-    // console.log(i);
     dispatch(Actions.getCatsListNewsRequestActions(paramsCatsSelectMenu));
   };
-  const onPressButtonMenu = i => {
+  const onPressButtonMenu = (i: IChildren) => {
     if (children === undefined) {
       getData(i);
     } else {
@@ -83,6 +86,7 @@ const ButtonMenu = (props: IButtonMenuProps) => {
                 <TouchableOpacity
                   style={styles.viewButton}
                   onPress={() => getData(itemChildren)}>
+                  {/* onPress={() => navigation.navigate('HomeScreen')}> */}
                   <Text style={styles.title}>{itemChildren.name}</Text>
                 </TouchableOpacity>
               </View>
@@ -100,18 +104,11 @@ const MenuComponent = (props: IMenuComponentProps) => {
   );
   const {data} = dataCategories;
   const {onPress} = props;
-
   return (
     <View style={styles.container}>
       {data.map((item: IDataCategories, index: number) => {
         return (
-          <ButtonMenu
-            key={item.id.toString()}
-            data={item}
-            onPress={i => {
-              onPress(i);
-            }}
-          />
+          <ButtonMenu key={item.id.toString()} data={item} onPress={onPress} />
         );
       })}
     </View>

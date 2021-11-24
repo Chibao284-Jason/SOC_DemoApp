@@ -2,10 +2,8 @@ import * as React from 'react';
 import {
   Text,
   View,
-  StyleSheet,
-  ImageBackground,
-  ImageSourcePropType,
   Image,
+  ImageSourcePropType,
   TouchableOpacity,
 } from 'react-native';
 import moment from 'moment';
@@ -23,15 +21,13 @@ interface CardComponentProps {
 const CardComponent = (props: CardComponentProps) => {
   const {imgUri, title, onPress, timeCreated, countView} = props;
   const timeCreate = moment(timeCreated).toNow(true);
+
   return (
     <View>
       <TouchableOpacity style={styles.container} onPress={onPress}>
-        <ImageBackground
-          source={imgUri}
-          style={styles.imgThumbnail}
-          imageStyle={styles.imgBgBorderRadius}
-        />
-
+        <View style={styles.imgThumbnail}>
+          <Image source={imgUri} style={styles.imgBgBorderRadius} />
+        </View>
         <View style={styles.viewLabelNews}>
           <View style={styles.labelNews}>
             <View style={{}}>

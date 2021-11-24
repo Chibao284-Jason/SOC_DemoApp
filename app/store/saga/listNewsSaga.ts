@@ -19,6 +19,7 @@ export function* listNewsSaga(action: IListNewsActionsRequest) {
 }
 
 
+
 export function* watchListNews() {
   yield takeLatest(types.GET_LIST_NEWS_REQUEST, listNewsSaga);
 }

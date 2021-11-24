@@ -20,12 +20,12 @@ export interface IResponseListTabSuccess {
  */
 
 export interface IListNewsParamsRequest {
-  filters?: { News_Cat: string }
+  filters?: { News_Cat: string | number }
   limit: string
   page: string
 }
 export interface IListNewsCatsParamsRequest {
-  filters: { News_Cat: string }
+  filters: { News_Cat: string | number }
   limit: string
   page: string
 }

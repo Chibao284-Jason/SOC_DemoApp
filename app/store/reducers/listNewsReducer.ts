@@ -14,7 +14,6 @@ const initialState: IListNewsReducer = {
 }
 
 export const listNewsReducer = (state = initialState, action: IListNewsActionsRequest & IResponseListTabSuccess & IErrorAction) => {
-
   switch (action.type) {
     case types.GET_LIST_NEWS_REQUEST:
       return {
@@ -25,7 +24,6 @@ export const listNewsReducer = (state = initialState, action: IListNewsActionsRe
       let data = {}
       if (action.data.pages[">"] === 2) {
         data = { ...action.data }
-
       }
       else {
         data = { ...state.data, rows: [...state.data.rows, ...action.data.rows] }
@@ -34,8 +32,8 @@ export const listNewsReducer = (state = initialState, action: IListNewsActionsRe
       return {
         ...state,
         isLoading: false,
-
         data: data
+
       };
     case types.GET_LIST_NEWS_FAILURE:
       return {

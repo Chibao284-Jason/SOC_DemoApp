@@ -98,6 +98,7 @@ export const colorGlobal = {
   textInputBorder: colors.gray4,
   sliderDefault: colors.easternBlue,
   tabBarBg: colors.milanoRed,
+  loadingColor: colors.milanoRed,
 
   //ICONS
   iconSearchColor: colors.light

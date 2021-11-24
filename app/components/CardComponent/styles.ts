@@ -51,8 +51,10 @@ export const styles: Styles = {
 
   },
   imgBgBorderRadius: {
+    width: 150,
+    height: 150,
     borderRadius: 10,
-    resizeMode: 'stretch'
+    resizeMode: 'contain'
   },
   viewLabelNews: {
     flexDirection: 'row',

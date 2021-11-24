@@ -12,11 +12,7 @@ const MenuScreen = (props: IMenuScreenProps) => {
   return (
     <View style={styles.container}>
       {/* <SearchComponent /> */}
-      <MenuComponent
-        onPress={i => {
-          onPress(i);
-        }}
-      />
+      <MenuComponent onPress={onPress} />
     </View>
   );
 };

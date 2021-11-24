@@ -5,6 +5,7 @@ import DetailScreen from '@screens/DetailScreen/DetailScreen';
 import {screenName} from './screenName';
 import {useNavigation} from '@react-navigation/core';
 import HomeScreen from '@screens/HomeScreen/HomeScreen';
+import MenuScreen from '@screens/MenuScreen/MenuScreen';
 const Stack = createStackNavigator();
 
 interface NavigationContainerProps {}
@@ -13,6 +14,13 @@ const MainScreen = () => {
   const navigation = useNavigation();
   return (
     <Stack.Navigator initialRouteName={screenName.HOME_SCREEN}>
+      {/* <Stack.Screen
+        name={screenName.HOME_SCREEN}
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+        }}
+      /> */}
       <Stack.Screen
         name={screenName.HOME_SCREEN}
         component={HomeScreen}
@@ -24,6 +32,13 @@ const MainScreen = () => {
       <Stack.Screen
         name={screenName.DETAIL_SCREEN}
         component={DetailScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={screenName.MENU_SCREEN}
+        component={MenuScreen}
         options={{
           headerShown: false,
         }}
