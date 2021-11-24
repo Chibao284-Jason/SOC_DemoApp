@@ -1,20 +1,23 @@
 import { put, takeLatest } from 'redux-saga/effects';
-// import { IProductResponseState } from '@models/actions/product';
 import { dataListNews } from "@constants/dataExample";
 import * as types from '@store/actions/types';
-import { getListNewsRequestActions, getListNewsSuccessActions, getListNewsFailureActions } from '@store/actions/listNewsActions';
-export function* listNewsSaga(action: any) {
+import { getListNewsSuccessActions, getListNewsFailureActions } from '@store/actions/listNewsActions';
+import { getListNewsApi } from '@store/api/listNewsApi';
+import { IListNewsActionsRequest } from '@models/actions/listNews';
+export function* listNewsSaga(action: IListNewsActionsRequest) {
   try {
-    const response = { success: true, data: dataListNews, errorMessage: 'get fail' };
-    if (response.success) {
-      yield put(getListNewsSuccessActions(response.data))
+
+    const { data } = yield getListNewsApi(action.params);
+    if (data.success === 1) {
+      yield put(getListNewsSuccessActions(data.data))
     } else {
-      yield put(getListNewsFailureActions(response.errorMessage))
+      yield put(getListNewsFailureActions(data))
     }
   } catch (error) {
     yield put(getListNewsFailureActions(error))
   }
 }
+
 
 export function* watchListNews() {
   yield takeLatest(types.GET_LIST_NEWS_REQUEST, listNewsSaga);

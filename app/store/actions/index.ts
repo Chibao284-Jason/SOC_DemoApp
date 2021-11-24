@@ -1,6 +1,10 @@
 
 import * as listNewsActions from "./listNewsActions";
-export const ActionCreators = Object.assign(
+import * as listTabBarActions from "./listTabBarActions";
+import * as listNewsCatsActions from "./listNewsCatsActions";
+export const Actions = Object.assign(
   {},
-  listNewsActions
+  listTabBarActions,
+  listNewsActions,
+  listNewsCatsActions
 );

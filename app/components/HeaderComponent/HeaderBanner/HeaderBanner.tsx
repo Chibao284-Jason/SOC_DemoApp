@@ -1,7 +1,7 @@
 import {colorGlobal} from '@config/colorGlobal';
 import * as React from 'react';
-import {StyleSheet, Image} from 'react-native';
-const HEADER_SIZE = 70;
+import {StyleSheet, Image, View} from 'react-native';
+const HEADER_SIZE = 50;
 
 interface IHeaderBannerProps {}
 

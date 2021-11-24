@@ -13,6 +13,8 @@ type Styles = {
   imgThumbnail: ImageStyle
   imgBgBorderRadius: ImageStyle
   imgSource: ImageStyle
+  imgSourceEyes: ImageStyle
+  countView: ViewStyle
 }
 export const styles: Styles = {
   container: {
@@ -57,7 +59,7 @@ export const styles: Styles = {
     flex: 1,
   },
   labelNews: {
-    marginLeft: 5,
+    marginLeft: 15,
     width: '100%',
   },
   textLabel: {
@@ -67,5 +69,16 @@ export const styles: Styles = {
   imgSource: {
     width: 70,
     height: 20
+  },
+
+  countView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  imgSourceEyes: {
+    width: 20,
+    height: 20,
+    marginRight: 5
   }
 }

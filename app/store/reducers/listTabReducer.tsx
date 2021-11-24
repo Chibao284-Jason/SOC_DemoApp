@@ -4,12 +4,12 @@ import {
   IResponseListTabSuccess,
   IResponseListTabFailure,
 } from '@models/actions/listTab';
-interface IState {
+export interface IListTabReducer {
   isLoading: boolean;
   data: any;
   error: string;
 }
-const initialState: IState = {
+const initialState: IListTabReducer = {
   isLoading: false,
   data: [{}],
   error: '',

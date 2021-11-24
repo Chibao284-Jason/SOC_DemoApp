@@ -14,14 +14,15 @@ import {styles} from './styles';
 const date = new Date();
 interface CardComponentProps {
   imgUri: ImageSourcePropType;
-  content?: string;
+  title?: string;
   timeCreated?: string | number;
   onPress: () => void;
+  countView: string | number;
 }
 
 const CardComponent = (props: CardComponentProps) => {
-  const {imgUri, content, onPress} = props;
-  const timeCreate = moment('2021-11-18').toNow(true);
+  const {imgUri, title, onPress, timeCreated, countView} = props;
+  const timeCreate = moment(timeCreated).toNow(true);
   return (
     <View>
       <TouchableOpacity style={styles.container} onPress={onPress}>
@@ -34,19 +35,30 @@ const CardComponent = (props: CardComponentProps) => {
         <View style={styles.viewLabelNews}>
           <View style={styles.labelNews}>
             <View style={{}}>
-              <Text style={styles.textLabel} numberOfLines={3}>
-                Có thể tự học lập trình được không?
+              <Text style={styles.textLabel} numberOfLines={4}>
+                {title}
               </Text>
             </View>
             <View style={styles.viewSource}>
               <View style={styles.viewLogo}>
-                <Image
-                  source={{
-                    uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Ng%C6%B0%E1%BB%9Di_lao_%C4%91%E1%BB%99ng_logo.svg/1280px-Ng%C6%B0%E1%BB%9Di_lao_%C4%91%E1%BB%99ng_logo.svg.png',
-                  }}
-                  style={styles.imgSource}
-                  resizeMode={'contain'}
-                />
+                <View style={styles.countView}>
+                  {/* <Image
+                    source={{
+                      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Ng%C6%B0%E1%BB%9Di_lao_%C4%91%E1%BB%99ng_logo.svg/1280px-Ng%C6%B0%E1%BB%9Di_lao_%C4%91%E1%BB%99ng_logo.svg.png',
+                    }}
+                  
+                    style={styles.imgSource}
+                    resizeMode={'contain'}
+                  /> */}
+                  <Image
+                    source={{
+                      uri: 'https://icones.pro/wp-content/uploads/2021/05/icone-oeil-beurre-gris.png',
+                    }}
+                    style={styles.imgSourceEyes}
+                    resizeMode={'contain'}
+                  />
+                  <Text>{countView}</Text>
+                </View>
                 <Text style={styles.textCreate}>{timeCreate}</Text>
               </View>
             </View>
