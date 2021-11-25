@@ -4,11 +4,13 @@ import * as types from "@store/actions/types";
 
 export interface IListNewsCatsReducer {
   isLoading: boolean,
+  isLoadingMore: boolean,
   data: IDataListNew,
   error: string
 }
 const initialState: IListNewsCatsReducer = {
   isLoading: false,
+  isLoadingMore: false,
   data: {},
   error: ''
 }
@@ -22,10 +24,24 @@ export const listNewsCatsReducer = (state = initialState, action: IListNewsActio
         isLoading: true,
       };
     case types.GET_CATS_LIST_NEWS_SUCCESS:
+      let data = {}
+      if (action.data.pages[">"] === 2) {
+        data = { ...action.data }
+      }
+      else {
+        data = { ...state.data, rows: [...state.data.rows, ...action.data.rows] }
+      }
+
       return {
         ...state,
         isLoading: false,
-        data: action.data
+        data: data
+      };
+
+    case types.GET_MORE_CATS_LIST_NEWS_SUCCESS:
+      return {
+        ...state,
+        isLoadingMore: true
       };
     case types.GET_CATS_LIST_NEWS_FAILURE:
       return {

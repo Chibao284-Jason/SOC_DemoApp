@@ -26,18 +26,20 @@ import {
 } from './types';
 import {IconMenu} from '@components/IconMenuComponent/IconMenu';
 import {TabBarItem} from '@components/TabBarItemComponent/TabBarItem';
+import SearchComponent from '@components/SearchComponent/SearchComponent';
 
 // Size height
 const HEADER_MAX_HEIGHT = 70;
 const HEADER_MIN_HEIGHT = 0;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
-
 const HomeScreen = (props: IHeaderComponentProps) => {
   const dispatch = useDispatch();
   const [searchFocus, setSearchFocus] = useState(false);
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
   const [nameTab, setNameTab] = useState<string | undefined>();
   const [pageCurrent, setPageCurrent] = useState(2);
+  const [idCatsCurrent, setIdCatsCurrent] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     dispatch(Actions.getListTabRequest());
     dispatch(
@@ -56,9 +58,26 @@ const HomeScreen = (props: IHeaderComponentProps) => {
         page: '1',
       }),
     );
-    setNameTab('');
+    setNameTab(item.name);
+    setPageCurrent(2);
+    setIdCatsCurrent(item.id);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
   };
-  const onLoadMore = (pageCurrent: number) => {
+  const onLoadMore = () => {
+    if (idCatsCurrent !== '') {
+      dispatch(
+        Actions.getCatsListNewsRequestActions({
+          filters: {News_Cat: idCatsCurrent},
+          limit: '20',
+          page: pageCurrent.toString(),
+        }),
+      );
+      setPageCurrent(pageCurrent + 1);
+      return;
+    }
     dispatch(
       Actions.getListNewsRequestActions({
         limit: '20',
@@ -88,6 +107,10 @@ const HomeScreen = (props: IHeaderComponentProps) => {
   const isLoadingListNewsCats = useSelector(
     (state: IListNewsCatsState) => state.listNewsCatsReducer.isLoading,
   );
+  const isLoadingMoreListNewsCats = useSelector(
+    (state: IListNewsCatsState) => state.listNewsCatsReducer.isLoadingMore,
+  );
+
   const [dataNews, setDataNews] = useState<any>(null);
   useEffect(() => {
     if (!isLoadingListNewsCats) {
@@ -112,18 +135,9 @@ const HomeScreen = (props: IHeaderComponentProps) => {
     extrapolate: 'clamp',
   });
 
-  // const onSelectTab = (itemChoose: IDataTab) => {
-  //   let dataTabTemp = dataTab.map((item: {id: number}) => {
-  //     if (item.id === itemChoose.id) {
-  //       return {...item, isFocus: true};
-  //     } else return {...item, isFocus: false};
-  //   });
-  //   setDataCategories(dataTabTemp);
-  // };
-
   return (
     <>
-      {dataNews !== null ? (
+      {!isLoadingListTab && dataNews !== null ? (
         <View style={styles.container}>
           <StatusBar hidden={true} />
           <View style={styles.viewHeader}>
@@ -170,13 +184,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
                 <TouchableOpacity
                   style={[styles.tabItem, searchFocus && styles.focusItemTab]}
                   onPress={() => {
-                    // onSelectTab({
-                    //   id: 5,
-                    //   name: screenName.SEARCH_SCREEN,
-                    //   isFocus: true,
-                    // });
-                    // setSearchFocus(true);
-                    // setNameTab(screenName.SEARCH_SCREEN);
+                    setNameTab(screenName.SEARCH_SCREEN);
                   }}>
                   <Icon
                     name="search"
@@ -188,7 +196,8 @@ const HomeScreen = (props: IHeaderComponentProps) => {
               </LinearGradient>
             </View>
           </View>
-          {nameTab === screenName.MENU_SCREEN ? (
+          {nameTab === screenName.MENU_SCREEN ||
+          nameTab === screenName.SEARCH_SCREEN ? (
             <Animated.ScrollView
               style={styles.containerBody}
               showsVerticalScrollIndicator={false}
@@ -200,9 +209,14 @@ const HomeScreen = (props: IHeaderComponentProps) => {
                 [{nativeEvent: {contentOffset: {y: scrollY}}}],
                 {useNativeDriver: false},
               )}>
-              <MenuScreen onPress={item => console.log('item', item)} />
+              {nameTab === screenName.MENU_SCREEN && (
+                <MenuScreen onPress={item => console.log('item', item)} />
+              )}
+              {nameTab === screenName.SEARCH_SCREEN && (
+                <SearchComponent onPress={item => console.log('item', item)} />
+              )}
             </Animated.ScrollView>
-          ) : !isLoadingListNewsCats ? (
+          ) : !isLoading ? (
             <FlatList
               style={styles.containerBody}
               showsVerticalScrollIndicator={true}
@@ -218,10 +232,10 @@ const HomeScreen = (props: IHeaderComponentProps) => {
               data={dataNews.rows}
               onEndReached={i => {
                 if (i.distanceFromEnd < 0) return;
-                onLoadMore(pageCurrent);
+                onLoadMore();
               }}
               ListFooterComponent={
-                isLoadingListNews ? <ViewLoadingComponent /> : null
+                isLoadingMoreListNewsCats ? <ViewLoadingComponent /> : null
               }
               renderItem={({item}) => {
                 return <ListNewsScreen items={item} />;

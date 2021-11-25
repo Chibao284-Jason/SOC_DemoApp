@@ -53,7 +53,6 @@ const ButtonMenu = (props: IButtonMenuProps) => {
     <View style={{marginHorizontal: 15}}>
       <View>
         <TouchableOpacity
-          // onPress={() => setShowChildrenCategories(!showChildrenCategories)}
           onPress={i => onPressButtonMenu(data)}
           style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <View style={styles.viewButton}>

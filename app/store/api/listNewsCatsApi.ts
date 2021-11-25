@@ -1,6 +1,7 @@
 const axios = require('axios');
 
-export const getListNewsCatsApi = (data: { filters: { News_Cat: string }, limit: string, page: string }) => {
+export const getListNewsCatsApi = (data: { filters?: { News_Cat: string | number }, limit: string, page: string }) => {
+
   const config = {
     method: 'post',
     url: 'https://tvphapluat.vn/api/posts/',

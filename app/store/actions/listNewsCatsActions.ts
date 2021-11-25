@@ -12,7 +12,13 @@ export const getCatsListNewsSuccessActions = (data: IDataResponseListNews): IRes
   type: types.GET_CATS_LIST_NEWS_SUCCESS,
   data: data
 })
-export const getCatsListNewsFailureActions = (error: IError): IErrorAction => ({
+
+export const getCatsListNewsFailureActions = (error: any): IErrorAction => ({
   type: types.GET_CATS_LIST_NEWS_FAILURE,
   error: error.message
+})
+
+export const getMoreCatsListNewsSuccessActions = (data?: any): IResponseListTabSuccess => ({
+  type: types.GET_MORE_CATS_LIST_NEWS_SUCCESS,
+  data: data
 })

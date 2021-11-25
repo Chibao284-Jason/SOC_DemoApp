@@ -25,7 +25,7 @@ export interface IListNewsParamsRequest {
   page: string
 }
 export interface IListNewsCatsParamsRequest {
-  filters: { News_Cat: string | number }
+  filters?: { News_Cat: string | number }
   limit: string
   page: string
 }
