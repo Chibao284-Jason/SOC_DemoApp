@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StatusBar,
   Animated,
+  ScrollView,
 } from 'react-native';
 import {screenName} from '@navigation/screenName';
 import ListNewsScreen from '@screens/ListNewsScreen/ListNewsScreen';
@@ -36,7 +37,9 @@ const HomeScreen = (props: IHeaderComponentProps) => {
   const dispatch = useDispatch();
   const [searchFocus, setSearchFocus] = useState(false);
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
-  const [nameTab, setNameTab] = useState<string | undefined>();
+  const [nameTab, setNameTab] = useState<string | undefined>(
+    screenName.SEARCH_SCREEN,
+  );
   const [pageCurrent, setPageCurrent] = useState(2);
   const [idCatsCurrent, setIdCatsCurrent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -202,9 +205,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
               style={styles.containerBody}
               showsVerticalScrollIndicator={false}
               scrollEventThrottle={16}
-              scrollEnabled={
-                nameTab === screenName.SEARCH_SCREEN ? false : true
-              }
+              scrollEnabled={true}
               onScroll={Animated.event(
                 [{nativeEvent: {contentOffset: {y: scrollY}}}],
                 {useNativeDriver: false},
@@ -212,9 +213,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
               {nameTab === screenName.MENU_SCREEN && (
                 <MenuScreen onPress={item => console.log('item', item)} />
               )}
-              {nameTab === screenName.SEARCH_SCREEN && (
-                <SearchComponent onPress={item => console.log('item', item)} />
-              )}
+              {nameTab === screenName.SEARCH_SCREEN && <SearchComponent />}
             </Animated.ScrollView>
           ) : !isLoading ? (
             <FlatList

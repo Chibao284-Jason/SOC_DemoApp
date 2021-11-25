@@ -6,7 +6,6 @@ import { getListNewsApi } from '@store/api/listNewsApi';
 import { IListNewsActionsRequest } from '@models/actions/listNews';
 export function* listNewsSaga(action: IListNewsActionsRequest) {
   try {
-
     const { data } = yield getListNewsApi(action.params);
     if (data.success === 1) {
       yield put(getListNewsSuccessActions(data.data))

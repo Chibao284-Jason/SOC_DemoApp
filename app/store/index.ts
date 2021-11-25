@@ -9,7 +9,7 @@ import rootSaga from '@store/saga';
 const config = {
   key: 'root',
   storage: AsyncStorage,
-  // whitelist: ['languageReducer', 'loginReducer'],
+  blacklist: ['searchNewsReducer'],
   debug: true, //to get useful logging
 };
 

@@ -6,6 +6,11 @@ export interface IListNewsActionsRequest {
   type: string
   params: IListNewsParamsRequest
 }
+
+export interface ISearchNewsActionsRequest {
+  type: string
+  params: ISearchNewsParamsRequest
+}
 export interface IListNewsCatsActionsRequest {
   type: string
   params: IListNewsCatsParamsRequest
@@ -21,6 +26,11 @@ export interface IResponseListTabSuccess {
 
 export interface IListNewsParamsRequest {
   filters?: { News_Cat: string | number }
+  limit: string
+  page: string
+}
+export interface ISearchNewsParamsRequest {
+  filters?: { News_Keywords: string }
   limit: string
   page: string
 }

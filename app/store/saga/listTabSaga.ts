@@ -12,8 +12,6 @@ export interface IDataTab {
 export function* listTabSaga(action: any) {
   try {
     const { data }: IDataTab = yield getListTabApi();
-
-
     if (data.success === 1) {
       yield put(getListTabSuccess(data.data))
     } else {
@@ -24,7 +22,6 @@ export function* listTabSaga(action: any) {
     yield put(getListTabFailure(error as string))
   }
 }
-
 export function* watchListTabSaga() {
   yield takeLatest(types.GET_LIST_TAB_REQUEST, listTabSaga);
 }
