@@ -100,7 +100,8 @@ const SearchComponent = (props: ISearchComponentProps) => {
             dataSearchNews.rows?.map(item => {
               return <ListNewsScreen key={item.id.toString()} items={item} />;
             })}
-          {dataSearchNews &&
+          {pressSearch &&
+            dataSearchNews &&
             dataSearchNews.rows !== null &&
             !(dataSearchNews.rows?.length < 1) && <ReadView />}
           {pressSearch &&
