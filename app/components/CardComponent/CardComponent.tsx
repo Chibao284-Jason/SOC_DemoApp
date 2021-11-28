@@ -9,7 +9,7 @@ import {
 import moment from 'moment';
 import ViewLineComponent from '@components/ViewLineComponent/ViewLineComponent';
 import {styles} from './styles';
-const date = new Date();
+import {yesterday, lastM, lastW, lastY} from '@constants/dateConstant';
 interface CardComponentProps {
   imgUri: ImageSourcePropType;
   title?: string;
@@ -20,8 +20,25 @@ interface CardComponentProps {
 
 const CardComponent = (props: CardComponentProps) => {
   const {imgUri, title, onPress, timeCreated, countView} = props;
-  const timeCreate = moment(timeCreated).toNow(true);
+  let timeCreate = moment(timeCreated).fromNow();
+  let dateTemp = moment(timeCreated);
 
+  if (dateTemp.format('D/M/Y') === yesterday) {
+    timeCreate = moment(timeCreated).calendar(null, {lastDay: '[hôm qua]'});
+  }
+  if (dateTemp.format('M') === lastM.format('M')) {
+    timeCreate = moment(timeCreated)
+      .calendar()
+      .replace(dateTemp.format('DD/MM/YYYY'), 'tháng trước');
+  }
+  if (dateTemp.format('D/M/Y') === lastW) {
+    timeCreate = moment(timeCreated).calendar().replace(lastW, 'tuần trước');
+  }
+  if (dateTemp.format('Y') === lastY.format('Y')) {
+    timeCreate = moment(timeCreated)
+      .calendar()
+      .replace(dateTemp.format('DD/MM/YYYY'), 'năm trước');
+  }
   return (
     <View>
       <TouchableOpacity style={styles.container} onPress={onPress}>

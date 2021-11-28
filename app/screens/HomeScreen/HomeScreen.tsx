@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   StatusBar,
   Animated,
-  ScrollView,
 } from 'react-native';
 import {screenName} from '@navigation/screenName';
 import ListNewsScreen from '@screens/ListNewsScreen/ListNewsScreen';
@@ -28,14 +27,15 @@ import {
 import {IconMenu} from '@components/IconMenuComponent/IconMenu';
 import {TabBarItem} from '@components/TabBarItemComponent/TabBarItem';
 import SearchComponent from '@components/SearchComponent/SearchComponent';
-
-// Size height
-const HEADER_MAX_HEIGHT = 70;
-const HEADER_MIN_HEIGHT = 0;
-const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
+import {
+  HEADER_MAX_HEIGHT,
+  HEADER_MIN_HEIGHT,
+  HEADER_SCROLL_DISTANCE,
+} from '@constants/sizeDefault';
+import ImageViewLoading from '@components/ImagePlaceholder/index';
+import ImagePlaceholder from '@components/ImagePlaceholder/ImagePlaceholder';
 const HomeScreen = (props: IHeaderComponentProps) => {
   const dispatch = useDispatch();
-  const [searchFocus, setSearchFocus] = useState(false);
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
   const [nameTab, setNameTab] = useState<string | undefined>(
     screenName.SEARCH_SCREEN,
@@ -67,7 +67,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 250);
   };
   const onLoadMore = () => {
     if (idCatsCurrent !== '') {
@@ -142,10 +142,20 @@ const HomeScreen = (props: IHeaderComponentProps) => {
     <>
       {!isLoadingListTab && dataNews !== null ? (
         <View style={styles.container}>
-          <StatusBar hidden={true} />
           <View style={styles.viewHeader}>
             <Animated.View style={[styles.viewBanner, {height: headerHeight}]}>
-              <HeaderBanner />
+              <TouchableOpacity
+                style={styles.viewBanner}
+                onPress={() => {
+                  dispatch(
+                    Actions.getListNewsRequestActions({
+                      limit: '20',
+                      page: '1',
+                    }),
+                  );
+                }}>
+                <HeaderBanner />
+              </TouchableOpacity>
             </Animated.View>
             <View>
               <LinearGradient
@@ -154,7 +164,6 @@ const HomeScreen = (props: IHeaderComponentProps) => {
                 end={{x: 1, y: 0}}
                 style={styles.tabBar}>
                 <TouchableOpacity
-                  // style={[styles.tabItem, menuFocus && styles.focusItemTab]}
                   style={[styles.tabItem]}
                   onPress={() => {
                     setNameTab(screenName.MENU_SCREEN);
@@ -185,7 +194,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
                   }}
                 />
                 <TouchableOpacity
-                  style={[styles.tabItem, searchFocus && styles.focusItemTab]}
+                  style={[styles.tabItem]}
                   onPress={() => {
                     setNameTab(screenName.SEARCH_SCREEN);
                   }}>
@@ -210,17 +219,19 @@ const HomeScreen = (props: IHeaderComponentProps) => {
                 [{nativeEvent: {contentOffset: {y: scrollY}}}],
                 {useNativeDriver: false},
               )}>
-              {nameTab === screenName.MENU_SCREEN && (
+              {nameTab === screenName.MENU_SCREEN ? (
                 <MenuScreen onPress={item => console.log('item', item)} />
+              ) : (
+                <SearchComponent />
               )}
-              {nameTab === screenName.SEARCH_SCREEN && <SearchComponent />}
             </Animated.ScrollView>
           ) : !isLoading ? (
             <FlatList
               style={styles.containerBody}
               showsVerticalScrollIndicator={true}
-              onEndReachedThreshold={0.5}
-              scrollEventThrottle={0.1}
+              onEndReachedThreshold={3}
+              // onEndReachedThreshold={16}
+              scrollEventThrottle={10}
               scrollEnabled={
                 nameTab === screenName.SEARCH_SCREEN ? false : true
               }
@@ -230,18 +241,18 @@ const HomeScreen = (props: IHeaderComponentProps) => {
               )}
               data={dataNews.rows}
               onEndReached={i => {
-                if (i.distanceFromEnd < 0) return;
+                // if (i.distanceFromEnd < 0) return;
                 onLoadMore();
               }}
               ListFooterComponent={
-                isLoadingMoreListNewsCats ? <ViewLoadingComponent /> : null
+                isLoadingMoreListNewsCats ? <ImagePlaceholder /> : null
               }
               renderItem={({item}) => {
                 return <ListNewsScreen items={item} />;
               }}
             />
           ) : (
-            <ViewLoadingComponent />
+            <ImageViewLoading />
           )}
         </View>
       ) : (

@@ -83,6 +83,7 @@ export const colorGlobal = {
 
   //BUTTON
   buttonSearch: colors.allports,
+  buttonFont: colors.easternBlue,
 
   //TEXT TITLE
   labelTab: colors.white2,

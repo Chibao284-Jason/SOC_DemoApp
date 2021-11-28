@@ -4,6 +4,7 @@ type Styles = {
   container: ViewStyle;
   viewLabel: ViewStyle;
   imgIcon: ImageStyle;
+  imgIconTick: (color?: string) => ImageStyle;
   imgArrow: ImageStyle;
   title: ViewStyle;
   viewDotColor: (color: string) => ViewStyle;
@@ -31,6 +32,12 @@ export const styles: Styles = {
     width: 20,
     height: 20,
   },
+  imgIconTick: (color) => ({
+    width: 20,
+    height: 20,
+    backgroundColor: color ? color : 'transparent',
+    borderRadius: 5
+  }),
   title: {
     marginLeft: 10,
   },
@@ -55,21 +62,23 @@ export const styles: Styles = {
     height: 25,
   },
   buttonFont: color => ({
-    backgroundColor: color ? color : colorGlobal.buttonSearch,
+    backgroundColor: color ? color : colorGlobal.buttonFont,
     borderRadius: 20,
     marginHorizontal: 5,
+    flex: 1,
   }),
   labelFonts: (font) => ({
     color: colorGlobal.textWhite,
     fontSize: 18,
     margin: 10,
     fontWeight: '300',
-    fontFamily: font ? font : 'Arial'
+    fontFamily: font ? font : 'Arial',
   }),
 
   containerTheme: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop: 5
   },
   titleStyles: (font, fontSize) => ({
     fontFamily: font ? font : 'Arial',

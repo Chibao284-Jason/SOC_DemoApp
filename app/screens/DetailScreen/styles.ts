@@ -5,7 +5,7 @@ import { colorGlobal } from '@config/colorGlobal';
 export type Styles = {
   container: ViewStyle;
   contentContainer: ViewStyle;
-  line: ViewStyle;
+  // line: ViewStyle;
   viewFooter: ViewStyle;
   buttonClose: ViewStyle;
   viewModal: ViewStyle;

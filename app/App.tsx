@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ActivityIndicator, StyleSheet} from 'react-native';
+import {ActivityIndicator, StyleSheet, StatusBar} from 'react-native';
 import Navigator from './navigation';
 import configureStore from '@store/index';
 import {Provider} from 'react-redux';
@@ -13,6 +13,7 @@ const {persistor, store} = configureStore();
 const App = (props: AppProps) => {
   return (
     <Provider store={store}>
+      <StatusBar hidden={true} />
       <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
         <Navigator />
       </PersistGate>

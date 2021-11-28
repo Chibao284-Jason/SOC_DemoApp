@@ -67,23 +67,26 @@ const ModalFontFamily = (props: IModalFontFamilyProps) => {
           </Text>
         </View>
       </View>
-      <FlatList
-        // horizontal={true}
-        contentContainerStyle={styles.viewButtonFont}
-        data={dataFont}
-        keyExtractor={item => item.id.toString()}
-        renderItem={({item}) => {
-          return (
-            <TouchableOpacity
-              style={styles.buttonFont(colorString)}
-              onPress={() => {
-                onPressChangeFont(item.font);
-              }}>
-              <Text style={styles.labelFonts(item.font)}>{item.font}</Text>
-            </TouchableOpacity>
-          );
-        }}
-      />
+      <View style={{flex: 1, alignItems: 'flex-end'}}>
+        <FlatList
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.viewButtonFont}
+          data={dataFont}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({item}) => {
+            return (
+              <TouchableOpacity
+                style={styles.buttonFont(colorString)}
+                onPress={() => {
+                  onPressChangeFont(item.font);
+                }}>
+                <Text style={styles.labelFonts(item.font)}>{item.font}</Text>
+              </TouchableOpacity>
+            );
+          }}
+        />
+      </View>
     </View>
   );
 };

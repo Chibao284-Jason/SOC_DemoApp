@@ -1,5 +1,7 @@
 import React, {useRef} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {
   ModalTick,
   ModalBrightness,
@@ -18,8 +20,10 @@ import {
 } from '@models/reducers/changeTheme';
 import {useSelector} from 'react-redux';
 import HeaderDetail from '@components/HeaderComponent/HeaderDetail/HeaderDetail';
-import BottomSheet from 'react-native-gesture-bottom-sheet';
+// import BottomSheet from 'react-native-gesture-bottom-sheet';
 import ViewLineComponent from '@components/ViewLineComponent/ViewLineComponent';
+import {colorGlobal} from '@config/colorGlobal';
+import ImagePlaceholder from '@components/ImagePlaceholder/ImagePlaceholder';
 interface IFooterModalProps {
   onPress: () => void;
 }
@@ -59,6 +63,7 @@ const DetailScreen = () => {
       </View>
     );
   };
+  const refRBSheet = useRef<any>();
   return (
     <View style={styles.container}>
       <HeaderDetail
@@ -66,7 +71,8 @@ const DetailScreen = () => {
         isButtonCenter={true}
         isButtonRight={true}
         headerLeft={() => navigation.goBack()}
-        headerRight={() => bottomSheet.current?.show()}
+        // headerRight={() => bottomSheet.current?.show()}
+        headerRight={() => refRBSheet.current?.open()}
         iconRight={{
           uri: 'https://icon-library.com/images/icon-other/icon-other-26.jpg',
         }}
@@ -75,9 +81,27 @@ const DetailScreen = () => {
       />
       {/* CONTENT COMPONENT */}
       <ContentComponent />
-      <BottomSheet hasDraggableIcon ref={bottomSheet} height={500}>
+      <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        height={450}
+        openDuration={150}
+        closeDuration={150}
+        animationType={'slide'}
+        customStyles={{
+          draggableIcon: {
+            backgroundColor: colorGlobal.lineColor,
+          },
+          container: {borderRadius: 15},
+        }}>
         <View style={styles.viewModal}>
-          <ModalTick title={'Đánh dấu trang'} font={font} fontSize={fontSize} />
+          <ModalTick
+            title={'Đánh dấu'}
+            font={font}
+            fontSize={fontSize}
+            colorTheme={colorTheme}
+          />
           <ModalTheme title={'Theme'} font={font} fontSize={fontSize} />
           <ModalBrightness
             title={'Độ sáng'}
@@ -95,21 +119,21 @@ const DetailScreen = () => {
             font={font}
             fontSize={fontSize}
           />
-          <ModalReport
+          {/* <ModalReport
             title={'Báo cáo nội dung bài báo'}
             font={font}
             fontSize={fontSize}
-          />
+          /> */}
         </View>
         <View style={styles.viewFooter}>
           <ViewLineComponent />
           <TouchableOpacity
             style={styles.buttonClose}
-            onPress={() => bottomSheet.current?.close()}>
+            onPress={() => refRBSheet.current?.close()}>
             <Text style={styles.labelClose}>Đóng</Text>
           </TouchableOpacity>
         </View>
-      </BottomSheet>
+      </RBSheet>
     </View>
   );
 };

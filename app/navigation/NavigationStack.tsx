@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, TransitionSpecs} from '@react-navigation/stack';
 import DetailScreen from '@screens/DetailScreen/DetailScreen';
 import {screenName} from './screenName';
 import {useNavigation} from '@react-navigation/core';
@@ -34,6 +34,7 @@ const MainScreen = () => {
         component={DetailScreen}
         options={{
           headerShown: false,
+          gestureDirection: 'horizontal-inverted',
         }}
       />
       <Stack.Screen

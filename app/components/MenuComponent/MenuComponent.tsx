@@ -6,7 +6,6 @@ import {useSelector, useDispatch} from 'react-redux';
 import {IChildren, IDataCategories} from '@models/interface';
 import {Actions} from '@store/actions';
 import {useNavigation} from '@react-navigation/native';
-import {screenName} from '@navigation/screenName';
 import {IListTabReducer} from '@store/reducers/listTabReducer';
 
 interface IMenuComponentProps {
@@ -27,17 +26,17 @@ const ButtonMenu = (props: IButtonMenuProps) => {
   const {id, name, children} = data;
   const getData = (item: IChildren) => {
     let paramsCatsSelectMenu = {
-      filters: {News_Cat: item.parent},
+      filters: {News_Cat: item.id},
       limit: '20',
       page: '1',
     };
-    if (item.parent === 0) {
-      paramsCatsSelectMenu = {
-        filters: {News_Cat: item.id},
-        limit: '20',
-        page: '1',
-      };
-    }
+    // if (item.parent === 0) {
+    //   paramsCatsSelectMenu = {
+    //     filters: {News_Cat: item.id},
+    //     limit: '20',
+    //     page: '1',
+    //   };
+    // }
 
     dispatch(Actions.getCatsListNewsRequestActions(paramsCatsSelectMenu));
   };
@@ -52,30 +51,32 @@ const ButtonMenu = (props: IButtonMenuProps) => {
   return (
     <View style={{marginHorizontal: 15}}>
       <View>
-        <TouchableOpacity
-          onPress={i => onPressButtonMenu(data)}
-          style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <View style={styles.viewButton}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <TouchableOpacity
+            onPress={() => getData(data)}
+            style={styles.viewButton}>
             <Text style={styles.title}>{name}</Text>
-          </View>
+          </TouchableOpacity>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
             {children !== undefined && (
-              <Image
-                source={{
-                  uri: 'https://icons.veryicon.com/png/o/internet--web/prejudice/down-arrow-5.png',
-                }}
-                style={{
-                  width: 20,
-                  height: 20,
-                  resizeMode: 'cover',
-                  transform: showChildrenCategories
-                    ? [{rotateY: '180deg'}, {rotateZ: '180deg'}]
-                    : [{rotateY: '0deg'}, {rotateZ: '0deg'}],
-                }}
-              />
+              <TouchableOpacity onPress={i => onPressButtonMenu(data)}>
+                <Image
+                  source={{
+                    uri: 'https://icons.veryicon.com/png/o/internet--web/prejudice/down-arrow-5.png',
+                  }}
+                  style={{
+                    width: 20,
+                    height: 20,
+                    resizeMode: 'cover',
+                    transform: showChildrenCategories
+                      ? [{rotateY: '180deg'}, {rotateZ: '180deg'}]
+                      : [{rotateY: '0deg'}, {rotateZ: '0deg'}],
+                  }}
+                />
+              </TouchableOpacity>
             )}
           </View>
-        </TouchableOpacity>
+        </View>
         {showChildrenCategories &&
           children !== undefined &&
           children.map((itemChildren: IChildren, index) => {

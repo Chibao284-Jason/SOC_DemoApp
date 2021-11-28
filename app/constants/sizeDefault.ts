@@ -1,0 +1,6 @@
+
+// Size height
+
+export const HEADER_MAX_HEIGHT = 70;
+export const HEADER_MIN_HEIGHT = 0;
+export const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;

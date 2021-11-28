@@ -31,7 +31,7 @@ const ModalTheme = (props: IModalThemeProps) => {
     id: number;
     color: string;
   }) => {
-    let dataColorTemp = dataColorTheme.map((item: {id: number}) => {
+    let dataColorTemp: any = dataColorTheme.map((item: {id: number}) => {
       if (item.id === itemChoose.id) {
         return {...item, isSelect: true};
       } else return {...item, isSelect: false};
@@ -83,12 +83,12 @@ const ModalTheme = (props: IModalThemeProps) => {
             );
           }}
         />
-        <Image
+        {/* <Image
           source={{
             uri: 'https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png',
           }}
           style={styles.imgArrow}
-        />
+        /> */}
       </View>
     </View>
   );
