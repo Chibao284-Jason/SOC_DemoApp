@@ -1,10 +1,11 @@
+import { colorGlobal } from '@config/colorGlobal';
 import { IChangeThemeColor } from '@models/actions/changeTheme';
 import * as types from '@store/actions/types';
 type IColorTheme = {
   color: string
 }
 const initialState: IColorTheme = {
-  color: ''
+  color: colorGlobal.sliderDefault
 }
 
 export const ChangeThemeColorReducer = (state = initialState, action: IChangeThemeColor) => {

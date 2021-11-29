@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {
@@ -10,20 +10,21 @@ import {
   ModalReport,
 } from '@components/ModalComponent';
 import {styles} from './styles';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import ContentComponent from '@components/ContentComponent/ContentComponent';
 import {
   IChangeThemeColorReducer,
   IChangeThemeFontFamilyReducer,
   IChangeThemeFontSizeReducer,
 } from '@models/reducers/changeTheme';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import HeaderDetail from '@components/HeaderComponent/HeaderDetail/HeaderDetail';
 import ViewLineComponent from '@components/ViewLineComponent/ViewLineComponent';
 import {colorGlobal} from '@config/colorGlobal';
-interface IFooterModalProps {
-  onPress: () => void;
-}
+import {IDetailNewsReducer} from '@store/reducers/detailNewsReducer';
+import {Actions} from '@store/actions';
+import {IGetParamsDetailRequest} from '@models/actions/getDetailNews';
+import ViewLoadingComponent from '@components/ViewLoadingComponent/ViewLoadingComponent';
 
 interface IChangeFontReducer {
   ChangeFontReducer: IChangeThemeFontFamilyReducer &
@@ -32,33 +33,37 @@ interface IChangeFontReducer {
 interface IColorThemeReducer {
   ChangeThemeColorReducer: IChangeThemeColorReducer;
 }
+interface INewsReducer {
+  detailNewsReducer: IDetailNewsReducer;
+}
 
 const DetailScreen = () => {
   const navigation = useNavigation();
+  const route = useRoute();
 
-  const font = useSelector(
-    (state: IChangeFontReducer) => state.ChangeFontReducer.font,
+  const ChangeFontReducer = useSelector(
+    (state: IChangeFontReducer) => state.ChangeFontReducer,
   );
-
-  const fontSize = useSelector(
-    (state: IChangeFontReducer) => state.ChangeFontReducer.fontSize,
-  );
-
   const colorTheme = useSelector(
     (state: IColorThemeReducer) => state.ChangeThemeColorReducer.color,
   );
 
-  const FooterModal = (props: IFooterModalProps) => {
-    const {onPress} = props;
-    return (
-      <View style={styles.viewFooter}>
-        <ViewLineComponent />
-        <TouchableOpacity style={styles.buttonClose} onPress={onPress}>
-          <Text style={styles.labelClose}>Đóng</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
+  const {font, fontSize} = ChangeFontReducer;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (route.params !== undefined) {
+      dispatch(
+        Actions.getDetailNewsRequestActions(
+          route.params as IGetParamsDetailRequest,
+        ),
+      );
+    }
+  }, []);
+  const detailNewsReducer = useSelector(
+    (state: INewsReducer) => state.detailNewsReducer,
+  );
+  const {isLoading, dataDetailNews} = detailNewsReducer;
+
   const refRBSheet = useRef<any>();
   return (
     <View style={styles.container}>
@@ -76,7 +81,11 @@ const DetailScreen = () => {
         buttonRightStyle={{marginRight: 20}}
       />
       {/* CONTENT COMPONENT */}
-      <ContentComponent />
+      {!isLoading ? (
+        <ContentComponent dataDetail={dataDetailNews} />
+      ) : (
+        <ViewLoadingComponent />
+      )}
       <RBSheet
         ref={refRBSheet}
         closeOnDragDown={true}

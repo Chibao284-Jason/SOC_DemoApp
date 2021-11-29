@@ -51,7 +51,6 @@ const HomeScreen = (props: IHeaderComponentProps) => {
     if (route.params !== undefined) {
       setIdCatsCurrent(route.params.filters.News_Cats);
     }
-    console.log('vao route');
   }, [route.params]);
 
   const onPressCategories = async (item: any) => {
@@ -201,7 +200,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
             <FlatList
               style={styles.containerBody}
               showsVerticalScrollIndicator={false}
-              onEndReachedThreshold={3}
+              onEndReachedThreshold={1}
               scrollEventThrottle={10}
               scrollEnabled={
                 nameTab === screenName.SEARCH_SCREEN ? false : true

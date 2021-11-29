@@ -48,11 +48,11 @@ export interface IDataResponseListNews {
 }
 
 export interface IDataListNew {
-  rows?: Row[]
+  rows?: IRow[]
   pages?: Pages
 }
 
-export interface Row {
+export interface IRow {
   id: number
   title: string
   datetime: string
