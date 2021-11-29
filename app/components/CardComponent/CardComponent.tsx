@@ -10,12 +10,16 @@ import moment from 'moment';
 import ViewLineComponent from '@components/ViewLineComponent/ViewLineComponent';
 import {styles} from './styles';
 import {yesterday, lastM, lastW, lastY} from '@constants/dateConstant';
+import AutoHeightImage from 'react-native-auto-height-image';
 interface CardComponentProps {
   imgUri: ImageSourcePropType;
   title?: string;
   timeCreated?: string | number;
   onPress: () => void;
   countView: string | number;
+}
+interface TSource {
+  uri: string;
 }
 
 const CardComponent = (props: CardComponentProps) => {
@@ -43,7 +47,13 @@ const CardComponent = (props: CardComponentProps) => {
     <View>
       <TouchableOpacity style={styles.container} onPress={onPress}>
         <View style={styles.imgThumbnail}>
-          <Image source={imgUri} style={styles.imgBgBorderRadius} />
+          {/* <Image source={imgUri} style={styles.imgBgBorderRadius} /> */}
+          <AutoHeightImage
+            width={180}
+            source={imgUri as TSource}
+            borderRadius={5}
+            // style={styles.imgBgBorderRadius}
+          />
         </View>
         <View style={styles.viewLabelNews}>
           <View style={styles.labelNews}>

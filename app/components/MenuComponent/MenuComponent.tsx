@@ -7,6 +7,8 @@ import {IChildren, IDataCategories} from '@models/interface';
 import {Actions} from '@store/actions';
 import {useNavigation} from '@react-navigation/native';
 import {IListTabReducer} from '@store/reducers/listTabReducer';
+import {colorGlobal} from '@config/colorGlobal';
+import {screenName} from '@navigation/screenName';
 
 interface IMenuComponentProps {
   onPress: (i: string) => void;
@@ -30,15 +32,12 @@ const ButtonMenu = (props: IButtonMenuProps) => {
       limit: '20',
       page: '1',
     };
-    // if (item.parent === 0) {
-    //   paramsCatsSelectMenu = {
-    //     filters: {News_Cat: item.id},
-    //     limit: '20',
-    //     page: '1',
-    //   };
-    // }
 
     dispatch(Actions.getCatsListNewsRequestActions(paramsCatsSelectMenu));
+    navigation.navigate(
+      screenName.HOME_SCREEN as never,
+      paramsCatsSelectMenu as never,
+    );
   };
   const onPressButtonMenu = (i: IChildren) => {
     if (children === undefined) {
@@ -49,7 +48,11 @@ const ButtonMenu = (props: IButtonMenuProps) => {
   };
 
   return (
-    <View style={{marginHorizontal: 15}}>
+    <View
+      style={{
+        marginHorizontal: 15,
+        backgroundColor: colorGlobal.backgroundGlobal,
+      }}>
       <View>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <TouchableOpacity
@@ -86,7 +89,6 @@ const ButtonMenu = (props: IButtonMenuProps) => {
                 <TouchableOpacity
                   style={styles.viewButton}
                   onPress={() => getData(itemChildren)}>
-                  {/* onPress={() => navigation.navigate('HomeScreen')}> */}
                   <Text style={styles.title}>{itemChildren.name}</Text>
                 </TouchableOpacity>
               </View>

@@ -1,21 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  FlatList,
-  TouchableOpacity,
-  StatusBar,
-  Animated,
-} from 'react-native';
+import {View, FlatList, TouchableOpacity, Animated} from 'react-native';
 import {screenName} from '@navigation/screenName';
 import ListNewsScreen from '@screens/ListNewsScreen/ListNewsScreen';
-import MenuScreen from '@screens/MenuScreen/MenuScreen';
 import {Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-import {dataTab} from '@constants/dataExample';
 import {styles} from './styles';
 import {colorGlobal, colorTabBar} from '@config/colorGlobal';
 import HeaderBanner from '@components/HeaderComponent/HeaderBanner/HeaderBanner';
 import {useDispatch, useSelector} from 'react-redux';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {Actions} from '@store/actions';
 import ViewLoadingComponent from '@components/ViewLoadingComponent/ViewLoadingComponent';
 import {
@@ -26,7 +19,6 @@ import {
 } from './types';
 import {IconMenu} from '@components/IconMenuComponent/IconMenu';
 import {TabBarItem} from '@components/TabBarItemComponent/TabBarItem';
-import SearchComponent from '@components/SearchComponent/SearchComponent';
 import {
   HEADER_MAX_HEIGHT,
   HEADER_MIN_HEIGHT,
@@ -36,6 +28,8 @@ import ImageViewLoading from '@components/ImagePlaceholder/index';
 import ImagePlaceholder from '@components/ImagePlaceholder/ImagePlaceholder';
 const HomeScreen = (props: IHeaderComponentProps) => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+  const route = useRoute<any>();
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
   const [nameTab, setNameTab] = useState<string | undefined>(
     screenName.SEARCH_SCREEN,
@@ -43,6 +37,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
   const [pageCurrent, setPageCurrent] = useState(2);
   const [idCatsCurrent, setIdCatsCurrent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [dataNews, setDataNews] = useState<any>(null);
   useEffect(() => {
     dispatch(Actions.getListTabRequest());
     dispatch(
@@ -52,9 +47,15 @@ const HomeScreen = (props: IHeaderComponentProps) => {
       }),
     );
   }, []);
+  useEffect(() => {
+    if (route.params !== undefined) {
+      setIdCatsCurrent(route.params.filters.News_Cats);
+    }
+    console.log('vao route');
+  }, [route.params]);
 
-  const onPressCategories = (item: any) => {
-    dispatch(
+  const onPressCategories = async (item: any) => {
+    await dispatch(
       Actions.getCatsListNewsRequestActions({
         filters: {News_Cat: item.id},
         limit: '20',
@@ -90,31 +91,23 @@ const HomeScreen = (props: IHeaderComponentProps) => {
     setPageCurrent(pageCurrent + 1);
   };
 
-  const dataTabBar = useSelector(
-    (state: IListTabState) => state.listTabReducer.data,
+  const listTabReducer = useSelector(
+    (state: IListTabState) => state.listTabReducer,
   );
-  const isLoadingListTab = useSelector(
-    (state: IListTabState) => state.listTabReducer.isLoading,
+  const listNewsReducer = useSelector(
+    (state: IListNewsState) => state.listNewsReducer,
   );
-  const isLoadingListNews = useSelector(
-    (state: IListNewsState) => state.listNewsReducer.isLoading,
+  const listNewsCatsReducer = useSelector(
+    (state: IListNewsCatsState) => state.listNewsCatsReducer,
   );
+  const dataCategories = listTabReducer.data.data;
+  const isLoadingListTab = listTabReducer.isLoading;
+  const isLoadingListNews = listNewsReducer.isLoading;
+  const dataListNews = listNewsReducer.data;
+  const dataListNewsCats = listNewsCatsReducer.data;
+  const isLoadingListNewsCats = listNewsCatsReducer.isLoading;
+  const isLoadingMoreListNewsCats = listNewsCatsReducer.isLoadingMore;
 
-  const dataListNews = useSelector(
-    (state: IListNewsState) => state.listNewsReducer.data,
-  );
-
-  const dataListNewsCats = useSelector(
-    (state: IListNewsCatsState) => state.listNewsCatsReducer.data,
-  );
-  const isLoadingListNewsCats = useSelector(
-    (state: IListNewsCatsState) => state.listNewsCatsReducer.isLoading,
-  );
-  const isLoadingMoreListNewsCats = useSelector(
-    (state: IListNewsCatsState) => state.listNewsCatsReducer.isLoadingMore,
-  );
-
-  const [dataNews, setDataNews] = useState<any>(null);
   useEffect(() => {
     if (!isLoadingListNewsCats) {
       setDataNews(dataListNewsCats);
@@ -128,10 +121,6 @@ const HomeScreen = (props: IHeaderComponentProps) => {
     }
   }, [isLoadingListNews]);
 
-  const [dataCategories, setDataCategories] = useState(
-    !isLoadingListTab ? dataTabBar.data : dataTab,
-  );
-
   const headerHeight = scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE],
     outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
@@ -140,7 +129,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
 
   return (
     <>
-      {!isLoadingListTab && dataNews !== null ? (
+      {!isLoadingListTab ? (
         <View style={styles.container}>
           <View style={styles.viewHeader}>
             <Animated.View style={[styles.viewBanner, {height: headerHeight}]}>
@@ -166,7 +155,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
                 <TouchableOpacity
                   style={[styles.tabItem]}
                   onPress={() => {
-                    setNameTab(screenName.MENU_SCREEN);
+                    navigation.navigate(screenName.MENU_SCREEN as never);
                   }}>
                   <IconMenu
                     img={{
@@ -196,7 +185,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
                 <TouchableOpacity
                   style={[styles.tabItem]}
                   onPress={() => {
-                    setNameTab(screenName.SEARCH_SCREEN);
+                    navigation.navigate(screenName.SEARCH_SCREEN as never);
                   }}>
                   <Icon
                     name="search"
@@ -208,29 +197,11 @@ const HomeScreen = (props: IHeaderComponentProps) => {
               </LinearGradient>
             </View>
           </View>
-          {nameTab === screenName.MENU_SCREEN ||
-          nameTab === screenName.SEARCH_SCREEN ? (
-            <Animated.ScrollView
-              style={styles.containerBody}
-              showsVerticalScrollIndicator={false}
-              scrollEventThrottle={16}
-              scrollEnabled={true}
-              onScroll={Animated.event(
-                [{nativeEvent: {contentOffset: {y: scrollY}}}],
-                {useNativeDriver: false},
-              )}>
-              {nameTab === screenName.MENU_SCREEN ? (
-                <MenuScreen onPress={item => console.log('item', item)} />
-              ) : (
-                <SearchComponent />
-              )}
-            </Animated.ScrollView>
-          ) : !isLoading ? (
+          {!isLoading && dataNews !== null ? (
             <FlatList
               style={styles.containerBody}
-              showsVerticalScrollIndicator={true}
+              showsVerticalScrollIndicator={false}
               onEndReachedThreshold={3}
-              // onEndReachedThreshold={16}
               scrollEventThrottle={10}
               scrollEnabled={
                 nameTab === screenName.SEARCH_SCREEN ? false : true
@@ -241,7 +212,6 @@ const HomeScreen = (props: IHeaderComponentProps) => {
               )}
               data={dataNews.rows}
               onEndReached={i => {
-                // if (i.distanceFromEnd < 0) return;
                 onLoadMore();
               }}
               ListFooterComponent={

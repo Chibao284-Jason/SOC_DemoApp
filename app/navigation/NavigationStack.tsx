@@ -6,6 +6,8 @@ import {screenName} from './screenName';
 import {useNavigation} from '@react-navigation/core';
 import HomeScreen from '@screens/HomeScreen/HomeScreen';
 import MenuScreen from '@screens/MenuScreen/MenuScreen';
+import SearchScreen from '@screens/SearchScreen/SearchScreen';
+import SearchComponent from '@components/SearchComponent/SearchComponent';
 const Stack = createStackNavigator();
 
 interface NavigationContainerProps {}
@@ -13,36 +15,35 @@ interface NavigationContainerProps {}
 const MainScreen = () => {
   const navigation = useNavigation();
   return (
-    <Stack.Navigator initialRouteName={screenName.HOME_SCREEN}>
-      {/* <Stack.Screen
-        name={screenName.HOME_SCREEN}
-        component={HomeScreen}
-        options={{
-          headerShown: false,
-        }}
-      /> */}
+    <Stack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName={screenName.HOME_SCREEN}>
       <Stack.Screen
         name={screenName.HOME_SCREEN}
         component={HomeScreen}
-        options={{
-          headerShown: false,
-        }}
+        options={{}}
       />
 
       <Stack.Screen
         name={screenName.DETAIL_SCREEN}
         component={DetailScreen}
-        options={{
-          headerShown: false,
-          gestureDirection: 'horizontal-inverted',
-        }}
+        options={
+          {
+            // gestureDirection: 'horizontal-inverted',
+          }
+        }
       />
       <Stack.Screen
         name={screenName.MENU_SCREEN}
         component={MenuScreen}
         options={{
-          headerShown: false,
+          gestureDirection: 'horizontal-inverted',
         }}
+      />
+      <Stack.Screen
+        name={screenName.SEARCH_SCREEN}
+        component={SearchScreen}
+        options={{}}
       />
     </Stack.Navigator>
   );

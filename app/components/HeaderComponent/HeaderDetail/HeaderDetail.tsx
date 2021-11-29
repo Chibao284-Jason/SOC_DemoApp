@@ -19,6 +19,7 @@ interface IHeaderDetailProps {
   isButtonRight?: boolean;
   headerLeft?: () => void;
   headerRight?: () => void;
+  isAvatar?: boolean;
   imgAuthor?: ImageSourcePropType;
   iconLeft?: ImageSourcePropType;
   iconRight?: ImageSourcePropType;
@@ -26,6 +27,8 @@ interface IHeaderDetailProps {
   iconRightStyle?: ImageStyle;
   buttonLeftStyle?: ViewStyle;
   buttonRightStyle?: ViewStyle;
+  title?: string;
+  labelRight?: string;
 }
 
 const HeaderDetail = (props: IHeaderDetailProps) => {
@@ -41,6 +44,9 @@ const HeaderDetail = (props: IHeaderDetailProps) => {
     iconRightStyle,
     buttonLeftStyle,
     buttonRightStyle,
+    title,
+    isAvatar,
+    labelRight,
   } = props;
   return (
     <View style={styles.viewHeader}>
@@ -59,7 +65,9 @@ const HeaderDetail = (props: IHeaderDetailProps) => {
             buttonStyle={buttonLeftStyle}
           />
         )}
-        {isButtonCenter && <AuthorComponent />}
+        {isButtonCenter && (
+          <AuthorComponent isAvatar={isAvatar} nameAuthor={title} />
+        )}
         {isButtonRight && headerRight && (
           <ButtonHeaderComponent
             imgIcon={
@@ -72,6 +80,7 @@ const HeaderDetail = (props: IHeaderDetailProps) => {
             onPress={headerRight}
             iconStyles={iconRightStyle}
             buttonStyle={buttonRightStyle}
+            label={labelRight}
           />
         )}
       </View>

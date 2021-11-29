@@ -18,7 +18,7 @@ type Styles = {
 }
 export const styles: Styles = {
   container: {
-    marginVertical: 10,
+    marginVertical: 5,
     marginHorizontal: 5,
     flexDirection: 'row',
   },
@@ -40,14 +40,13 @@ export const styles: Styles = {
   },
   textCreate: {
     color: colorGlobal.timeCreateColor,
-    fontWeight: 'bold',
     marginLeft: 10,
   },
   imgThumbnail: {
-    width: 150,
-    height: 120,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    // width: 150,
+    // height: 120,
+    // justifyContent: 'flex-end',
+    // alignItems: 'flex-end',
 
   },
   imgBgBorderRadius: {

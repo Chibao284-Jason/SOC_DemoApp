@@ -1,7 +1,6 @@
 import React, {useRef} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {
   ModalTick,
   ModalBrightness,
@@ -20,10 +19,8 @@ import {
 } from '@models/reducers/changeTheme';
 import {useSelector} from 'react-redux';
 import HeaderDetail from '@components/HeaderComponent/HeaderDetail/HeaderDetail';
-// import BottomSheet from 'react-native-gesture-bottom-sheet';
 import ViewLineComponent from '@components/ViewLineComponent/ViewLineComponent';
 import {colorGlobal} from '@config/colorGlobal';
-import ImagePlaceholder from '@components/ImagePlaceholder/ImagePlaceholder';
 interface IFooterModalProps {
   onPress: () => void;
 }
@@ -51,7 +48,6 @@ const DetailScreen = () => {
     (state: IColorThemeReducer) => state.ChangeThemeColorReducer.color,
   );
 
-  const bottomSheet = useRef();
   const FooterModal = (props: IFooterModalProps) => {
     const {onPress} = props;
     return (
@@ -69,9 +65,9 @@ const DetailScreen = () => {
       <HeaderDetail
         isButtonLeft={true}
         isButtonCenter={true}
+        isAvatar={true}
         isButtonRight={true}
         headerLeft={() => navigation.goBack()}
-        // headerRight={() => bottomSheet.current?.show()}
         headerRight={() => refRBSheet.current?.open()}
         iconRight={{
           uri: 'https://icon-library.com/images/icon-other/icon-other-26.jpg',

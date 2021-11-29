@@ -17,6 +17,7 @@ export const colors = {
   gray2: '#E6E7E9',
   gray3: '#E8E8E8',
   gray4: '#99A0B0',
+  athensGray: "#E9ECEF",
   white: '#FFFFFF',
   white1: '#D9D9D9',
   white2: '#F5F5F5',
@@ -76,6 +77,7 @@ export const colors = {
   easternBlue: '#22A6A0',
   allports: "#006F9C",
   milanoRed: '#B3110D'
+
 };
 
 
@@ -92,8 +94,9 @@ export const colorGlobal = {
   textWhite: colors.white2,
 
   //BACKGROUND
-  backgroundGlobal: colors.light,
-  lineColor: colors.gray1,
+  backgroundGlobal: colors.white,
+  // lineColor: colors.gray1,
+  lineColor: colors.athensGray,
   focusLineTab: colors.light,
   textInputBg: colors.grey7,
   textInputBorder: colors.gray4,

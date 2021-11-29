@@ -22,10 +22,12 @@ export const styles: Styles = {
   },
   viewHeader: {
     paddingTop: hasNotch() ? getStatusBarHeight() : undefined,
+    backgroundColor: colorGlobal.backgroundGlobal
   },
   viewButton: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: "center"
   },
   imgBanner: {
     width: 100,

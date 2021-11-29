@@ -1,3 +1,4 @@
+import { colorGlobal } from '@config/colorGlobal'
 import { ViewStyle, TextStyle, ImageStyle } from 'react-native'
 type Styles = {
   container: ViewStyle
@@ -5,7 +6,7 @@ type Styles = {
   title: TextStyle
 }
 export const styles: Styles = {
-  container: {},
+  container: { backgroundColor: colorGlobal.backgroundGlobal },
   viewButton: { marginTop: 20 },
   title: {
     fontSize: 18,

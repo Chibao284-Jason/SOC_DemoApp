@@ -1,25 +1,34 @@
 import DatePickerComponent from '@components/DatePickerComponent/DatePickerComponent';
+import HeaderDetail from '@components/HeaderComponent/HeaderDetail/HeaderDetail';
+import SearchComponent from '@components/SearchComponent/SearchComponent';
 import SearchInput from '@components/SearchComponent/SearchInput';
 import {colorGlobal} from '@config/colorGlobal';
 import * as React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 interface ISearchScreenProps {}
 
 const SearchScreen = (props: ISearchScreenProps) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <View>
-        <SearchInput label="Thể loại" placeholder="vd: Bóng đá" />
-        <SearchInput label="Tiêu đề" placeholder="vd: Đội tuyển Việt Nam" />
-        <SearchInput label="Tác giả" placeholder="vd: Chí Bảo" />
-        <DatePickerComponent />
-      </View>
-      <View style={styles.viewButtonSearch}>
-        <TouchableOpacity style={styles.buttonSearch}>
-          <Text style={styles.textSearch}>Tìm kiếm</Text>
-        </TouchableOpacity>
-      </View>
+      <HeaderDetail
+        isButtonLeft={true}
+        isButtonCenter={true}
+        isButtonRight={true}
+        headerLeft={() => console.log()}
+        headerRight={() => navigation.goBack()}
+        iconLeft={{uri: ''}}
+        iconRight={require('../../assets/img/arrowRight.png')}
+        iconRightStyle={{
+          display: 'none',
+        }}
+        buttonRightStyle={{marginRight: 20}}
+        title="Tìm kiếm"
+        labelRight={'Đóng'}
+      />
+      <SearchComponent />
     </View>
   );
 };
@@ -27,7 +36,7 @@ const SearchScreen = (props: ISearchScreenProps) => {
 export default SearchScreen;
 
 const styles = StyleSheet.create({
-  container: {margin: 10, height: '100%'},
+  container: {backgroundColor: colorGlobal.backgroundGlobal, flex: 1},
   viewButtonSearch: {
     alignItems: 'center',
     marginTop: 40,
