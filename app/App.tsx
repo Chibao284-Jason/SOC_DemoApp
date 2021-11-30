@@ -13,7 +13,7 @@ const {persistor, store} = configureStore();
 const App = (props: AppProps) => {
   return (
     <Provider store={store}>
-      <StatusBar hidden={true} />
+      <StatusBar hidden={false} />
       <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
         <Navigator />
       </PersistGate>

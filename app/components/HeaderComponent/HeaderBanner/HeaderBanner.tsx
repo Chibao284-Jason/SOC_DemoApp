@@ -8,7 +8,7 @@ interface IHeaderBannerProps {}
 const HeaderBanner = (props: IHeaderBannerProps) => {
   return (
     <>
-      <StatusBar hidden={true} />
+      <StatusBar hidden={false} />
       <Image
         style={styles.container}
         // imageStyle={{justifyContent: 'center', alignItems: 'center'}}

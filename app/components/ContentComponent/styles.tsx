@@ -28,7 +28,6 @@ export const styles: Styles = {
   }),
   textCreate: (font, fontSize) => ({
     color: colorGlobal.timeCreateColor,
-    fontWeight: 'bold',
     fontFamily: font ? font : 'Arial',
     marginVertical: 10,
     fontSize: scale(14, fontSize),

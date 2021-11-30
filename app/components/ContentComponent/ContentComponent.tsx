@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Dimensions,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+} from 'react-native';
 import {} from 'react-native-elements';
 import {useSelector} from 'react-redux';
 import moment from 'moment';
@@ -14,7 +21,7 @@ import RenderHtml from 'react-native-render-html';
 import Video, {OnPlaybackRateData} from 'react-native-video';
 import {Image} from 'react-native-elements/dist/image/Image';
 import {yesterday, lastM, lastW, lastY} from '@constants/dateConstant';
-
+import {useNavigation} from '@react-navigation/native';
 interface IContentComponentProps {
   dataDetail: IDataDetailNews;
 }
@@ -24,8 +31,10 @@ interface IReducer {
 }
 
 const ContentComponent = (props: IContentComponentProps) => {
+  const navigation = useNavigation();
   const [paused, setPaused] = useState(true);
   const [pausedAudio, setPausedAudio] = useState(true);
+  const [onEnd, setOnEnd] = useState(true);
 
   const ChangeFontReducer = useSelector(
     (state: IReducer) => state.ChangeFontReducer,
@@ -79,8 +88,22 @@ const ContentComponent = (props: IContentComponentProps) => {
       setPausedAudio(false);
     }
   };
+  const onEndBack = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const windowHeight = Dimensions.get('window').height,
+      height = e.nativeEvent.contentSize.height,
+      offset = e.nativeEvent.contentOffset.y;
+    if (windowHeight + offset >= height + 150) {
+      if (onEnd) {
+        navigation.goBack();
+        setOnEnd(false);
+      }
+    }
+  };
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      scrollEventThrottle={16}
+      onScroll={e => onEndBack(e)}>
       <View>
         <Text style={styles.headingTitle(font, fontSize)}>{title}</Text>
       </View>

@@ -92,6 +92,7 @@ export const colorGlobal = {
   titleNews: colors.black,
   timeCreateColor: colors.gray1,
   textWhite: colors.white2,
+  textHotKey: colors.gray,
 
   //BACKGROUND
   backgroundGlobal: colors.white,
@@ -105,7 +106,10 @@ export const colorGlobal = {
   loadingColor: colors.milanoRed,
 
   //ICONS
-  iconSearchColor: colors.light
+  iconSearchColor: colors.light,
+
+  //BORDER
+  borderHotKey: colors.grey7
 
 }
 export const colorTabBar = [colorGlobal.tabBarBg, colorGlobal.tabBarBg]

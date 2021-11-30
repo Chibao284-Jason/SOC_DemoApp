@@ -1,22 +1,16 @@
 import {colorGlobal} from '@config/colorGlobal';
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Animated,
-  Text,
-  Image,
-} from 'react-native';
+import {View, TextInput, TouchableOpacity, Text, Image} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {Actions} from '@store/actions';
 import {ISearchNewsReducer} from '@store/reducers/searchNewsReducer';
 import ViewLoadingComponent from '@components/ViewLoadingComponent/ViewLoadingComponent';
 import ListNewsScreen from '@screens/ListNewsScreen/ListNewsScreen';
 import {ScrollView} from 'react-native-gesture-handler';
-
+import {styles} from './styles';
+import SearchShortcut from './SearchShortcut';
+import {useNavigation} from '@react-navigation/native';
 interface ISearchComponentProps {}
 interface ISearchState {
   searchNewsReducer: ISearchNewsReducer;
@@ -49,6 +43,7 @@ const ReadView = () => {
   );
 };
 const SearchComponent = (props: ISearchComponentProps) => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const [textSearch, setTextSearch] = useState<any>('');
   const [key, setKey] = useState<any>('');
@@ -76,25 +71,36 @@ const SearchComponent = (props: ISearchComponentProps) => {
 
   return (
     <>
-      <View style={styles.searchContainer}>
-        <TextInput
-          placeholder="Search"
-          style={styles.input}
-          onChangeText={text => {
-            setTextSearch(text);
-          }}
-        />
-        <TouchableOpacity onPress={() => submitSearch(textSearch)}>
-          <Icon
-            name="search"
-            size={25}
-            style={{marginLeft: 20}}
-            tvParallaxProperties={undefined}
+      <View style={styles.headerSearch}>
+        <View style={styles.searchContainer}>
+          <TouchableOpacity onPress={() => submitSearch(textSearch)}>
+            <Icon
+              name="search"
+              size={25}
+              style={{marginRight: 5}}
+              tvParallaxProperties={undefined}
+            />
+          </TouchableOpacity>
+          <TextInput
+            placeholder="Tìm kiếm"
+            style={styles.input}
+            onChangeText={text => {
+              setTextSearch(text);
+            }}
           />
+        </View>
+        <TouchableOpacity
+          style={styles.viewCloseSearch}
+          onPress={() => {
+            // navigation.goBack();
+          }}>
+          <Text style={styles.closeSearch}>Đóng</Text>
         </TouchableOpacity>
       </View>
+
       {!isLoadingSearch ? (
         <ScrollView>
+          <SearchShortcut />
           {dataSearchNews &&
             dataSearchNews.rows !== null &&
             dataSearchNews.rows?.map(item => {
@@ -119,28 +125,3 @@ const SearchComponent = (props: ISearchComponentProps) => {
 };
 
 export default SearchComponent;
-
-const styles = StyleSheet.create({
-  container: {},
-  searchContainer: {
-    height: 50,
-    backgroundColor: colorGlobal.backgroundGlobal,
-    borderRadius: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    marginHorizontal: 10,
-    marginVertical: 10,
-    borderColor: colorGlobal.textInputBorder,
-    padding: 5,
-  },
-  input: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    flex: 1,
-    color: 'gray',
-  },
-  containerBody: {
-    // flex: 1,
-  },
-});
