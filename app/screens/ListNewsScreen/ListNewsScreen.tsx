@@ -25,14 +25,14 @@ const ListNewsScreen = (props: IDataList) => {
               : 'https://tuhoclaptrinh.edu.vn/upload/post/16/36/68/05-trang-web-tu-hoc-lap-trinh-mien-phi-216990.jpg',
           }}
           timeCreated={items.datetime}
-          onPress={() =>
+          onPress={() => {
             navigation.navigate(
               screenName.DETAIL_SCREEN as never,
               {
                 id: items.id,
               } as never,
-            )
-          }
+            );
+          }}
         />
       </View>
     </SafeAreaView>

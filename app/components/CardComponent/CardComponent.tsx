@@ -47,12 +47,10 @@ const CardComponent = (props: CardComponentProps) => {
     <View>
       <TouchableOpacity style={styles.container} onPress={onPress}>
         <View style={styles.imgThumbnail}>
-          {/* <Image source={imgUri} style={styles.imgBgBorderRadius} /> */}
           <AutoHeightImage
-            width={180}
+            width={165}
             source={imgUri as TSource}
             borderRadius={5}
-            // style={styles.imgBgBorderRadius}
           />
         </View>
         <View style={styles.viewLabelNews}>
@@ -65,14 +63,6 @@ const CardComponent = (props: CardComponentProps) => {
             <View style={styles.viewSource}>
               <View style={styles.viewLogo}>
                 <View style={styles.countView}>
-                  {/* <Image
-                    source={{
-                      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Ng%C6%B0%E1%BB%9Di_lao_%C4%91%E1%BB%99ng_logo.svg/1280px-Ng%C6%B0%E1%BB%9Di_lao_%C4%91%E1%BB%99ng_logo.svg.png',
-                    }}
-                  
-                    style={styles.imgSource}
-                    resizeMode={'contain'}
-                  /> */}
                   <Image
                     source={{
                       uri: 'https://icones.pro/wp-content/uploads/2021/05/icone-oeil-beurre-gris.png',

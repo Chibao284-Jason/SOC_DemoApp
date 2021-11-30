@@ -5,6 +5,7 @@ import * as listNewsCatsReducer from './listNewsCatsReducer'
 import * as listTabReducer from './listTabReducer'
 import * as searchNewsReducer from './searchNewsReducer'
 import * as detailNewsReducer from './detailNewsReducer'
+import * as dataTickReducer from './dataTickReducer'
 
 export default Object.assign(
   changeThemeReducers,
@@ -13,5 +14,6 @@ export default Object.assign(
   listNewsCatsReducer,
   listNewsReducer,
   searchNewsReducer,
-  detailNewsReducer
+  detailNewsReducer,
+  dataTickReducer
 );

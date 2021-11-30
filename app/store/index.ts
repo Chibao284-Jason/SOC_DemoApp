@@ -10,6 +10,7 @@ const config = {
   key: 'root',
   storage: AsyncStorage,
   blacklist: ['searchNewsReducer'],
+  whitelist: ['dataTickReducer'],
   debug: true, //to get useful logging
 };
 

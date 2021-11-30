@@ -1,4 +1,7 @@
-import React, {useState} from 'react';
+import {IDataTick} from '@models/reducers/dataTick';
+import {Actions} from '@store/actions';
+import {IDataTickState} from '@store/reducers/dataTickReducer';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   View,
@@ -8,18 +11,36 @@ import {
   Share,
   ImageBackground,
 } from 'react-native';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {styles} from './styles';
 interface ModalTickProps {
   title?: string;
   image?: ImageSourcePropType;
   font?: string;
   fontSize: number;
   colorTheme?: string;
+  items: IDataTick[];
 }
-import {styles} from './styles';
-
+interface ITickNews {
+  dataTickReducer: IDataTickState;
+}
 const ModalTick = (props: ModalTickProps) => {
   const [isTick, setIsTick] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const tickNews = useSelector(
+    (state: ITickNews) => state.dataTickReducer.data,
+  );
+  const {title, image, font, fontSize, colorTheme, items} = props;
+  useEffect(() => {
+    if (tickNews) {
+      const filter = tickNews.find(item => {
+        return item.id === items[0].id;
+      });
+      if (filter !== undefined) {
+        setIsTick(true);
+      }
+    }
+  }, []);
   const onShare = async () => {
     try {
       const result = await Share.share({
@@ -39,13 +60,23 @@ const ModalTick = (props: ModalTickProps) => {
       console.log(error);
     }
   };
-  const {title, image, font, fontSize, colorTheme} = props;
+  const onPressTick = () => {
+    if (items !== null) {
+      if (!isTick) {
+        return dispatch(Actions.addDataTick(items));
+      }
+      dispatch(Actions.removeDataTick(items));
+    }
+
+    setIsTick(!isTick);
+  };
 
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.viewLabel}
         onPress={() => {
+          onPressTick();
           setIsTick(!isTick);
         }}>
         <ImageBackground

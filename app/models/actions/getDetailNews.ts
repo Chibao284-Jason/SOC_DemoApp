@@ -23,4 +23,6 @@ export interface IDataDetailNews {
   cat: number
   video: string
   audio: string
+  thumbnail: string
+  id: string
 }

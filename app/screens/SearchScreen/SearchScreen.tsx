@@ -10,7 +10,7 @@ const SearchScreen = (props: ISearchScreenProps) => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <StatusBar hidden={true} />
+      {/* <StatusBar hidden={true} /> */}
       <SearchComponent />
     </View>
   );
@@ -20,7 +20,7 @@ export default SearchScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colorGlobal.textInputBg,
+    backgroundColor: colorGlobal.backgroundGlobal,
     flex: 1,
   },
 });

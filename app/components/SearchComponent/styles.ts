@@ -34,11 +34,15 @@ export const styles: Styles = {
     fontSize: 18,
     fontWeight: 'bold',
     flex: 1,
-    color: colorGlobal.textInputBg,
+    color: colorGlobal.textSearch,
   },
   containerShortcut: {
-    padding: 10, backgroundColor: colorGlobal.backgroundGlobal,
-    marginVertical: 5
+    padding: 10,
+    backgroundColor: colorGlobal.backgroundGlobal,
+    marginVertical: 5,
+    borderTopWidth: 5,
+    borderBottomWidth: 5,
+    borderColor: colorGlobal.textInputBg
   },
   searchInputContainer: {
     width: '100%',
@@ -51,9 +55,9 @@ export const styles: Styles = {
     marginBottom: 10,
   },
   labelTrending: {
-    fontSize: 14,
+    fontSize: 15,
     width: '100%',
-    fontWeight: '500',
+    fontWeight: '600',
     color: colorGlobal.textHotKey,
 
   },

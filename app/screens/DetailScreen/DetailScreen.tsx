@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {
@@ -23,8 +23,13 @@ import ViewLineComponent from '@components/ViewLineComponent/ViewLineComponent';
 import {colorGlobal} from '@config/colorGlobal';
 import {IDetailNewsReducer} from '@store/reducers/detailNewsReducer';
 import {Actions} from '@store/actions';
-import {IGetParamsDetailRequest} from '@models/actions/getDetailNews';
+import {
+  IDataDetailNews,
+  IGetParamsDetailRequest,
+} from '@models/actions/getDetailNews';
 import ViewLoadingComponent from '@components/ViewLoadingComponent/ViewLoadingComponent';
+import {IDataTickState} from '@store/reducers/dataTickReducer';
+import {IDataTick} from '@models/reducers/dataTick';
 
 interface IChangeFontReducer {
   ChangeFontReducer: IChangeThemeFontFamilyReducer &
@@ -40,6 +45,7 @@ interface INewsReducer {
 const DetailScreen = () => {
   const navigation = useNavigation();
   const route = useRoute();
+  const [itemDetail, setItemsDetail] = useState<IDataTick>();
 
   const ChangeFontReducer = useSelector(
     (state: IChangeFontReducer) => state.ChangeFontReducer,
@@ -63,6 +69,9 @@ const DetailScreen = () => {
     (state: INewsReducer) => state.detailNewsReducer,
   );
   const {isLoading, dataDetailNews} = detailNewsReducer;
+  useEffect(() => {
+    setItemsDetail(dataDetailNews);
+  }, [isLoading]);
 
   const refRBSheet = useRef<any>();
   return (
@@ -86,59 +95,62 @@ const DetailScreen = () => {
       ) : (
         <ViewLoadingComponent />
       )}
-      <RBSheet
-        ref={refRBSheet}
-        closeOnDragDown={true}
-        closeOnPressMask={false}
-        height={450}
-        openDuration={150}
-        closeDuration={150}
-        animationType={'slide'}
-        customStyles={{
-          draggableIcon: {
-            backgroundColor: colorGlobal.lineColor,
-          },
-          container: {borderRadius: 15},
-        }}>
-        <View style={styles.viewModal}>
-          <ModalTick
-            title={'Đánh dấu'}
-            font={font}
-            fontSize={fontSize}
-            colorTheme={colorTheme}
-          />
-          <ModalTheme title={'Theme'} font={font} fontSize={fontSize} />
-          <ModalBrightness
-            title={'Độ sáng'}
-            font={font}
-            fontSize={fontSize}
-            colorSlider={colorTheme}
-          />
-          <ModalFontsize
-            title={'Cỡ chữ'}
-            font={font}
-            colorSlider={colorTheme}
-          />
-          <ModalFontFamily
-            title={'Phông chữ'}
-            font={font}
-            fontSize={fontSize}
-          />
-          {/* <ModalReport
+      {!isLoading && itemDetail !== null && (
+        <RBSheet
+          ref={refRBSheet}
+          closeOnDragDown={true}
+          closeOnPressMask={false}
+          height={450}
+          openDuration={150}
+          closeDuration={150}
+          animationType={'slide'}
+          customStyles={{
+            draggableIcon: {
+              backgroundColor: colorGlobal.lineColor,
+            },
+            container: {borderRadius: 15},
+          }}>
+          <View style={styles.viewModal}>
+            <ModalTick
+              title={'Đánh dấu'}
+              font={font}
+              fontSize={fontSize}
+              colorTheme={colorTheme}
+              items={[itemDetail] as IDataTick[]}
+            />
+            <ModalTheme title={'Theme'} font={font} fontSize={fontSize} />
+            <ModalBrightness
+              title={'Độ sáng'}
+              font={font}
+              fontSize={fontSize}
+              colorSlider={colorTheme}
+            />
+            <ModalFontsize
+              title={'Cỡ chữ'}
+              font={font}
+              colorSlider={colorTheme}
+            />
+            <ModalFontFamily
+              title={'Phông chữ'}
+              font={font}
+              fontSize={fontSize}
+            />
+            {/* <ModalReport
             title={'Báo cáo nội dung bài báo'}
             font={font}
             fontSize={fontSize}
           /> */}
-        </View>
-        <View style={styles.viewFooter}>
-          <ViewLineComponent />
-          <TouchableOpacity
-            style={styles.buttonClose}
-            onPress={() => refRBSheet.current?.close()}>
-            <Text style={styles.labelClose}>Đóng</Text>
-          </TouchableOpacity>
-        </View>
-      </RBSheet>
+          </View>
+          <View style={styles.viewFooter}>
+            <ViewLineComponent />
+            <TouchableOpacity
+              style={styles.buttonClose}
+              onPress={() => refRBSheet.current?.close()}>
+              <Text style={styles.labelClose}>Đóng</Text>
+            </TouchableOpacity>
+          </View>
+        </RBSheet>
+      )}
     </View>
   );
 };
