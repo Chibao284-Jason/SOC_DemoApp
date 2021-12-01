@@ -92,7 +92,7 @@ const ContentComponent = (props: IContentComponentProps) => {
     const windowHeight = Dimensions.get('window').height,
       height = e.nativeEvent.contentSize.height,
       offset = e.nativeEvent.contentOffset.y;
-    if (windowHeight + offset >= height + 150) {
+    if (windowHeight + offset >= height + 200) {
       if (onEnd) {
         navigation.goBack();
         setOnEnd(false);

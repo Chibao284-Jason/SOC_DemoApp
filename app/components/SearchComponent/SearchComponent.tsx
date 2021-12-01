@@ -133,7 +133,7 @@ const SearchComponent = (props: ISearchComponentProps) => {
       </View>
 
       {!isLoadingSearch ? (
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           {key === '' && (
             <>
               <View style={styles.containerShortcut}>
