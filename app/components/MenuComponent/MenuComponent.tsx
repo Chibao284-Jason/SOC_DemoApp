@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, TouchableOpacity, Image} from 'react-native';
+import {Text, View, TouchableOpacity, Image, ScrollView} from 'react-native';
 import ViewLineComponent from '@components/ViewLineComponent/ViewLineComponent';
 import {styles} from './styles';
 import {useSelector, useDispatch} from 'react-redux';
@@ -107,13 +107,13 @@ const MenuComponent = (props: IMenuComponentProps) => {
   const {data} = dataCategories;
   const {onPress} = props;
   return (
-    <View style={styles.container}>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       {data.map((item: IDataCategories, index: number) => {
         return (
           <ButtonMenu key={item.id.toString()} data={item} onPress={onPress} />
         );
       })}
-    </View>
+    </ScrollView>
   );
 };
 

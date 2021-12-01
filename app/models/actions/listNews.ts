@@ -17,7 +17,7 @@ export interface IListNewsCatsActionsRequest {
 }
 export interface IResponseListTabSuccess {
   type: string
-  data: IDataListNew
+  data: IDataListNew[]
 }
 
 /**

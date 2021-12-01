@@ -123,6 +123,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
   const headerHeight = scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE],
     outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
+    // extrapolate: 'clamp',
     extrapolate: 'clamp',
   });
 
@@ -131,7 +132,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
       {!isLoadingListTab ? (
         <View style={styles.container}>
           <View style={styles.viewHeader}>
-            <Animated.View style={[styles.viewBanner, {height: headerHeight}]}>
+            <Animated.View style={{height: headerHeight}}>
               <TouchableOpacity
                 style={styles.viewBanner}
                 onPress={() => {

@@ -1,4 +1,4 @@
-import { IDataResponseListNews, IListNewsActionsRequest, IResponseListTabSuccess, IListNewsCatsParamsRequest } from "@models/actions/listNews";
+import { IDataResponseListNews, IListNewsActionsRequest, IResponseListTabSuccess, IListNewsCatsParamsRequest, IDataListNew } from "@models/actions/listNews";
 import { IError, IErrorAction } from "@models/interface";
 import * as types from "./types";
 
@@ -8,7 +8,7 @@ export const getCatsListNewsRequestActions = (params: IListNewsCatsParamsRequest
   type: types.GET_CATS_LIST_NEWS_REQUEST,
   params: params
 })
-export const getCatsListNewsSuccessActions = (data: IDataResponseListNews): IResponseListTabSuccess => ({
+export const getCatsListNewsSuccessActions = (data: IDataListNew[]): IResponseListTabSuccess => ({
   type: types.GET_CATS_LIST_NEWS_SUCCESS,
   data: data
 })
