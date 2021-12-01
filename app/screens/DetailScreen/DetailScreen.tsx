@@ -27,9 +27,8 @@ import {
   IDataDetailNews,
   IGetParamsDetailRequest,
 } from '@models/actions/getDetailNews';
-import ViewLoadingComponent from '@components/ViewLoadingComponent/ViewLoadingComponent';
-import {IDataTickState} from '@store/reducers/dataTickReducer';
 import {IDataTick} from '@models/reducers/dataTick';
+import ImagePlaceholderDetail from '@components/ImagePlaceholder/ImagePlaceholderDetail';
 
 interface IChangeFontReducer {
   ChangeFontReducer: IChangeThemeFontFamilyReducer &
@@ -93,7 +92,7 @@ const DetailScreen = () => {
       {!isLoading ? (
         <ContentComponent dataDetail={dataDetailNews} />
       ) : (
-        <ViewLoadingComponent />
+        <ImagePlaceholderDetail />
       )}
       {!isLoading && itemDetail !== null && (
         <RBSheet

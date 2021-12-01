@@ -9,11 +9,12 @@ import ViewLoadingComponent from '@components/ViewLoadingComponent/ViewLoadingCo
 import ListNewsScreen from '@screens/ListNewsScreen/ListNewsScreen';
 import {ScrollView} from 'react-native-gesture-handler';
 import {styles} from './styles';
-import SearchShortcut from './SearchShortcut';
 import {useNavigation} from '@react-navigation/native';
 import {IDataTickState} from '@store/reducers/dataTickReducer';
 import CardComponent from '@components/CardComponent/CardComponent';
 import {screenName} from '@navigation/screenName';
+import {IListNewsReducer} from '@store/reducers/listNewsReducer';
+import ImagePlaceholder from '@components/ImagePlaceholder';
 interface ISearchComponentProps {}
 interface ISearchState {
   searchNewsReducer: ISearchNewsReducer;
@@ -23,6 +24,9 @@ interface IViewNotFoundData {
 }
 interface ITickNews {
   dataTickReducer: IDataTickState;
+}
+interface IDataKeyTrending {
+  listNewsReducer: IListNewsReducer;
 }
 const ViewNotFoundData = (props: IViewNotFoundData) => {
   const {keySearch} = props;
@@ -63,6 +67,9 @@ const SearchComponent = (props: ISearchComponentProps) => {
 
   const dataSearchNews = useSelector(
     (state: ISearchState) => state.searchNewsReducer.dataSearch,
+  );
+  const dataKeyTrending = useSelector(
+    (state: IDataKeyTrending) => state.listNewsReducer.data.keywords_find_more,
   );
   const inputRef = useRef<any>(null);
   useEffect(() => {
@@ -129,7 +136,27 @@ const SearchComponent = (props: ISearchComponentProps) => {
         <ScrollView>
           {key === '' && (
             <>
-              <SearchShortcut />
+              <View style={styles.containerShortcut}>
+                <View style={styles.viewLabelInput}>
+                  <Text style={styles.labelTrending}>TÌM NHANH</Text>
+                </View>
+                <View style={styles.searchInputContainer}>
+                  {dataKeyTrending &&
+                    dataKeyTrending.map(item => {
+                      return (
+                        <TouchableOpacity
+                          key={item.keyWords}
+                          style={styles.viewTrending}
+                          onPress={() => {
+                            submitSearch(item.keyWords);
+                            setTextSearch(item.keyWords);
+                          }}>
+                          <Text style={styles.textHotKey}>{item.keyWords}</Text>
+                        </TouchableOpacity>
+                      );
+                    })}
+                </View>
+              </View>
               <View style={{backgroundColor: 'white', padding: 10}}>
                 <View style={styles.viewLabelInput}>
                   <Text style={styles.labelTrending}>ĐÃ ĐÁNH DẤU</Text>
@@ -138,6 +165,7 @@ const SearchComponent = (props: ISearchComponentProps) => {
                   const {title, thumbnail, datetime, count_view, id} = items;
                   return (
                     <CardComponent
+                      key={id.toString()}
                       imgUri={{uri: thumbnail}}
                       countView={count_view}
                       timeCreated={datetime}
@@ -175,7 +203,7 @@ const SearchComponent = (props: ISearchComponentProps) => {
             )}
         </ScrollView>
       ) : (
-        <ViewLoadingComponent />
+        <ImagePlaceholder />
       )}
     </>
   );

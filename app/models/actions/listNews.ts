@@ -17,7 +17,7 @@ export interface IListNewsCatsActionsRequest {
 }
 export interface IResponseListTabSuccess {
   type: string
-  data: IDataResponseListNews
+  data: IDataListNew
 }
 
 /**
@@ -48,8 +48,11 @@ export interface IDataResponseListNews {
 }
 
 export interface IDataListNew {
-  rows?: IRow[]
-  pages?: Pages
+  rows: IRow[]
+  pages: Pages
+  keywords_find_more: [{
+    keyWords: string
+  }]
 }
 
 export interface IRow {

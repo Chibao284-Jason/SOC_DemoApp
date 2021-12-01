@@ -9,7 +9,7 @@ export interface IListNewsReducer {
 }
 const initialState: IListNewsReducer = {
   isLoading: false,
-  data: {},
+  data: {} as IDataListNew,
   error: ''
 }
 
