@@ -41,6 +41,31 @@ export const listNewsReducer = (state = initialState, action: IListNewsActionsRe
         isLoading: false,
         error: action.error
       };
+    case types.GET_MORE_CATS_LIST_NEWS_REQUEST:
+      return {
+        ...state,
+        isLoadingMore: true,
+      };
+    case types.GET_MORE_CATS_LIST_NEWS_SUCCESS:
+      let dataMore = {}
+      if (action.data.pages[">"] === 2) {
+        dataMore = { ...action.data }
+      }
+      else {
+        dataMore = { ...state.data, rows: [...state.data.rows, ...action.data.rows] }
+      }
+
+      return {
+        ...state,
+        isLoadingMore: false,
+        data: dataMore
+      };
+    case types.GET_MORE_CATS_LIST_NEWS_FAILURE:
+      return {
+        ...state,
+        isLoadingMore: false,
+        error: action.error
+      };
 
     default:
       return state

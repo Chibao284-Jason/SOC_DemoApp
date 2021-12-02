@@ -27,8 +27,12 @@ const ButtonMenu = (props: IButtonMenuProps) => {
   const {onPress, data} = props;
   const {id, name, children} = data;
   const getData = (item: IChildren) => {
+    let idCatsMenu = item.id;
+    if (item.id === 10000) {
+      idCatsMenu = 0;
+    }
     let paramsCatsSelectMenu = {
-      filters: {News_Cat: item.id},
+      filters: {News_Cat: idCatsMenu},
       limit: '20',
       page: '1',
     };

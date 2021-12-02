@@ -80,6 +80,8 @@ const SearchComponent = (props: ISearchComponentProps) => {
     }
   }, []);
   const submitSearch = (text: string) => {
+    console.log(text);
+
     dispatch(
       Actions.searchRequest({
         filters: {News_Keywords: '*' + text + '*'},

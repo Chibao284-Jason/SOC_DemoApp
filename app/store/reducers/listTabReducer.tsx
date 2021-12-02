@@ -26,10 +26,12 @@ export const listTabReducer = (
         isLoading: true,
       };
     case types.GET_LIST_TAB_SUCCESS:
+      let home = {id: 10000, name: 'Trang chủ', parent: 0};
+      let dataTemp = [home, ...action.data];
       return {
         ...state,
         isLoading: false,
-        data: action,
+        data: {data: dataTemp},
       };
     case types.GET_LIST_TAB_FAILURE:
       return {

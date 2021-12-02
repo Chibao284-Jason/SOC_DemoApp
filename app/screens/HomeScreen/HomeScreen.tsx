@@ -31,9 +31,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
   const navigation = useNavigation();
   const route = useRoute<any>();
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
-  const [nameTab, setNameTab] = useState<string | undefined>(
-    screenName.SEARCH_SCREEN,
-  );
+  const [pressCats, setPressCats] = useState<boolean>(false);
   const [pageCurrent, setPageCurrent] = useState(2);
   const [idCatsCurrent, setIdCatsCurrent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -46,6 +44,10 @@ const HomeScreen = (props: IHeaderComponentProps) => {
         page: '1',
       }),
     );
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 400);
   }, []);
   useEffect(() => {
     if (route.params !== undefined) {
@@ -54,40 +56,60 @@ const HomeScreen = (props: IHeaderComponentProps) => {
   }, [route.params]);
 
   const onPressCategories = async (item: any) => {
+    let idCategories = item.id;
+    if (item.id === 10000) idCategories = 0;
     await dispatch(
       Actions.getCatsListNewsRequestActions({
-        filters: {News_Cat: item.id},
+        filters: {News_Cat: idCategories},
         limit: '20',
         page: '1',
       }),
     );
-    setNameTab(item.name);
+    setPressCats(true);
     setPageCurrent(2);
-    setIdCatsCurrent(item.id);
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 250);
+    setIdCatsCurrent(idCategories);
   };
   const onLoadMore = () => {
     if (idCatsCurrent !== '') {
+      if (pressCats) {
+        dispatch(
+          Actions.getMoreCatsListNewsRequestActions({
+            filters: {News_Cat: idCatsCurrent},
+            limit: '20',
+            page: pageCurrent.toString(),
+          }),
+        );
+        setPageCurrent(pageCurrent + 1);
+        return;
+      } else {
+        dispatch(
+          Actions.getCatsListNewsRequestActions({
+            filters: {News_Cat: idCatsCurrent},
+            limit: '20',
+            page: pageCurrent.toString(),
+          }),
+        );
+        setPageCurrent(pageCurrent + 1);
+        return;
+      }
+    }
+    if (pressCats) {
       dispatch(
-        Actions.getCatsListNewsRequestActions({
-          filters: {News_Cat: idCatsCurrent},
+        Actions.getMoreCatsListNewsRequestActions({
           limit: '20',
           page: pageCurrent.toString(),
         }),
       );
       setPageCurrent(pageCurrent + 1);
-      return;
+    } else {
+      dispatch(
+        Actions.getListNewsRequestActions({
+          limit: '20',
+          page: pageCurrent.toString(),
+        }),
+      );
+      setPageCurrent(pageCurrent + 1);
     }
-    dispatch(
-      Actions.getListNewsRequestActions({
-        limit: '20',
-        page: pageCurrent.toString(),
-      }),
-    );
-    setPageCurrent(pageCurrent + 1);
   };
 
   const listTabReducer = useSelector(
@@ -108,40 +130,31 @@ const HomeScreen = (props: IHeaderComponentProps) => {
   const isLoadingMoreListNewsCats = listNewsCatsReducer.isLoadingMore;
 
   useEffect(() => {
-    if (!isLoadingListNewsCats) {
-      setDataNews(dataListNewsCats);
-    }
-    setNameTab('');
-  }, [isLoadingListNewsCats]);
-
-  useEffect(() => {
     if (!isLoadingListNews) {
       setDataNews(dataListNews);
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 550);
     }
   }, [isLoadingListNews]);
 
   const headerHeight = scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE],
     outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
-    // extrapolate: 'clamp',
     extrapolate: 'clamp',
   });
 
   return (
     <>
-      {!isLoadingListTab ? (
+      {!isLoadingListTab && dataCategories ? (
         <View style={styles.container}>
           <View style={styles.viewHeader}>
             <Animated.View style={{height: headerHeight}}>
               <TouchableOpacity
                 style={styles.viewBanner}
                 onPress={() => {
-                  dispatch(
-                    Actions.getListNewsRequestActions({
-                      limit: '20',
-                      page: '1',
-                    }),
-                  );
+                  onPressCategories({id: 10000});
                 }}>
                 <HeaderBanner />
               </TouchableOpacity>
@@ -197,21 +210,20 @@ const HomeScreen = (props: IHeaderComponentProps) => {
               </LinearGradient>
             </View>
           </View>
-          {!isLoading && dataNews !== null ? (
+          {!isLoadingListNewsCats && dataNews !== null ? (
             <FlatList
               style={styles.containerBody}
               showsVerticalScrollIndicator={false}
-              onEndReachedThreshold={1}
+              onEndReachedThreshold={3}
               scrollEventThrottle={10}
-              scrollEnabled={
-                nameTab === screenName.SEARCH_SCREEN ? false : true
-              }
+              scrollEnabled={true}
               onScroll={Animated.event(
                 [{nativeEvent: {contentOffset: {y: scrollY}}}],
                 {useNativeDriver: false},
               )}
-              data={dataNews.rows}
-              onEndReached={i => {
+              data={!pressCats ? dataNews.rows : dataListNewsCats.rows}
+              onEndReached={({distanceFromEnd}) => {
+                if (distanceFromEnd < 50) return;
                 onLoadMore();
               }}
               ListFooterComponent={

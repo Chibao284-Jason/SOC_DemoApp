@@ -8,7 +8,7 @@ export const getCatsListNewsRequestActions = (params: IListNewsCatsParamsRequest
   type: types.GET_CATS_LIST_NEWS_REQUEST,
   params: params
 })
-export const getCatsListNewsSuccessActions = (data: IDataListNew[]): IResponseListTabSuccess => ({
+export const getCatsListNewsSuccessActions = (data: IDataListNew): IResponseListTabSuccess => ({
   type: types.GET_CATS_LIST_NEWS_SUCCESS,
   data: data
 })
@@ -18,7 +18,15 @@ export const getCatsListNewsFailureActions = (error: any): IErrorAction => ({
   error: error.message
 })
 
-export const getMoreCatsListNewsSuccessActions = (data?: any): IResponseListTabSuccess => ({
+export const getMoreCatsListNewsRequestActions = (params: IListNewsCatsParamsRequest): IListNewsActionsRequest => ({
+  type: types.GET_MORE_CATS_LIST_NEWS_REQUEST,
+  params: params
+})
+export const getMoreCatsListNewsSuccessActions = (data: IDataListNew): IResponseListTabSuccess => ({
   type: types.GET_MORE_CATS_LIST_NEWS_SUCCESS,
   data: data
+})
+export const getMoreCatsListNewsFailureActions = (data?: any): IErrorAction => ({
+  type: types.GET_MORE_CATS_LIST_NEWS_FAILURE,
+  error: data
 })

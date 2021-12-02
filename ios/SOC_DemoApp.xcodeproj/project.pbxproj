@@ -43,7 +43,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* SOC_DemoAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SOC_DemoAppTests.m; sourceTree = "<group>"; };
 		03C31AF848C34C22B2270990 /* RubikLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = RubikLight.ttf; path = ../app/assets/fonts/RubikLight.ttf; sourceTree = "<group>"; };
-		0AC77D1CC6D24C57AA6D8B44 /* Bookerly Light Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Light Italic.ttf"; path = "../app/assets/fonts/Bookerly Light Italic.ttf"; sourceTree = "<group>"; };
+		0AC77D1CC6D24C57AA6D8B44 /* Bookerly Light Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Light Italic.ttf"; path = "../app/assets/fonts/Bookerly Light Italic.ttf"; sourceTree = "<group>"; };
 		0C64C1562CC54416921E2C32 /* OpenSansItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OpenSansItalic.ttf; path = ../app/assets/fonts/OpenSansItalic.ttf; sourceTree = "<group>"; };
 		0F205D5AD0C44085BB6B9CDA /* LarsseitBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LarsseitBoldItalic.ttf; path = ../app/assets/fonts/LarsseitBoldItalic.ttf; sourceTree = "<group>"; };
 		0FB71B2F57B74971A5F35A22 /* RubikBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = RubikBold.ttf; path = ../app/assets/fonts/RubikBold.ttf; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 		1A80EE59A0064B9B9440F1A2 /* Bookerly-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly-Regular.ttf"; path = "../app/assets/fonts/Bookerly-Regular.ttf"; sourceTree = "<group>"; };
 		1C7E27CF819B44CD868F1E38 /* Times New Roman.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Times New Roman.ttf"; path = "../app/assets/fonts/Times New Roman.ttf"; sourceTree = "<group>"; };
 		1D0AE47A65C8663E3B452821 /* Pods-SOC_DemoApp-SOC_DemoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOC_DemoApp-SOC_DemoAppTests.release.xcconfig"; path = "Target Support Files/Pods-SOC_DemoApp-SOC_DemoAppTests/Pods-SOC_DemoApp-SOC_DemoAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		1ED2A056FFA74BEE97331450 /* Bookerly Display Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display Italic.ttf"; path = "../app/assets/fonts/Bookerly Display Italic.ttf"; sourceTree = "<group>"; };
+		1ED2A056FFA74BEE97331450 /* Bookerly Display Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display Italic.ttf"; path = "../app/assets/fonts/Bookerly Display Italic.ttf"; sourceTree = "<group>"; };
 		20ADA17F936743D784DFE925 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		27A63839801D46508AA880B1 /* LatoBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LatoBold.ttf; path = ../app/assets/fonts/LatoBold.ttf; sourceTree = "<group>"; };
 		291092299DFD4270A5DA0F2D /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
@@ -64,16 +64,16 @@
 		2EC5AF9FC3844361AD0F6DCE /* OpenSansBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OpenSansBold.ttf; path = ../app/assets/fonts/OpenSansBold.ttf; sourceTree = "<group>"; };
 		3546103DE619454B9F01E148 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		3EC129F47F39467AA18B1067 /* LatoItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LatoItalic.ttf; path = ../app/assets/fonts/LatoItalic.ttf; sourceTree = "<group>"; };
-		462DAC4423114D2E9C9E14E6 /* Bookerly Bold Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Bold Italic.ttf"; path = "../app/assets/fonts/Bookerly Bold Italic.ttf"; sourceTree = "<group>"; };
+		462DAC4423114D2E9C9E14E6 /* Bookerly Bold Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Bold Italic.ttf"; path = "../app/assets/fonts/Bookerly Bold Italic.ttf"; sourceTree = "<group>"; };
 		472BAB093E694C97A5DC1EA9 /* UserwayDyslexiaFontBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = UserwayDyslexiaFontBold.ttf; path = ../app/assets/fonts/UserwayDyslexiaFontBold.ttf; sourceTree = "<group>"; };
 		4E031A93B26C4BEEAB7F4F44 /* LarsseitLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LarsseitLight.ttf; path = ../app/assets/fonts/LarsseitLight.ttf; sourceTree = "<group>"; };
-		5923E190A2D74E4384F21E6A /* Bookerly Display Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display Bold.ttf"; path = "../app/assets/fonts/Bookerly Display Bold.ttf"; sourceTree = "<group>"; };
+		5923E190A2D74E4384F21E6A /* Bookerly Display Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display Bold.ttf"; path = "../app/assets/fonts/Bookerly Display Bold.ttf"; sourceTree = "<group>"; };
 		5AA247E3D301434CBA134E02 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		5DFE621DB9D147A69E44C041 /* Arial Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Arial Bold.ttf"; path = "../app/assets/fonts/Arial Bold.ttf"; sourceTree = "<group>"; };
-		5E9EA97638B4481085D97615 /* Bookerly LCD Light Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly LCD Light Italic.ttf"; path = "../app/assets/fonts/Bookerly LCD Light Italic.ttf"; sourceTree = "<group>"; };
+		5E9EA97638B4481085D97615 /* Bookerly LCD Light Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly LCD Light Italic.ttf"; path = "../app/assets/fonts/Bookerly LCD Light Italic.ttf"; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-SOC_DemoApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SOC_DemoApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D6A0D94D334CA29216CC9A /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		677885637C7341D3AB1D53E2 /* Bookerly Display Bold Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display Bold Italic.ttf"; path = "../app/assets/fonts/Bookerly Display Bold Italic.ttf"; sourceTree = "<group>"; };
+		677885637C7341D3AB1D53E2 /* Bookerly Display Bold Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display Bold Italic.ttf"; path = "../app/assets/fonts/Bookerly Display Bold Italic.ttf"; sourceTree = "<group>"; };
 		6AF97E8B9B214478AC443234 /* UserwayDyslexiaFontItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = UserwayDyslexiaFontItalic.ttf; path = ../app/assets/fonts/UserwayDyslexiaFontItalic.ttf; sourceTree = "<group>"; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-SOC_DemoApp-SOC_DemoAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOC_DemoApp-SOC_DemoAppTests.debug.xcconfig"; path = "Target Support Files/Pods-SOC_DemoApp-SOC_DemoAppTests/Pods-SOC_DemoApp-SOC_DemoAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6CB5FE462A8D413E923776E1 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		7BFA233EAA0A421B80D6784A /* RubikRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = RubikRegular.ttf; path = ../app/assets/fonts/RubikRegular.ttf; sourceTree = "<group>"; };
 		7F311FC674B240589CB32B20 /* LarsseitItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LarsseitItalic.ttf; path = ../app/assets/fonts/LarsseitItalic.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SOC_DemoApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		82BD887825CE439E9EA1FA53 /* Bookerly LCD Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly LCD Italic.ttf"; path = "../app/assets/fonts/Bookerly LCD Italic.ttf"; sourceTree = "<group>"; };
+		82BD887825CE439E9EA1FA53 /* Bookerly LCD Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly LCD Italic.ttf"; path = "../app/assets/fonts/Bookerly LCD Italic.ttf"; sourceTree = "<group>"; };
 		84F11DECF4E04664875BBDFC /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		862543B698E94983A7693092 /* Larsseit.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Larsseit.ttf; path = ../app/assets/fonts/Larsseit.ttf; sourceTree = "<group>"; };
 		8A6BEA38983F46569C0E4CDF /* RubikMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = RubikMedium.ttf; path = ../app/assets/fonts/RubikMedium.ttf; sourceTree = "<group>"; };
@@ -98,21 +98,21 @@
 		B406A9298D054B559C5044EF /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		B8605B7E6F2C4E6C815FB8DA /* OpenSansRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OpenSansRegular.ttf; path = ../app/assets/fonts/OpenSansRegular.ttf; sourceTree = "<group>"; };
 		BA97A2DB85EC42E6B2CAFA2A /* OpenSansLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OpenSansLight.ttf; path = ../app/assets/fonts/OpenSansLight.ttf; sourceTree = "<group>"; };
-		C08062FCB42E4F1093BF74AE /* Bookerly Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Light.ttf"; path = "../app/assets/fonts/Bookerly Light.ttf"; sourceTree = "<group>"; };
+		C08062FCB42E4F1093BF74AE /* Bookerly Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Light.ttf"; path = "../app/assets/fonts/Bookerly Light.ttf"; sourceTree = "<group>"; };
 		C0A881CF5CF3F2B244570E2A /* Pods-SOC_DemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOC_DemoApp.debug.xcconfig"; path = "Target Support Files/Pods-SOC_DemoApp/Pods-SOC_DemoApp.debug.xcconfig"; sourceTree = "<group>"; };
-		C1A67B4D67B84AB985A8AE8B /* Bookerly Display.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display.ttf"; path = "../app/assets/fonts/Bookerly Display.ttf"; sourceTree = "<group>"; };
-		C521E9E2D90341FA98A85CCC /* Bookerly.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Bookerly.ttf; path = ../app/assets/fonts/Bookerly.ttf; sourceTree = "<group>"; };
+		C1A67B4D67B84AB985A8AE8B /* Bookerly Display.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display.ttf"; path = "../app/assets/fonts/Bookerly Display.ttf"; sourceTree = "<group>"; };
+		C521E9E2D90341FA98A85CCC /* Bookerly.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Bookerly.ttf; path = ../app/assets/fonts/Bookerly.ttf; sourceTree = "<group>"; };
 		CA7C9FA3F367435AB55FFF79 /* Arial Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Arial Italic.ttf"; path = "../app/assets/fonts/Arial Italic.ttf"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-SOC_DemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOC_DemoApp.release.xcconfig"; path = "Target Support Files/Pods-SOC_DemoApp/Pods-SOC_DemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		D020F501728B404CAD1F0480 /* LarsseitBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LarsseitBold.ttf; path = ../app/assets/fonts/LarsseitBold.ttf; sourceTree = "<group>"; };
 		D9666CB765AA4D28807CFF8A /* LatoLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LatoLight.ttf; path = ../app/assets/fonts/LatoLight.ttf; sourceTree = "<group>"; };
-		E188E3696D7C455EA1C10796 /* Bookerly Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Italic.ttf"; path = "../app/assets/fonts/Bookerly Italic.ttf"; sourceTree = "<group>"; };
+		E188E3696D7C455EA1C10796 /* Bookerly Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Italic.ttf"; path = "../app/assets/fonts/Bookerly Italic.ttf"; sourceTree = "<group>"; };
 		E6BE66828E0248EE831F110A /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		E826EE618934433E9F34CBC0 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		E89580C7B61B47869CB38FD3 /* LatoMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LatoMedium.ttf; path = ../app/assets/fonts/LatoMedium.ttf; sourceTree = "<group>"; };
 		EC9F5615C48746218C5F5CD5 /* LarsseitMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LarsseitMedium.ttf; path = ../app/assets/fonts/LarsseitMedium.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		EE657620332B4306BE12B74C /* Bookerly Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Bold.ttf"; path = "../app/assets/fonts/Bookerly Bold.ttf"; sourceTree = "<group>"; };
+		EE657620332B4306BE12B74C /* Bookerly Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Bold.ttf"; path = "../app/assets/fonts/Bookerly Bold.ttf"; sourceTree = "<group>"; };
 		F443DAB2F65543758B20F6D8 /* OpenSansMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OpenSansMedium.ttf; path = ../app/assets/fonts/OpenSansMedium.ttf; sourceTree = "<group>"; };
 		FAC157DC8A844426AC2F8A74 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -633,8 +633,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 45YPMN33GX;
+				DEVELOPMENT_TEAM = X4NN7P3QPD;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SOC_DemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -648,6 +650,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SOC_DemoApp;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -660,8 +663,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 45YPMN33GX;
+				DEVELOPMENT_TEAM = X4NN7P3QPD;
 				INFOPLIST_FILE = SOC_DemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -674,6 +679,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SOC_DemoApp;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
