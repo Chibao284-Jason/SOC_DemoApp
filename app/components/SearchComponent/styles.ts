@@ -12,6 +12,8 @@ type Styles = {
   headerSearch: ViewStyle
   viewCloseSearch: ViewStyle
   closeSearch: TextStyle
+  imgClose: ImageStyle
+  iconClearText: ImageStyle
   viewTrending: ViewStyle
   textHotKey: TextStyle
 }
@@ -32,7 +34,6 @@ export const styles: Styles = {
   },
   input: {
     fontSize: 18,
-    fontWeight: 'bold',
     flex: 1,
     color: colorGlobal.textSearch,
   },
@@ -71,7 +72,7 @@ export const styles: Styles = {
     fontSize: 18
   },
   viewCloseSearch: {
-    marginRight: 10
+    marginLeft: 10
   },
   viewTrending: {
     borderWidth: 1,
@@ -84,5 +85,7 @@ export const styles: Styles = {
   },
   textHotKey: {
     color: colorGlobal.textHotKey,
-  }
+  },
+  imgClose: { width: 20, height: 20 },
+  iconClearText: { width: 15, height: 15 }
 }

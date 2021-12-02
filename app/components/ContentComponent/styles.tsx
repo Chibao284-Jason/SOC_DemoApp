@@ -61,7 +61,7 @@ export const styles: Styles = {
     position: 'relative',
     width: '100%',
     height: 300,
-    borderRadius: 10,
+    // borderRadius: 10,
   },
   audioControl: {
     width: '100%',

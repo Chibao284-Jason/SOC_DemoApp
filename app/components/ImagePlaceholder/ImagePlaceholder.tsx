@@ -11,7 +11,14 @@ const ImagePlaceholder = (props: ImagePlaceholderProps) => {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <View style={{width: 120, height: 70, borderRadius: 4}} />
           <View style={{marginLeft: 20}}>
-            <View style={{width: 200, height: 20, borderRadius: 4}} />
+            <View
+              style={{
+                width: 225,
+                height: 20,
+                borderRadius: 4,
+                paddingRight: 10,
+              }}
+            />
             <View
               style={{marginTop: 6, width: 80, height: 20, borderRadius: 4}}
             />

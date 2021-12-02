@@ -44,6 +44,6 @@ export default ListNewsScreen;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colorGlobal.backgroundGlobal,
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
   },
 });

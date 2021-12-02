@@ -78,6 +78,7 @@ const SearchComponent = (props: ISearchComponentProps) => {
         inputRef && inputRef.current && inputRef.current.focus();
       }, 450);
     }
+    console.log(tickNews);
   }, []);
   const submitSearch = (text: string) => {
     console.log(text);
@@ -96,17 +97,20 @@ const SearchComponent = (props: ISearchComponentProps) => {
   return (
     <>
       <View style={styles.headerSearch}>
+        <TouchableOpacity
+          style={styles.viewCloseSearch}
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          {/* <Text style={styles.closeSearch}>Đóng</Text> */}
+          <Image
+            style={styles.imgClose}
+            source={require('../../assets/img/arrowLeft.png')}
+          />
+        </TouchableOpacity>
         <View style={styles.searchContainer}>
-          <TouchableOpacity onPress={() => submitSearch(textSearch)}>
-            <Icon
-              name="search"
-              size={25}
-              style={{marginRight: 5}}
-              tvParallaxProperties={undefined}
-            />
-          </TouchableOpacity>
           <TextInput
-            placeholder="tìm kiếm"
+            placeholder="Từ khóa"
             style={styles.input}
             onChangeText={text => {
               setTextSearch(text);
@@ -116,22 +120,22 @@ const SearchComponent = (props: ISearchComponentProps) => {
             ref={inputRef}
             onSubmitEditing={() => submitSearch(textSearch)}
           />
-          {textSearch !== '' && (
-            <TouchableOpacity onPress={() => setTextSearch('')}>
+          {/* {textSearch !== '' && (
+            <TouchableOpacity
+              style={{
+                marginHorizontal: 5,
+              }}
+              onPress={() => setTextSearch('')}>
               <Image
                 source={require('../../assets/img/closeIcon.png')}
-                style={{width: 15, height: 15}}
+                style={styles.iconClearText}
               />
             </TouchableOpacity>
-          )}
+          )} */}
+          <TouchableOpacity onPress={() => submitSearch(textSearch)}>
+            <Icon name="search" size={25} tvParallaxProperties={undefined} />
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          style={styles.viewCloseSearch}
-          onPress={() => {
-            navigation.goBack();
-          }}>
-          <Text style={styles.closeSearch}>Đóng</Text>
-        </TouchableOpacity>
       </View>
 
       {!isLoadingSearch ? (
@@ -163,26 +167,34 @@ const SearchComponent = (props: ISearchComponentProps) => {
                 <View style={styles.viewLabelInput}>
                   <Text style={styles.labelTrending}>ĐÃ ĐÁNH DẤU</Text>
                 </View>
-                {tickNews.map(items => {
-                  const {title, thumbnail, datetime, count_view, id} = items;
-                  return (
-                    <CardComponent
-                      key={id.toString()}
-                      imgUri={{uri: thumbnail}}
-                      countView={count_view}
-                      timeCreated={datetime}
-                      title={title}
-                      onPress={() =>
-                        navigation.navigate(
-                          screenName.DETAIL_SCREEN as never,
-                          {
-                            id: id,
-                          } as never,
-                        )
-                      }
-                    />
-                  );
-                })}
+                {tickNews.length === 0 ? (
+                  <View style={{}}>
+                    <Text style={{color: colorGlobal.textHotKey}}>
+                      Bạn chưa đánh dấu bài nào cả
+                    </Text>
+                  </View>
+                ) : (
+                  tickNews.map(items => {
+                    const {title, thumbnail, datetime, count_view, id} = items;
+                    return (
+                      <CardComponent
+                        key={id.toString()}
+                        imgUri={{uri: thumbnail}}
+                        countView={count_view}
+                        timeCreated={datetime}
+                        title={title}
+                        onPress={() =>
+                          navigation.navigate(
+                            screenName.DETAIL_SCREEN as never,
+                            {
+                              id: id,
+                            } as never,
+                          )
+                        }
+                      />
+                    );
+                  })
+                )}
               </View>
             </>
           )}

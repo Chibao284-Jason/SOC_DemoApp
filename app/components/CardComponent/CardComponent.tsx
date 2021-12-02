@@ -74,7 +74,7 @@ const CardComponent = (props: CardComponentProps) => {
         </View>
         <View style={styles.viewLabelNews}>
           <View style={styles.labelNews}>
-            <View style={{}}>
+            <View style={{marginRight: 20}}>
               <Text style={styles.textLabel} numberOfLines={4}>
                 {title}
               </Text>

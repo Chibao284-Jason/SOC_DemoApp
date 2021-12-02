@@ -63,8 +63,10 @@ const ContentComponent = (props: IContentComponentProps) => {
       .calendar()
       .replace(dateTemp.format('DD/MM/YYYY'), 'tháng trước');
   }
-  if (dateTemp.format('D/M/Y') === lastW) {
-    timeCreate = moment(datetime).calendar().replace(lastW, 'tuần trước');
+  if (dateTemp.format('D/M/Y') === lastW.format('D/M/Y')) {
+    timeCreate = moment(datetime)
+      .calendar()
+      .replace(lastW.format('D/M/Y'), 'tuần trước');
   }
   if (dateTemp.format('Y') === lastY.format('Y')) {
     timeCreate = moment(datetime)
@@ -120,6 +122,7 @@ const ContentComponent = (props: IContentComponentProps) => {
             onPlaybackRateChange={event => onPlayVideo(event)}
             paused={paused}
             style={styles.thumbnailVideo}
+            ignoreSilentSwitch={'ignore'}
           />
         </>
       )}
@@ -136,6 +139,7 @@ const ContentComponent = (props: IContentComponentProps) => {
             ref={ref => {
               let playerAudio = ref;
             }}
+            ignoreSilentSwitch={'ignore'}
             onPlaybackRateChange={event => onPlayAudio(event)}
             controls={true}
             paused={pausedAudio}
