@@ -1,6 +1,10 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator, TransitionSpecs} from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+  TransitionSpecs,
+} from '@react-navigation/stack';
 import DetailScreen from '@screens/DetailScreen/DetailScreen';
 import {screenName} from './screenName';
 import {useNavigation} from '@react-navigation/core';
@@ -37,13 +41,18 @@ const MainScreen = () => {
         name={screenName.MENU_SCREEN}
         component={MenuScreen}
         options={{
+          ...TransitionPresets.SlideFromRightIOS,
           gestureDirection: 'horizontal-inverted',
+          gestureEnabled: true, // If you want to swipe back like iOS on Android
         }}
       />
       <Stack.Screen
         name={screenName.SEARCH_SCREEN}
         component={SearchScreen}
-        options={{}}
+        options={{
+          ...TransitionPresets.SlideFromRightIOS,
+          gestureEnabled: true,
+        }}
       />
     </Stack.Navigator>
   );

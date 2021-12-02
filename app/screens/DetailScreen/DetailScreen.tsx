@@ -89,11 +89,11 @@ const DetailScreen = () => {
         buttonRightStyle={{marginRight: 20}}
       />
       {/* CONTENT COMPONENT */}
-      {/* {!isLoading ? (
+      {!isLoading ? (
         <ContentComponent dataDetail={dataDetailNews} />
       ) : (
         <ImagePlaceholderDetail />
-      )} */}
+      )}
       {!isLoading && itemDetail !== null && (
         <RBSheet
           ref={refRBSheet}
