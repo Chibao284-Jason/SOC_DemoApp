@@ -12,6 +12,7 @@ import HomeScreen from '@screens/HomeScreen/HomeScreen';
 import MenuScreen from '@screens/MenuScreen/MenuScreen';
 import SearchScreen from '@screens/SearchScreen/SearchScreen';
 import SearchComponent from '@components/SearchComponent/SearchComponent';
+import RNBootSplash from 'react-native-bootsplash';
 const Stack = createStackNavigator();
 
 interface NavigationContainerProps {}
@@ -59,7 +60,7 @@ const MainScreen = () => {
 };
 const NavigationStack = (props: NavigationContainerProps) => {
   return (
-    <NavigationContainer>
+    <NavigationContainer onReady={() => RNBootSplash.hide({fade: false})}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="MainScreen" component={MainScreen} />
       </Stack.Navigator>
