@@ -25,4 +25,5 @@ export interface IDataDetailNews {
   audio: string
   thumbnail: string
   id: string
+  cat_name: string
 }

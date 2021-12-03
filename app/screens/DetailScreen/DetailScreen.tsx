@@ -75,19 +75,21 @@ const DetailScreen = () => {
   const refRBSheet = useRef<any>();
   return (
     <View style={styles.container}>
-      <HeaderDetail
-        isButtonLeft={true}
-        isButtonCenter={true}
-        isAvatar={true}
-        isButtonRight={true}
-        headerLeft={() => navigation.goBack()}
-        headerRight={() => refRBSheet.current?.open()}
-        iconRight={{
-          uri: 'https://icon-library.com/images/icon-other/icon-other-26.jpg',
-        }}
-        iconRightStyle={{width: 20, height: 20, resizeMode: 'stretch'}}
-        buttonRightStyle={{marginRight: 20}}
-      />
+      {!isLoading ? (
+        <HeaderDetail
+          isButtonLeft={true}
+          isButtonCenter={true}
+          title={dataDetailNews.cat_name}
+          isButtonRight={true}
+          headerLeft={() => navigation.goBack()}
+          headerRight={() => refRBSheet.current?.open()}
+          iconRight={{
+            uri: 'https://icon-library.com/images/icon-other/icon-other-26.jpg',
+          }}
+          iconRightStyle={{width: 20, height: 20, resizeMode: 'stretch'}}
+          buttonRightStyle={{marginRight: 20}}
+        />
+      ) : null}
       {/* CONTENT COMPONENT */}
       {!isLoading ? (
         <ContentComponent dataDetail={dataDetailNews} />

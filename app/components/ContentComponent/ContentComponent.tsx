@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -6,9 +6,10 @@ import {
   Dimensions,
   NativeSyntheticEvent,
   NativeScrollEvent,
+  TouchableOpacity,
 } from 'react-native';
 import {} from 'react-native-elements';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import moment from 'moment';
 import {styles} from './styles';
 import {
@@ -19,9 +20,12 @@ import {IDataDetailNews} from '@models/actions/getDetailNews';
 import {useWindowDimensions} from 'react-native';
 import RenderHtml from 'react-native-render-html';
 import Video, {OnPlaybackRateData} from 'react-native-video';
+import VideoPlayer from 'react-native-video-controls';
 import {Image} from 'react-native-elements/dist/image/Image';
 import {yesterday, lastM, lastW, lastY} from '@constants/dateConstant';
 import {useNavigation} from '@react-navigation/native';
+import {Actions} from '@store/actions';
+import {IPlayVideo} from '@store/reducers/autoPlayVideoReducer';
 interface IContentComponentProps {
   dataDetail: IDataDetailNews;
 }
@@ -29,16 +33,29 @@ interface IReducer {
   ChangeFontReducer: IChangeThemeFontFamilyReducer &
     IChangeThemeFontSizeReducer;
 }
+interface IAutoPlayVideoReducer {
+  autoPlayVideoReducer: IPlayVideo;
+}
 
 const ContentComponent = (props: IContentComponentProps) => {
   const navigation = useNavigation();
-  const [paused, setPaused] = useState(true);
+  const dispatch = useDispatch();
+
   const [pausedAudio, setPausedAudio] = useState(true);
   const [onEnd, setOnEnd] = useState(true);
+  const [fullScreen, setFullScreen] = useState(false);
 
   const ChangeFontReducer = useSelector(
     (state: IReducer) => state.ChangeFontReducer,
   );
+  const autoPlayVideoReducer = useSelector(
+    (state: IAutoPlayVideoReducer) => state.autoPlayVideoReducer.playVideo,
+  );
+
+  const [paused, setPaused] = useState(true);
+  useEffect(() => {
+    setPaused(autoPlayVideoReducer);
+  }, [autoPlayVideoReducer]);
   const {font, fontSize} = ChangeFontReducer;
   const {dataDetail} = props;
   const {
@@ -82,6 +99,7 @@ const ContentComponent = (props: IContentComponentProps) => {
     if (event.playbackRate === 1) {
       setPausedAudio(true);
       setPaused(false);
+      return;
     }
   };
   const onPlayAudio = (event: OnPlaybackRateData) => {
@@ -106,48 +124,63 @@ const ContentComponent = (props: IContentComponentProps) => {
       style={styles.container}
       scrollEventThrottle={16}
       onScroll={e => onEndBack(e)}>
-      <View>
-        <Text style={styles.headingTitle(font, fontSize)}>{title}</Text>
-      </View>
-      <Text style={styles.textCreate(font, fontSize)}>{timeCreate}</Text>
-      <Text style={styles.textHeaderContent(font, fontSize)}>{desc}</Text>
       {video !== '' && (
         <>
-          <Video
+          <VideoPlayer
             source={{uri: video}}
             ref={ref => {
               let player = ref;
             }}
-            controls={true}
+            controls={false}
             onPlaybackRateChange={event => onPlayVideo(event)}
             paused={paused}
             style={styles.thumbnailVideo}
             ignoreSilentSwitch={'ignore'}
+            toggleResizeModeOnFullscreen={false}
+            fullscreen={fullScreen}
+            onEnterFullscreen={() => setFullScreen(true)}
+            onExitFullscreen={() => setFullScreen(false)}
+            disableBack={true}
+            onPlay={() => dispatch(Actions.autoPlayVideRequestActions(false))}
+            onPause={() => dispatch(Actions.autoPlayVideRequestActions(true))}
           />
         </>
       )}
-      {audio !== '' && (
-        <View style={{marginTop: 15}}>
-          <View style={styles.thumbnailAudio}>
-            <Image
-              source={require('../../assets/img/sound.png')}
-              style={styles.imgSound}
+      <View>
+        <Text style={styles.headingTitle(font, fontSize)}>{title}</Text>
+      </View>
+      <View style={styles.viewAudio}>
+        <Text style={styles.textCreate(font, fontSize)}>{timeCreate}</Text>
+        {audio !== '' && (
+          <View style={styles.viewSound}>
+            <TouchableOpacity
+              style={styles.thumbnailAudio}
+              onPress={() => setPausedAudio(!pausedAudio)}>
+              <Image
+                source={require('../../assets/img/sound.png')}
+                style={styles.imgSound}
+              />
+              <Text style={styles.textPause(font, fontSize)}>
+                {pausedAudio ? 'nghe tin' : 'đang phát'}
+              </Text>
+            </TouchableOpacity>
+            <Video
+              source={{uri: audio}}
+              ref={ref => {
+                let playerAudio = ref;
+              }}
+              ignoreSilentSwitch={'ignore'}
+              onPlaybackRateChange={event => onPlayAudio(event)}
+              controls={false}
+              paused={pausedAudio}
+              audioOnly={false}
+              repeat={false}
+              style={styles.audioControl}
             />
           </View>
-          <Video
-            source={{uri: audio}}
-            ref={ref => {
-              let playerAudio = ref;
-            }}
-            ignoreSilentSwitch={'ignore'}
-            onPlaybackRateChange={event => onPlayAudio(event)}
-            controls={true}
-            paused={pausedAudio}
-            audioOnly={false}
-            style={styles.audioControl}
-          />
-        </View>
-      )}
+        )}
+      </View>
+      <Text style={styles.textHeaderContent(font, fontSize)}>{desc}</Text>
       <RenderHtml
         baseStyle={styles.textBodyContent(font, fontSize)}
         systemFonts={[font]}

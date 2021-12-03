@@ -15,6 +15,7 @@ type Styles = {
   imgClose: ImageStyle
   iconClearText: ImageStyle
   viewTrending: ViewStyle
+  viewTick: ViewStyle
   textHotKey: TextStyle
 }
 export const styles: Styles = {
@@ -28,7 +29,7 @@ export const styles: Styles = {
     borderWidth: 1,
     marginHorizontal: 10,
     marginVertical: 10,
-    borderColor: colorGlobal.textInputBorder,
+    borderColor: colorGlobal.lineColor,
     padding: 5,
     flex: 1,
   },
@@ -36,6 +37,7 @@ export const styles: Styles = {
     fontSize: 18,
     flex: 1,
     color: colorGlobal.textSearch,
+    paddingVertical: 5
   },
   containerShortcut: {
     padding: 10,
@@ -87,5 +89,11 @@ export const styles: Styles = {
     color: colorGlobal.textHotKey,
   },
   imgClose: { width: 20, height: 20 },
-  iconClearText: { width: 15, height: 15 }
+  iconClearText: {
+    width: 15,
+    height: 15
+  },
+  viewTick: {
+    backgroundColor: 'white', padding: 10
+  }
 }

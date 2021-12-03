@@ -14,7 +14,9 @@ type Styles = {
   imgBgBorderRadius: ImageStyle
   imgSource: ImageStyle
   imgSourceEyes: ImageStyle
+  iconClose: ImageStyle
   countView: ViewStyle
+
 }
 export const styles: Styles = {
   container: {
@@ -81,5 +83,9 @@ export const styles: Styles = {
     width: 20,
     height: 20,
     marginRight: 5
+  },
+  iconClose: {
+    width: 15,
+    height: 15
   }
 }

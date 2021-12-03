@@ -93,7 +93,8 @@ export const colorGlobal = {
   timeCreateColor: colors.gray1,
   textWhite: colors.white2,
   textHotKey: colors.gray,
-  textSearch: colors.gray_blur,
+  textSearch: colors.black,
+
 
   //BACKGROUND
   backgroundGlobal: colors.white,

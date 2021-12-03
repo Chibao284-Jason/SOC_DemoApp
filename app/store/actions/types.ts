@@ -43,3 +43,6 @@ export const GET_DETAIL_NEWS_FAILURE = 'GET_DETAIL_NEWS_FAILURE';
 // Data Tick
 export const ADD_DATA_TICK = 'ADD_DATA_TICK';
 export const REMOVE_DATA_TICK = 'REMOVE_DATA_TICK';
+
+// Auto play video
+export const AUTO_PLAY_VIDEO = 'AUTO_PLAY_VIDEO'

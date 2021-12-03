@@ -163,7 +163,7 @@ const SearchComponent = (props: ISearchComponentProps) => {
                     })}
                 </View>
               </View>
-              <View style={{backgroundColor: 'white', padding: 10}}>
+              <View style={styles.viewTick}>
                 <View style={styles.viewLabelInput}>
                   <Text style={styles.labelTrending}>ĐÃ ĐÁNH DẤU</Text>
                 </View>
@@ -183,6 +183,10 @@ const SearchComponent = (props: ISearchComponentProps) => {
                         countView={count_view}
                         timeCreated={datetime}
                         title={title}
+                        isTick={true}
+                        onDeleteTick={() =>
+                          dispatch(Actions.removeDataTick([items]))
+                        }
                         onPress={() =>
                           navigation.navigate(
                             screenName.DETAIL_SCREEN as never,

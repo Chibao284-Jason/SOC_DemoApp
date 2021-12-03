@@ -6,9 +6,12 @@ export type Styles = {
   thumbnailAudio: ViewStyle;
   thumbnailVideo: ViewStyle;
   audioControl: ViewStyle;
+  viewAudio: ViewStyle;
+  viewSound: ViewStyle;
   imgSound: ImageStyle;
   headingTitle: (font?: string, fontSize?: number) => TextStyle;
   textCreate: (font?: string, fontSize?: number) => TextStyle;
+  textPause: (font?: string, fontSize?: number) => TextStyle;
   textHeaderContent: (font?: string, fontSize?: number) => TextStyle;
   textBodyContent: (font?: string, fontSize?: number) => any; // render HTML
 };
@@ -31,6 +34,15 @@ export const styles: Styles = {
     fontFamily: font ? font : 'Arial',
     marginVertical: 10,
     fontSize: scale(14, fontSize),
+    textAlignVertical: 'center',
+  }),
+  textPause: (font, fontSize) => ({
+    color: colorGlobal.titleNews,
+    fontFamily: font ? font : 'Arial',
+    marginVertical: 10,
+    fontSize: scale(14, fontSize),
+    textAlignVertical: 'center',
+    marginLeft: 10,
   }),
   textHeaderContent: (font, fontSize) => ({
     fontWeight: 'bold',
@@ -48,25 +60,35 @@ export const styles: Styles = {
   thumbnailAudio: {
     width: '100%',
     height: 50,
-    backgroundColor: colorGlobal.textInputBg,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    alignItems: 'center',
+    // backgroundColor: colorGlobal.textInputBg,
+    // borderTopLeftRadius: 10,
+    // borderTopRightRadius: 10,
+    flexDirection: 'row',
   },
   imgSound: {
-    width: '100%',
-    height: 50,
+    width: 25,
+    height: 25,
     resizeMode: 'contain',
   },
   thumbnailVideo: {
     position: 'relative',
     width: '100%',
     height: 300,
-    // borderRadius: 10,
+    marginBottom: 10,
   },
   audioControl: {
-    width: '100%',
+    // width: '100%',
     height: 50,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
+  },
+  viewAudio: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  viewSound: {
+    marginLeft: 15,
+    flexDirection: 'row',
   },
 };
